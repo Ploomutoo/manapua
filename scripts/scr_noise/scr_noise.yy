@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_noise",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_noise",
+  "parent":{
+    "name":"generation",
+    "path":"folders/Scripts/generation.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

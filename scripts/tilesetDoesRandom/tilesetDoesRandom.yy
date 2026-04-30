@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"tilesetDoesRandom",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"tilesetDoesRandom",
+  "parent":{
+    "name":"dualgrid",
+    "path":"folders/dualgrid.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

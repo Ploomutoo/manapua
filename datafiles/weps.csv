@@ -1,0 +1,28 @@
+Name,Weight,Damage,Interval,Special,Value
+Wooden Club,50,10,1.5,Sneak Stun,1
+Shortsword,50,6,0.8,,
+Copper Mace,30,15,1.8,,
+Spear,30,12,1.8,Reach Attack,1
+Lumber Axe,30,12,1.5,Cleave,1
+Baselard,15,8,0.8,Sneak Stab,3
+Longsword,20,12,1,,
+Guisarme,15,18,1.8,Reach Attack,1
+Sabre,15,10,1,Riposte,1
+Nagaika,10,15,1.6,Flail,1
+Lochaber Axe,5,20,2,Cleave,1
+Iron Club,20,15,1.5,Sneak Stun,2
+Cinquedea,20,12,0.8,,
+Quarterstaff,20,14,1.2,,
+Falcata,20,15,1,,
+Rapier,20,18,1.6,,
+Morningstar,20,20,1.8,,
+Lajatang,10,8,1.2,Multistrike ,1
+Throngler,5,8,1.8,Multistrike ,2
+Golden Axe,5,30,2,Cleave,
+Star Lance,3,30,1.5,,
+Sunblade,3,25,1.2,Riposte,1
+Eveningstar,3,45,1.8,,
+Triple Sword,5,50,2.2,,
+Shillelagh,5,40,1.5,,
+Trishula,8,35,1,Reach Attack,1
+Gada,8,50,1,Sneak Stun,3

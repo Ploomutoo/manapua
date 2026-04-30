@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"clock",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"clock",
+  "parent":{
+    "name":"game_objects",
+    "path":"folders/Objects/game_objects.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

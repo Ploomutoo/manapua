@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"checkTerrain",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"checkTerrain",
+  "parent":{
+    "name":"dualgrid",
+    "path":"folders/dualgrid.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
