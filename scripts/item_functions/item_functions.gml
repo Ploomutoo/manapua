@@ -78,8 +78,13 @@ function drawItemText(_item,_x,_y)
 
 function dealDamage(_damage,_target)
 {
-	var _source = other
+	//var _source = other
 	var _dam = min(0,irandom(_target.defense)-irandom(_damage))
+	
+	drawX += (_target.x-drawX)/2
+	drawY += (_target.y-drawY)/2
+	
+	part_particles_create(global.pSystem,x,y,global.partSwing,10)
 	
 	if(_target.asleep) 
 	{
@@ -88,16 +93,13 @@ function dealDamage(_damage,_target)
 		_target.asleep = false
 	}
 	_target.hp += _dam
-	if(_target.hp<=0)
+	if(_target.object_index = obj_player)
 	{
-		if(_target = global.player)
-		{
-			
-		}
-		else
-		{
-			instance_destroy(_target)	
-		}
+		soundRand(sndOw,0.2)
+	}
+	else if(_target.hp<=0)
+	{
+		instance_destroy(_target)	
 	}
 }
 

@@ -2,7 +2,7 @@ var lookX;
 var lookY;
 var camRad = camWidth/2;
 
-if(lookAt!=noone) {
+if(instance_exists(lookAt)) {
 	lookX = lookAt.x
 	lookY = lookAt.y+yOffset
 	if(camFocus){

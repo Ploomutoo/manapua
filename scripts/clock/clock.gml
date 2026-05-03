@@ -1,31 +1,7 @@
-function clock(_time){
-	with(obj_timeaffected) 
-	{
-		if (asleep) 
-		{
-			var _playerDist = tileDistObj(self,target)
-			if(!inFog(x,y) && _playerDist<4)
-			{				
-				if(irandom(3)=0) 
-				{
-					asleep = false
-					soundRand(sndBiterHerald)
-				}
-				else
-				{
-					//soundRand(sndSnore)	
-				}
-			}	
-			actionTimer = 1
-			continue;
-		}
-		
-		actionTimer -= _time
-		while(actionTimer <= 0)
-		{	
-			event_user(0)
-		}
-	}
+function clock(_time)
+{
+	waitTime = _time
+	alarm[0] = 10
 }
 
 function tileDistObj(_o1,_o2)

@@ -6,7 +6,7 @@ var _roomWidth = floor(room_width/global.cellSize)
 var _roomHeight = floor(room_height/global.cellSize)
 
 nodesList = []
-nodesAmt = 50
+nodesAmt = 100
 
 var _ix,_iy,_desiredx,_desiredy,_diffx,_diffy,_breakout=false,_whatToPlace
 for(var _i = 0; _i < nodesAmt; _i++)

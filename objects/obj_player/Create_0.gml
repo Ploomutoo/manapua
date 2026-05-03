@@ -3,6 +3,8 @@ event_inherited()
 
 //counters and tracking
 iFrames = 0;
+drawX = x
+drawY = y
 
 inventory = []
 invSize = 15
@@ -18,12 +20,16 @@ damage =	10
 attackDelay = 1
 moveDelay   = 1
 
+waitTime = 0
+
 asleep = false
 
 global.player = self
 global.fog = layer_tilemap_get_id("ts_fog")
 layer_set_visible(layer_get_id("ts_fog"),1)
 global.walls = layer_tilemap_get_id("ts_walls")
+
+defineParticles()
 
 function defog(_tx,_ty)
 {

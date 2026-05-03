@@ -4,7 +4,7 @@ if(iFrames>10 && iFrames%5>3) {
 	draw_self();
 	gpu_set_fog(0,0,0,0);
 	
-} else draw_self();
+} else draw_sprite(sprite_index,image_index,drawX,drawY);
 
 if(hp!=max_hp)
 {
