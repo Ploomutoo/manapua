@@ -47,5 +47,5 @@
     "path":"sprites/spr_manapua/spr_manapua.yy",
   },
   "spriteMaskId":null,
-  "visible":true,
+  "visible":false,
 }

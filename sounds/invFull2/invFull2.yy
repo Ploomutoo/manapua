@@ -1,0 +1,25 @@
+{
+  "$GMSound":"",
+  "%Name":"invFull2",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "bitRate":128,
+  "compression":0,
+  "conversionMode":0,
+  "duration":1.1377778,
+  "name":"invFull2",
+  "parent":{
+    "name":"manapuaVox",
+    "path":"folders/Sounds/manapuaVox.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"invFull2.mp3",
+  "type":0,
+  "volume":1.0,
+}

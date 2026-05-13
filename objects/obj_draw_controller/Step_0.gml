@@ -29,11 +29,11 @@ if(mouse_check_button_released(mb_left) && holding != -1)
 {
 	if(invOn = -1)
 	{
-		if(point_in_rectangle(mouse_x,mouse_y,bbox_left,bbox_top,bbox_right,bbox_bottom))
+		if(point_in_rectangle(mouse_x,mouse_y,-280,60,-100,180))
 		{
 			with(global.player)
 			{
-				if(other.holding.slot != "")
+				if(other.holding.slot != "") //unequip items in the same slot
 				{
 					for(var _i = 0; _i<invSize; _i++)
 					{

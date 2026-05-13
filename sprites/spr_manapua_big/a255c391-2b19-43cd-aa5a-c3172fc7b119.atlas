@@ -1,0 +1,111 @@
+manapua.png
+	size: 1521, 205
+	filter: Linear, Linear
+	pma: true
+ankleL
+	bounds: 732, 86, 98, 117
+	offsets: 0, 0, 167, 268
+ankleR
+	bounds: 573, 68, 98, 135
+armL
+	bounds: 832, 92, 111, 102
+	rotate: 90
+armLblocking
+	bounds: 768, 2, 82, 111
+	rotate: 90
+armR
+	bounds: 936, 93, 110, 89
+	rotate: 90
+armRblocking
+	bounds: 1027, 93, 85, 110
+chew1
+	bounds: 142, 3, 50, 22
+chew2
+	bounds: 1316, 11, 53, 24
+chew3
+	bounds: 194, 3, 49, 22
+chew4
+	bounds: 317, 2, 50, 29
+	rotate: 90
+ears
+	bounds: 673, 76, 127, 57
+	rotate: 90
+eyes
+	bounds: 595, 3, 63, 15
+	rotate: 90
+eyesBulged
+	bounds: 1314, 125, 78, 40
+	rotate: 90
+forearmL
+	bounds: 1466, 6, 53, 65
+forearmL2
+	bounds: 951, 2, 89, 99
+	rotate: 90
+forearmL3
+	bounds: 1424, 73, 70, 69
+forearmLblock2
+	bounds: 881, 2, 88, 68
+	rotate: 90
+forearmLblocking
+	bounds: 1114, 107, 96, 80
+	rotate: 90
+forearmLpot1
+	bounds: 673, 2, 93, 72
+forearmLpot2
+	bounds: 1121, 14, 91, 77
+	rotate: 90
+forearmR
+	bounds: 1200, 31, 72, 85
+forearmRblocking
+	bounds: 1196, 118, 85, 74
+	rotate: 90
+handL
+	bounds: 1274, 37, 59, 80
+handL2
+	bounds: 369, 2, 81, 61
+handL3
+	bounds: 1356, 128, 75, 66
+	rotate: 90
+handL4
+	bounds: 1424, 144, 73, 59
+handLblock2
+	bounds: 1408, 3, 68, 56
+	rotate: 90
+handLblocking
+	bounds: 527, 3, 63, 66
+	rotate: 90
+handLpot1
+	bounds: 1052, 4, 67, 87
+handLpot2
+	bounds: 1335, 47, 71, 76
+handR
+	bounds: 452, 2, 61, 73
+	rotate: 90
+handRblock2
+	bounds: 245, 2, 50, 70
+	rotate: 90
+handRblocking
+	bounds: 612, 5, 59, 61
+head
+	bounds: 466, 68, 135, 105
+	rotate: 90
+horn
+	bounds: 348, 3, 19, 49
+mouth
+	bounds: 2, 3, 68, 22
+mouthClosed
+	bounds: 72, 3, 68, 22
+mouthGrin
+	bounds: 1200, 2, 75, 27
+mouthOpen
+	bounds: 1272, 119, 84, 40
+	rotate: 90
+mouthSurprise
+	bounds: 1277, 10, 37, 25
+thighL
+	bounds: 226, 54, 121, 149
+thighR
+	bounds: 349, 65, 115, 138
+torso
+	bounds: 2, 27, 176, 222
+	rotate: 90

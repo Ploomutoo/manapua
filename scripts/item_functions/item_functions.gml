@@ -12,7 +12,6 @@ function Item() constructor
 	tooltip = ""
 	funcUse = function()
 	{
-		//soundRand(sndQuaff)
 		toggleEquipped(global.player)
 	}
 }
@@ -28,11 +27,22 @@ function generateTooltip(_item)
 	{
 		_tooltip += "\n[spr_text_interval] "+ string(_item.interval)
 	}
+	else if(_item.slot = "Food")
+	{
+		_tooltip += "\n" + string(_item.foodval)+" calories"	
+	}
 	if(_item.defense != 0)
 	{
 		_tooltip += "\n[spr_text_defense] "+ string(_item.defense)
 	}
 	return(_tooltip)
+}
+
+function eatFood()
+{
+	with(global.bigSprite) skeleton_animation_set("eat",0)
+	heal(foodval,global.player)
+	global.player.weight += foodval
 }
 
 function toggleEquipped(_wearer)
@@ -93,12 +103,17 @@ function dealDamage(_damage,_target)
 		_target.asleep = false
 	}
 	_target.hp += _dam
+	if(_dam>=0) soundRand(choose(fart1,fart2,fart3,fart4))
+	else soundRand(sndSwing)
+	
+	_target.takeDamage(_dam)
 	if(_target.object_index = obj_player)
 	{
-		soundRand(sndOw,0.2)
+		
 	}
 	else if(_target.hp<=0)
 	{
+		_target.onDeath()
 		instance_destroy(_target)	
 	}
 }

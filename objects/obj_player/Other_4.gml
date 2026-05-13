@@ -1,3 +1,5 @@
+global.level++
+
 with(obj_level_generator)
 {
 	other.x = nodesList[0,0]*64

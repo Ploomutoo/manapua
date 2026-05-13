@@ -9,6 +9,7 @@ nodesList = []
 nodesAmt = 100
 
 var _ix,_iy,_desiredx,_desiredy,_diffx,_diffy,_breakout=false,_whatToPlace
+random_set_seed(global.levelSeed+global.level)
 for(var _i = 0; _i < nodesAmt; _i++)
 {
 	nodesList[_i] = [irandom_range(1,_roomWidth-1),irandom_range(1,_roomHeight-1)]
@@ -63,7 +64,7 @@ for(var _i = 0; _i < nodesAmt; _i++)
 				}
 			}
 		}
-		_whatToPlace = choose(obj_item,obj_enemy)
+		_whatToPlace = choose(obj_item,choose(obj_enemy,obj_gogre))
 		instance_create_layer(nodesList[_i,0]*global.cellSize,nodesList[_i,1]*global.cellSize,_instlayer,_whatToPlace)
 	}
 	else

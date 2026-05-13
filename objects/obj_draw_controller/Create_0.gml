@@ -4,3 +4,7 @@ invSize = [5,3]
 invOn = -1
 holding = -1
 holdingPrev = -1
+
+global.bigSprite = self
+x = 180
+y = 240

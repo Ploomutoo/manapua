@@ -6,12 +6,10 @@ inp_move = abs(inp_x) || abs(inp_y);
 
 if(drawX!=x)
 {
-	
 	drawX += (x-drawX)/5	
 }
 if(drawY!=y)
 {
-	
 	drawY += (y-drawY)/5	
 }
 
@@ -28,12 +26,20 @@ if(inp_move && waitTime = 0)
 	}
 	
 	
-	var obstacle = instance_place(desiredPos[0],desiredPos[1],obj_timeaffected)
+	var obstacle = noone
+	var _check = [0,0]
+	
+	for(var _i = 1; (_i <= reach && obstacle = noone); _i++)
+	{
+		_check = [x+64*inp_x*_i,y+64*inp_y*_i]
+		obstacle = instance_place(_check[0],_check[1],obj_timeaffected)
+		
+		if(tilemap_get(global.walls,_check[0]/64,_check[1]/64)>0) break;
+	}
+	
 	if(instance_exists(obstacle))
 	{
 		dealDamage(damage,obstacle)
-		soundRand(sndCombat)
-	
 		clock(attackDelay)
 	}
 	else

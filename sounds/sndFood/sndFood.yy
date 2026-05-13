@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":0.385034,
+  "duration":0.38503402,
   "name":"sndFood",
   "parent":{
     "name":"Sounds",

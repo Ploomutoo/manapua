@@ -1,11 +1,15 @@
 draw_sprite(spr_sidebar,0,0,0)
+draw_self()
 
 var _topcorner = invCorner
 var _invOn = 0
 
 with(obj_player)
 {
-	scribble(string(hp)+"/"+string(max_hp)+" HP\n"+string(damage)+" Damage\n"+string(defense)+" Defense").draw(16,16)
+	scribble(string(hp)+"/"+string(max_hp)+" HP\n"
+	+string(damage)+" Damage\n"+string(defense)+" Defense\n"
+	+"Size "+string(weight)
+	).draw(16,16)
 	
 	for(var _iy = 0; _iy < other.invSize[1]; _iy++)
 	{
@@ -34,4 +38,5 @@ with(obj_player)
 if(holding != -1)
 {
 	draw_sprite(holding.sprite,0,window_mouse_get_x(),window_mouse_get_y())
+	//draw_sprite(holding.sprite,0,mouse_x,mouse_y)
 }

@@ -15,10 +15,13 @@ for(var i = 0; i < invSize; i++)
 
 hp =		20
 max_hp =	20
+weight = 0
+
 defense =	0
 damage =	10
 attackDelay = 1
 moveDelay   = 1
+reach = 1
 
 waitTime = 0
 
@@ -28,6 +31,8 @@ global.player = self
 global.fog = layer_tilemap_get_id("ts_fog")
 layer_set_visible(layer_get_id("ts_fog"),1)
 global.walls = layer_tilemap_get_id("ts_walls")
+global.levelSeed = random_get_seed()
+global.level = 0
 
 defineParticles()
 
@@ -77,4 +82,26 @@ function checkFog(_tx,_ty)
 	
 	tilemap_set(global.fog,0,_tx,_ty)
 	return(!tilemap_get(global.walls,_tx,_ty))
+}
+
+takeDamage = function(_dam)
+{
+	if(_dam<0)
+	{
+		
+		if(abs(_dam)>max_hp/5) 
+		{
+			soundRand(choose(death1,death2,death3),0.1)
+			with(global.bigSprite) skeleton_animation_set("blockHeavy",0)
+		}
+		else 
+		{
+			soundRand(choose(ow1,ow2,ow3,ow4,ow5,ow6),0.1)
+			with(global.bigSprite) skeleton_animation_set("blockLight",0)
+		}
+	}
+	else
+	{
+		with(global.bigSprite) skeleton_animation_set("block",0)
+	}
 }

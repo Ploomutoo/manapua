@@ -49,6 +49,12 @@ function weightedRoll(_array,_bonus = 0)
 	return(_array[_outIndex,0])
 }
 
+function potionAll()
+{
+	soundRand(sndQuaff)
+	with(global.bigSprite) skeleton_animation_set("drink",false) 
+}
+
 function generatePotion()
 {
 	var _out = new Item()
@@ -68,7 +74,7 @@ function generatePotion()
 		_out.name = "Curing Potion"
 		_out.funcUse = function()
 		{
-			soundRand(sndQuaff)
+			potionAll()
 			heal(15,global.player)
 		}
 		break;
@@ -77,7 +83,7 @@ function generatePotion()
 		_out.name = "Healing Potion"
 		_out.funcUse = function()
 		{
-			soundRand(sndQuaff)
+			potionAll()
 			heal(45,global.player)
 		}
 		break;
@@ -86,7 +92,7 @@ function generatePotion()
 		_out.name = "Strength Potion"
 		_out.funcUse = function()
 		{
-			soundRand(sndQuaff)
+			potionAll()
 		}
 		break;
 		
@@ -94,7 +100,7 @@ function generatePotion()
 		_out.name = "Mana Frenzy Potion"
 		_out.funcUse = function()
 		{
-			soundRand(sndQuaff)
+			potionAll()
 		}
 		break;
 		
@@ -102,7 +108,7 @@ function generatePotion()
 		_out.name = "Haste Potion"
 		_out.funcUse = function()
 		{
-			soundRand(sndQuaff)
+			potionAll()
 		}
 		break;
 		
@@ -110,7 +116,7 @@ function generatePotion()
 		_out.name = "Divinity Potion"
 		_out.funcUse = function()
 		{
-			soundRand(sndQuaff)
+			potionAll()
 		}
 		break;
 	}
@@ -133,6 +139,7 @@ function generateWeapon()
 	_out.name = _weaponList[# 0, _type]
 	_out.damage = _weaponList[# 2, _type]
 	_out.interval = _weaponList[# 3, _type]
+	_out.reach = 1
 	
 	var _special = _weaponList[# 4, _type]
 	switch(_special)
@@ -144,6 +151,7 @@ function generateWeapon()
 		break;
 		
 		case "Reach Attack":
+		_out.reach += _weaponList[# 5, _type]
 		break;
 		
 		case "Cleave":		

@@ -8,9 +8,17 @@ if(_item!=noone)
 		_i++
 		if(_i>=invSize) 
 		{ //inventory full :(
+			soundRand(choose(invFull1,invFull2),0.1)
+			with(global.bigSprite) skeleton_animation_set("no",0)
 			exit;	
 		}
 	}
 	inventory[_i] = _item.item
+	soundRand(choose(get1,get2,get4,get5),0.1)
 	instance_destroy(_item)	
+}
+else
+{
+	soundRand(choose(invFull1,invFull2),0.1)
+	with(global.bigSprite) skeleton_animation_set("no",0)
 }
