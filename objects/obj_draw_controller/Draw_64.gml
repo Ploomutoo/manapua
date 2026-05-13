@@ -6,10 +6,12 @@ var _invOn = 0
 
 with(obj_player)
 {
+	var _subimages = sprite_get_number(spr_clock)*waitTime/4
+	draw_sprite(spr_clock,_subimages,360+16,16)
 	scribble(string(hp)+"/"+string(max_hp)+" HP\n"
 	+string(damage)+" Damage\n"+string(defense)+" Defense\n"
 	+"Size "+string(weight)
-	).draw(16,16)
+	).draw(360+16,48)
 	
 	for(var _iy = 0; _iy < other.invSize[1]; _iy++)
 	{

@@ -1,31 +1,106 @@
 function generateFloorItem(_floor,_rarityBonus = 0){
-	var _out
-	var _typeWeights = []
-	_typeWeights[0] = ["potion",30]
-	_typeWeights[1] = ["scroll",20]
-	_typeWeights[2] = ["weapon",10]
-	_typeWeights[3] = ["armor",10]
-	_typeWeights[4] = ["ring",5]
+	var _out = new Item()
+	var _weaponList = load_csv("itempools.csv")
 		
-	var _type = weightedRoll(_typeWeights)
-	switch(_type)
+	var _weights = []
+	var _weightsOn = 0
+	for(var _parser = 0; _parser < ds_grid_height(_weaponList); _parser++)
 	{
-		case "potion":
+		if(_weaponList[# 0, _parser] != "Name")
+		{
+			_weights[_weightsOn] = [_parser,real(_weaponList[# 1, _parser])]
+			_weightsOn++
+		}
+	}
+	var _type = weightedRoll(_weights)	
+	
+	_out.name = _weaponList[# 0, _type]
+	if(_out.name = "Roll Potion" || _out.name = "Roll Scroll")
+	{
 		_out = generatePotion()
-		_out.sprite = spr_item_potion_placeholder
-		break;
+		//show_debug_message(_out.name)
+		return(_out)
+	}
+	
+	_out.sprite = asset_get_index(_weaponList[# 3, _type])
+	_out.slot	= _weaponList[# 2, _type]
+	switch(_out.slot)
+	{
+		case "Weapon":
 		
-		case "weapon":
-		_out = generateWeapon()
-		_out.sprite = spr_item_weapon_placeholder
-		break;
-		
-		default:
-		_out = new Item()
-		break;
+			_out.damage			= _weaponList[# 4, _type]
+			_out.kineticdamage	= _weaponList[# 5, _type]
+			_out.interval		= _weaponList[# 6, _type]
+			_out.weightclass	= parseWeightclass(_weaponList[# 7, _type])
+			_out.weightinterval	= _weaponList[# 8, _type]
+			_out.special		= _weaponList[# 9, _type]
+			_out.specialAmt		= _weaponList[# 10, _type]
+			break;
+			
+		case "Armor":
+			_out.defense		= _weaponList[# 4, _type]
+			_out.weightclass	= parseWeightclass(_weaponList[# 5, _type])
+			_out.special		= _weaponList[# 6, _type]
+			_out.specialAmt		= _weaponList[# 7, _type]
+			break;
+			
+		case "Ring":
+			break;
 	}
 	_out.tooltip = generateTooltip(_out)
 	return(_out)
+}
+
+function parseWeightclass(_class)
+{
+	if(is_real(_class)) //number given, return letter
+	{
+		if(_class>3)
+		{
+			return(string(_class-2)+"XL")	
+		}
+		else switch(_class)
+		{
+			case 0:
+				return("S")
+				break;
+			case 1:
+				return("M")
+				break;
+			case 2:
+				return("L")
+				break;
+			case 3:
+				return("XL")
+				break;
+		}
+	}
+	else if(is_string(_class)) //letter given, return number
+	{
+		switch(_class)
+		{
+			case "S":
+			return(0)
+			break;
+			case "M":
+			return(1)
+			break;
+			case "L":
+			return(2)
+			break;
+			case "XL":
+			return(3)
+			break;
+			default: //2XL+ parser, 2XL should return 4, 3XL: 5, 4XL: 6, etc.
+			var xlAmt = real(string_digits(_class))
+			return(2+xlAmt)
+			break;
+		}
+	}
+	else
+	{
+		return(-1)
+	}
 }
 
 function weightedRoll(_array,_bonus = 0)

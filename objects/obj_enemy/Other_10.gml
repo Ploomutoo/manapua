@@ -3,7 +3,7 @@ if(tileDistObj(self,target)>1)
 	if(mp_grid_path(global.collisionMap,targetPath,x,y,target.x,target.y,0))
 	{
 		var _dist = path_get_length(targetPath)/global.cellSize
-		if(_dist>10 || inFog(x,y))
+		if(_dist>8 || inFog(x,y))
 		{
 			//soundRand(sndSleep)
 			asleep = true

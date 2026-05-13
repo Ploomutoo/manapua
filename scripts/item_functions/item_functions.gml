@@ -25,16 +25,29 @@ function generateTooltip(_item)
 	}
 	if(_item.slot = "Weapon")
 	{
+		if(_item.kineticdamage!=0)	_tooltip += "\n[spr_text_kinetic] "+ string(_item.kineticdamage)
 		_tooltip += "\n[spr_text_interval] "+ string(_item.interval)
+		if(ceil(_item.weightinterval)!=0)	
+		{
+			_tooltip = "[spr_text_weight,"+string(_item.weightclass)+"] " + _tooltip
+			_tooltip += "\n[spr_text_weight_interval] "+ string(_item.weightinterval)
+		}
+		if(_item.special!="") _tooltip += "\n[spr_text_special] "+ _item.special + " " + string(_item.specialAmt)
 	}
 	else if(_item.slot = "Food")
 	{
 		_tooltip += "\n" + string(_item.foodval)+" calories"	
 	}
-	if(_item.defense != 0)
+	else if(_item.slot = "Armor")
 	{
 		_tooltip += "\n[spr_text_defense] "+ string(_item.defense)
+		_tooltip = "[spr_text_weight,"+string(_item.weightclass)+"] " + _tooltip
+		if(_item.special!="") _tooltip += "\n[spr_text_special] "+ _item.special + " " + string(_item.specialAmt)
 	}
+	/*if(_item.defense != 0)
+	{
+		_tooltip += "\n[spr_text_defense] "+ string(_item.defense)
+	}*/
 	return(_tooltip)
 }
 

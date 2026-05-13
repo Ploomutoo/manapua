@@ -6,4 +6,4 @@ defense = 1
 damage = 10
 
 attackDelay = 3
-moveDelay   = 2
+moveDelay   = 1.5
