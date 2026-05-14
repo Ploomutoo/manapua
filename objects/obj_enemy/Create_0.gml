@@ -1,3 +1,9 @@
+if(instance_place(x,y,obj_timeaffected))
+{
+	instance_destroy()
+	exit;
+}
+
 event_inherited()
 
 target = instance_nearest(x,y,obj_player)

@@ -19,6 +19,14 @@ if(_item!=noone)
 }
 else
 {
+	var _stairs = instance_place(x,y,obj_stairs)
+	
+	if(_stairs != noone)
+	{
+		room_goto(room)
+		exit;
+	}
+	
 	soundRand(choose(invFull1,invFull2),0.1)
 	with(global.bigSprite) skeleton_animation_set("no",0)
 }

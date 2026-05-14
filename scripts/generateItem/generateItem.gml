@@ -1,8 +1,17 @@
 function generateFloorItem(_floor,_rarityBonus = 0){
+	
 	var _out = new Item()
-	var _weaponList = load_csv("itempools.csv")
+	var _weaponList
+	
+	switch(_floor)
+	{
+		case "Garden":
+		default:
 		
-	var _weights = []
+			_weaponList = load_csv("itempools.csv")
+			break;
+	}
+		var _weights = []
 	var _weightsOn = 0
 	for(var _parser = 0; _parser < ds_grid_height(_weaponList); _parser++)
 	{
@@ -12,13 +21,12 @@ function generateFloorItem(_floor,_rarityBonus = 0){
 			_weightsOn++
 		}
 	}
-	var _type = weightedRoll(_weights)	
+	var _type = weightedRoll(_weights,_rarityBonus)	
 	
 	_out.name = _weaponList[# 0, _type]
 	if(_out.name = "Roll Potion" || _out.name = "Roll Scroll")
 	{
 		_out = generatePotion()
-		//show_debug_message(_out.name)
 		return(_out)
 	}
 	
@@ -134,6 +142,7 @@ function generatePotion()
 {
 	var _out = new Item()
 	_out.consumable = true
+	_out.sprite		= spr_item_potion_placeholder
 	
 	var _weights = []
 	_weights[0] = ["curing",30]
@@ -195,6 +204,7 @@ function generatePotion()
 		}
 		break;
 	}
+	_out.tooltip = generateTooltip(_out)
 	return(_out)
 }
 

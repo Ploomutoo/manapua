@@ -1,8 +1,8 @@
 function textPopup(ix,iy,text) {
 
 	var obj = instance_create_layer(ix,iy,layer,oPopupText);
-	with(obj) txt = scribble("[fa_center][scale,1.5]"+text);
-
+	obj.txt = scribble("[fa_center][scale,1.5]"+text);
+	return(obj)
 }
 
 function minCycle(add){

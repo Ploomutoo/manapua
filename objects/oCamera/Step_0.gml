@@ -5,15 +5,18 @@ var camRad = camWidth/2;
 if(instance_exists(lookAt)) {
 	lookX = lookAt.x
 	lookY = lookAt.y+yOffset
-	if(camFocus){
-		if(mouse_x>0) {
-			
+	if(camFocus)
+	{
+		if(mouse_x>0) 
+		{
 			mouseLastX = mouse_x;
 			mouseLastY = mouse_y;
 		}
+		var lookFactor = 8
+		if(keyboard_check(vk_shift)) lookFactor = 2
 		
-		lookX += (mouseLastX-lookX)/8;
-		lookY += (mouseLastY-lookY)/8;
+		lookX += (mouseLastX-lookX)/lookFactor;
+		lookY += (mouseLastY-lookY)/lookFactor;
 	}
 } else {
 	lookX = room_width/2

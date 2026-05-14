@@ -55,6 +55,7 @@ function eatFood()
 {
 	with(global.bigSprite) skeleton_animation_set("eat",0)
 	heal(foodval,global.player)
+	
 	global.player.weight += foodval
 }
 
@@ -92,9 +93,14 @@ function drawItemText(_item,_x,_y)
 	var _text = _item.tooltip
 	var _id   = "itemText"
 	scribble(_text,_id).align(fa_left,fa_bottom)
-	scribble(_text,_id).draw(_x,_y)
 	var _bbox = scribble(_text,_id).get_bbox(_x,_y)
 	
+	draw_set_alpha(0.5)
+	draw_set_color(c_black)
+	draw_rectangle(_bbox.x0,_bbox.y0,_bbox.x3,_bbox.y3,0)
+	draw_set_alpha(1)
+	draw_set_color(c_white)
+	scribble(_text,_id).draw(_x,_y)
 	draw_rectangle(_bbox.x0,_bbox.y0,_bbox.x3,_bbox.y3,1)
 	delete _bbox
 }
@@ -107,7 +113,7 @@ function dealDamage(_damage,_target)
 	drawX += (_target.x-drawX)/2
 	drawY += (_target.y-drawY)/2
 	
-	part_particles_create(global.pSystem,x,y,global.partSwing,10)
+	//part_particles_create(global.pSystem,x,y,global.partSwing,10)
 	
 	if(_target.asleep) 
 	{
@@ -118,6 +124,8 @@ function dealDamage(_damage,_target)
 	_target.hp += _dam
 	if(_dam>=0) soundRand(choose(fart1,fart2,fart3,fart4))
 	else soundRand(sndSwing)
+	
+	textPopup(_target.x,_target.y,string(_dam))
 	
 	_target.takeDamage(_dam)
 	if(_target.object_index = obj_player)
