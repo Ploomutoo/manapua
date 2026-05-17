@@ -12,8 +12,8 @@
     "path":"folders/Objects/game_objects.yy",
   },
   "parentObjectId":{
-    "name":"obj_item",
-    "path":"objects/obj_item/obj_item.yy",
+    "name":"obj_item_empty",
+    "path":"objects/obj_item_empty/obj_item_empty.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,

@@ -10,7 +10,9 @@ with(obj_player)
 	draw_sprite(spr_clock,_subimages,360+16,16)
 	scribble(string(hp)+"/"+string(max_hp)+" HP\n"
 	+string(damage)+" Damage\n"+string(defense)+" Defense\n"
-	+"Size "+string(weight)
+	+"Size "+parseWeightclass(weightclass)+"\n"
+	+string(weight)+"/"+string(weightToNext)
+	//+"\n"+string(mouse_x)+", "+string(mouse_y)
 	).draw(360+16,48)
 	
 	for(var _iy = 0; _iy < other.invSize[1]; _iy++)

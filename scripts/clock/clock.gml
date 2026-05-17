@@ -1,7 +1,7 @@
 function clock(_time)
 {
-	waitTime = _time
-	alarm[0] = 10
+	global.player.waitTime = _time
+	global.player.alarm[0] = 10
 }
 
 function tileDistObj(_o1,_o2)

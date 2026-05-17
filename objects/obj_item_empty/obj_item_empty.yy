@@ -1,19 +1,23 @@
 {
   "$GMObject":"",
-  "%Name":"obj_item",
+  "%Name":"obj_item_empty",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":12,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":73,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_item",
+  "name":"obj_item_empty",
   "overriddenProperties":[],
   "parent":{
     "name":"game_objects",
     "path":"folders/Objects/game_objects.yy",
   },
   "parentObjectId":{
-    "name":"obj_item_empty",
-    "path":"objects/obj_item_empty/obj_item_empty.yy",
+    "name":"obj_depth_sort",
+    "path":"objects/obj_depth_sort/obj_depth_sort.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,

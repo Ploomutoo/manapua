@@ -1,4 +1,4 @@
-var _item = instance_place(x,y,obj_item)
+var _item = instance_place(x,y,obj_item_empty)
 
 if(_item!=noone)
 {

@@ -1,3 +1,95 @@
+#region Stats
+
+	//Default values
+	damage		= 10+baseDamage
+	attackDelay = 1
+	reach		= 1
+	var multistrike = 1
+	
+	lifesteal	= baseLifesteal
+	defense = baseDefense
+	evasion = baseEvasion
+	stealth = 0
+	
+	foodheal	= baseFoodheal
+	flight  = false
+	moveDelay = 1
+	thorns  = 0
+	
+	armorDisparity = 0
+	weaponDisparity = 0
+	if(weight >= weightToNext)
+	{
+		var lastMaxhp = max_hp		
+		weight -= weightToNext
+		
+		weightclass++;
+		weightToNext = getWeightToNext(weightclass)
+		max_hp = getMaxhp(weightclass)
+		hp+=max_hp-lastMaxhp
+		
+		textPopup(x+32,y-32,"Size Up!")
+	}
+	
+var _equipped = getEquipped()
+for(var _i = 0; _i < array_length(_equipped); _i++) //Weapon first since it decides base delay
+{
+	if(_equipped[_i].slot = "Weapon")
+	{
+		damage = _equipped[_i].damage+baseDamage
+		damage += _equipped[_i].kineticdamage*weightclass
+		attackDelay = real(_equipped[_i].interval)
+		
+		switch(_equipped[_i].special)
+		{
+			case "Reach":
+			reach = 1 + _equipped[_i].specialAmt
+			break;
+			case "Multistrike":
+			multistrike += _equipped[_i].specialAmt
+			break;
+		}
+		weaponDisparity = weightclass - _equipped[_i].weightclass
+		if(weaponDisparity>0) attackDelay += real(_equipped[_i].weightinterval)*weaponDisparity
+		
+		array_delete(_equipped,_i,1)
+		break;
+	}
+}
+for(var _i = 0; _i < array_length(_equipped); _i++) 
+{
+	if(_equipped[_i].slot = "Armor")
+	{
+		if(_equipped[_i].weightclass != weightclass)
+		{
+			armorDisparity = weightclass - _equipped[_i].weightclass
+			//Tight armor is negative
+			//Loose armor is positive
+			if(abs(armorDisparity)>1)
+			{
+				textPopup(x+32,y,"Pop!")
+				_equipped[_i].equipped = false
+				continue;
+			}
+			else //Tight/Loose armor penalty
+			{
+				moveDelay += 0.2
+				attackDelay += 0.2
+			}
+		}
+	}
+	
+	if(struct_exists(_equipped[_i],"lifesteal")) lifesteal += _equipped[_i].lifesteal
+	defense += _equipped[_i].defense
+	if(struct_exists(_equipped[_i],"evasion")) evasion		+= _equipped[_i].evasion
+	if(struct_exists(_equipped[_i],"stealth")) stealth		+= _equipped[_i].stealth
+	if(struct_exists(_equipped[_i],"foodheal")) foodheal	+= _equipped[_i].foodheal
+	if(struct_exists(_equipped[_i],"flight")) flight = true
+	if(struct_exists(_equipped[_i],"movespeed")) moveDelay	-= _equipped[_i].movespeed
+	if(struct_exists(_equipped[_i],"thorns")) thorns		+= _equipped[_i].thorns
+}
+#endregion
+
 #region setting inputs
 inp_x = keyboard_check_pressed(ord("D")) - keyboard_check_pressed(ord("A"));
 inp_y = keyboard_check_pressed(ord("S")) - keyboard_check_pressed(ord("W"));
@@ -39,7 +131,9 @@ if(inp_move && waitTime = 0)
 	
 	if(instance_exists(obstacle))
 	{
-		dealDamage(damage,obstacle)
+		repeat(multistrike) dealDamage(damage,obstacle)
+		if(lifesteal>0) heal(irandom(lifesteal),global.player)
+		//show_debug_message("attack delay "+string(attackDelay))
 		clock(attackDelay)
 	}
 	else

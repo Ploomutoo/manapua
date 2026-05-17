@@ -6,8 +6,9 @@ mousedOver = false;
 item = new Item()
 item.name = "Flesh"
 item.consumable = true
-item.slot = "Food"
-item.foodval = 5
+item.slot = "Consumable"
+item.healing = 10
+item.weightgain = 10
 
 item.funcUse = eatFood
 item.tooltip = generateTooltip(item)

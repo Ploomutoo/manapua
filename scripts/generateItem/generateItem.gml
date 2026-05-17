@@ -36,27 +36,75 @@ function generateFloorItem(_floor,_rarityBonus = 0){
 	{
 		case "Weapon":
 		
-			_out.damage			= _weaponList[# 4, _type]
-			_out.kineticdamage	= _weaponList[# 5, _type]
-			_out.interval		= _weaponList[# 6, _type]
+			_out.damage			= real(_weaponList[# 4, _type])
+			_out.kineticdamage	= real(_weaponList[# 5, _type])
+			_out.interval		= real(_weaponList[# 6, _type])
 			_out.weightclass	= parseWeightclass(_weaponList[# 7, _type])
-			_out.weightinterval	= _weaponList[# 8, _type]
+			_out.weightinterval	= real(_weaponList[# 8, _type])
+			
 			_out.special		= _weaponList[# 9, _type]
-			_out.specialAmt		= _weaponList[# 10, _type]
+			if(_out.special != "") _out.specialAmt = real(_weaponList[# 10, _type])
 			break;
 			
 		case "Armor":
-			_out.defense		= _weaponList[# 4, _type]
+			_out.defense		= real(_weaponList[# 4, _type])
 			_out.weightclass	= parseWeightclass(_weaponList[# 5, _type])
-			_out.special		= _weaponList[# 6, _type]
-			_out.specialAmt		= _weaponList[# 7, _type]
+			
+			_out = parseSpecials(_out,_weaponList[# 6, _type],_weaponList[# 7, _type])
 			break;
 			
 		case "Ring":
+			_out = parseSpecials(_out,_weaponList[# 4, _type],_weaponList[# 5, _type])
+			_out.special2 = _out.special
+			_out.special2amt = _out.specialAmt
+			_out = parseSpecials(_out,_weaponList[# 6, _type],_weaponList[# 7, _type])
+			break;
+			
+		case "Consumable":
+			_out.slot = "Consumable"
+			_out.healing = _weaponList[# 4, _type]
+			_out.weightgain = _weaponList[# 5, _type]
+			_out.funcUse = eatFood
+			_out = parseSpecials(_out,_weaponList[# 6, _type],_weaponList[# 7, _type])
 			break;
 	}
 	_out.tooltip = generateTooltip(_out)
 	return(_out)
+}
+
+function parseSpecials(_struct,_special,_amt)
+{
+	_struct.special	= _special
+	if(_special = "") return(_struct)
+	_struct.specialAmt = _amt
+	switch(_special)
+	{
+		case "Lifesteal":
+		_struct.lifesteal = real(_amt)
+		break;
+		case "Defense":
+		_struct.defense = real(_amt)
+		break;
+		case "Evasion":
+		_struct.evasion = real(_amt)
+		break;
+		case "Stealth":
+		_struct.stealth = real(_amt)
+		break;
+		case "Food Heal":
+		_struct.foodheal = real(_amt)/100
+		break;
+		case "Flight":
+		_struct.flight = true
+		break;
+		case "Movespeed":
+		_struct.movespeed = real(_amt)
+		break;
+		case "Thorns":
+		_struct.thorns = real(_amt)
+		break;
+	}
+	return(_struct)
 }
 
 function parseWeightclass(_class)
@@ -143,6 +191,7 @@ function generatePotion()
 	var _out = new Item()
 	_out.consumable = true
 	_out.sprite		= spr_item_potion_placeholder
+	_out.slot		= "Potion"
 	
 	var _weights = []
 	_weights[0] = ["curing",30]
@@ -205,57 +254,6 @@ function generatePotion()
 		break;
 	}
 	_out.tooltip = generateTooltip(_out)
-	return(_out)
-}
-
-function generateWeapon()
-{
-	var _out = new Item()
-	_out.slot = "Weapon"
-	var _weaponList = load_csv("weps.csv")
-	
-	var _weights = []
-	for(var _i = 1; _i < ds_grid_height(_weaponList); _i++)
-	{
-		_weights[_i-1] = [_i,real(_weaponList[# 1, _i])]
-	}
-	var _type = weightedRoll(_weights)	
-	
-	_out.name = _weaponList[# 0, _type]
-	_out.damage = _weaponList[# 2, _type]
-	_out.interval = _weaponList[# 3, _type]
-	_out.reach = 1
-	
-	var _special = _weaponList[# 4, _type]
-	switch(_special)
-	{
-		case "Sneak Stun":
-		break;
-		
-		case "Sneak Stab":
-		break;
-		
-		case "Reach Attack":
-		_out.reach += _weaponList[# 5, _type]
-		break;
-		
-		case "Cleave":		
-		break;
-		
-		case "Flail":
-		break;
-		
-		case "Multistrike":
-		break;
-		
-		case "Riposte":
-		break;
-		
-		default:
-		break;
-	}
-	
-	ds_grid_destroy(_weaponList)
 	return(_out)
 }
 

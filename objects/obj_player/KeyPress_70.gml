@@ -1,1 +1,1 @@
-layer_set_visible("ts_fog",!layer_get_visible("ts_fog"))
+if(global.cheat) layer_set_visible("ts_fog",!layer_get_visible("ts_fog"))

@@ -9,6 +9,7 @@ function Item() constructor
 	damage	= 0
 	equipped	= false
 	consumable	= false
+	special = ""
 	tooltip = ""
 	funcUse = function()
 	{
@@ -34,9 +35,10 @@ function generateTooltip(_item)
 		}
 		if(_item.special!="") _tooltip += "\n[spr_text_special] "+ _item.special + " " + string(_item.specialAmt)
 	}
-	else if(_item.slot = "Food")
+	else if(_item.slot = "Consumable")
 	{
-		_tooltip += "\n" + string(_item.foodval)+" calories"	
+		if(_item.special != "") _tooltip += "\nAdds " + string(_item.specialAmt) + " " + _item.special
+		_tooltip += "\nHeals for " + string(_item.healing)+". Gain " + string(_item.weightgain) + " lbs"	
 	}
 	else if(_item.slot = "Armor")
 	{
@@ -44,46 +46,23 @@ function generateTooltip(_item)
 		_tooltip = "[spr_text_weight,"+string(_item.weightclass)+"] " + _tooltip
 		if(_item.special!="") _tooltip += "\n[spr_text_special] "+ _item.special + " " + string(_item.specialAmt)
 	}
-	/*if(_item.defense != 0)
+	else if(_item.slot = "Ring")
 	{
-		_tooltip += "\n[spr_text_defense] "+ string(_item.defense)
-	}*/
+		if(_item.special != "") _tooltip += "\nAdds " + string(_item.specialAmt) + " " + _item.special
+		if(_item.special2 != "") _tooltip += "\nand " + string(_item.special2amt) + " " + _item.special2
+	}
+	
 	return(_tooltip)
 }
 
 function eatFood()
 {
 	with(global.bigSprite) skeleton_animation_set("eat",0)
-	heal(foodval,global.player)
+	heal(healing,global.player)
+	global.player.weight += weightgain
 	
-	global.player.weight += foodval
-}
-
-function toggleEquipped(_wearer)
-{
-	if(!equipped)
-	{
-		switch(slot)
-		{
-			case "Weapon":
-			soundRand(sndDrawWeapon)
-			_wearer.attackDelay = interval
-			break;
-			
-			default:
-			soundRand(sndDon)
-			break;
-		}
-		_wearer.defense += defense
-		_wearer.damage  += damage
-	}
-	else
-	{
-		soundRand(sndDoff)
-		_wearer.defense -= defense
-		_wearer.damage  -= damage
-	}
-	equipped = !equipped
+	if(struct_exists(self,"lifesteal")) global.player.baseLifesteal += lifesteal
+	global.player.baseDefense += defense
 }
 
 function drawItemText(_item,_x,_y)
@@ -91,6 +70,16 @@ function drawItemText(_item,_x,_y)
 	if(_item = -1) exit;
 	
 	var _text = _item.tooltip
+	if(_item.equipped)
+	{
+		if(_item.slot = "Weapon" && _item.weightclass > global.player.weightclass) _text = "Heavy " + _text
+		else if(_item.slot = "Armor")
+		{
+			if(_item.weightclass > global.player.weightclass) _text = "Loose " + _text
+			else if(_item.weightclass < global.player.weightclass) _text = "Tight " + _text
+		}
+	}
+	
 	var _id   = "itemText"
 	scribble(_text,_id).align(fa_left,fa_bottom)
 	var _bbox = scribble(_text,_id).get_bbox(_x,_y)

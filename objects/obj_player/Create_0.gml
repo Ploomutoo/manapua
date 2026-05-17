@@ -13,15 +13,26 @@ for(var i = 0; i < invSize; i++)
 	inventory[i] = -1	
 }
 
-hp =		20
-max_hp =	20
-weight = 0
+weight =	0
+weightclass  = 0
+weightToNext = getWeightToNext(weightclass)
+armorDisparity = 0
+weaponDisparity = 0
 
-defense =	0
-damage =	10
+max_hp =	getMaxhp(weightclass)
+hp =		max_hp
+baseDefense = 0
+defense		= 0
+
+baseDamage = 0
+damage = 10
+
+baseLifesteal = 0
+baseEvasion = 0
+baseFoodheal = 1
+
 attackDelay = 1
 moveDelay   = 1
-reach = 1
 
 waitTime = 0
 
@@ -33,6 +44,7 @@ layer_set_visible(layer_get_id("ts_fog"),1)
 global.walls = layer_tilemap_get_id("ts_walls")
 global.levelSeed = random_get_seed()
 global.level = 0
+global.cheat = parameter_count()==3&&string_count("GMS2TEMP",parameter_string(2))
 
 defineParticles()
 

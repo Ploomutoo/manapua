@@ -29,7 +29,10 @@ if(mouse_check_button_released(mb_left) && holding != -1)
 {
 	if(invOn = -1)
 	{
-		if(point_in_rectangle(mouse_x,mouse_y,-280,60,-100,180))
+		var _hitbox = [-320,146,-81,317] //body hitbox
+		if(holding.slot = "Consumable" || holding.slot = "Potion") _hitbox = [-280,60,-100,180] //mouth hitbox
+		
+		if(point_in_rectangle(mouse_x,mouse_y,_hitbox[0],_hitbox[1],_hitbox[2],_hitbox[3]))
 		{
 			with(global.player)
 			{
@@ -45,9 +48,16 @@ if(mouse_check_button_released(mb_left) && holding != -1)
 				}
 				
 				other.holding.funcUse()
-				if(!other.holding.consumable) inventory[other.holdingPrev]=other.holding
+				if(other.holding.slot != "Consumable") inventory[other.holdingPrev]=other.holding
 			}
 			
+		}
+		else if (mouse_x>0) //Throw away!
+		{
+			if(holding.equipped) holding.funcUse()
+			
+			var _itemObj = instance_create_layer(global.player.x,global.player.y,layer,obj_item_empty)
+			_itemObj.item = holding
 		}
 		else
 		{

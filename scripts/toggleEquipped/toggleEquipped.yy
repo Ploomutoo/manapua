@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"player",
+  "%Name":"toggleEquipped",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"player",
+  "name":"toggleEquipped",
   "parent":{
-    "name":"player",
-    "path":"folders/Scripts/game/player.yy",
+    "name":"game",
+    "path":"folders/Scripts/game.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
