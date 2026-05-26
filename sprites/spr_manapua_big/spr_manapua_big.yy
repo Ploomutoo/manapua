@@ -12,14 +12,14 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"a255c391-2b19-43cd-aa5a-c3172fc7b119","name":"a255c391-2b19-43cd-aa5a-c3172fc7b119","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"","%Name":"d3f55a2e-5050-4564-b9eb-7f88a7dfc49c","name":"d3f55a2e-5050-4564-b9eb-7f88a7dfc49c","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
-  "height":470,
+  "height":468,
   "HTile":false,
   "layers":[
-    {"$GMImageLayer":"","%Name":"a5250a87-d9b8-4abf-be91-294179053317","blendMode":0,"displayName":"default","isLocked":false,"name":"a5250a87-d9b8-4abf-be91-294179053317","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"3f405f9a-fcd7-4973-9025-16a9c1ecfee6","blendMode":0,"displayName":"default","isLocked":false,"name":"3f405f9a-fcd7-4973-9025-16a9c1ecfee6","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"spr_manapua_big",
   "nineSlice":null,
@@ -63,7 +63,7 @@
     "playbackSpeedType":0,
     "resourceType":"GMSequence",
     "resourceVersion":"2.0",
-    "seqHeight":470.0,
+    "seqHeight":468.0,
     "seqWidth":293.0,
     "showBackdrop":true,
     "showBackdropImage":false,
@@ -71,8 +71,8 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"a255c391-2b19-43cd-aa5a-c3172fc7b119","path":"sprites/spr_manapua_big/spr_manapua_big.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"d9346817-8f6b-4590-8d70-6186708515f9","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"d3f55a2e-5050-4564-b9eb-7f88a7dfc49c","path":"sprites/spr_manapua_big/spr_manapua_big.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"1eeb747a-3047-4ff9-aee3-e8235eb04950","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,

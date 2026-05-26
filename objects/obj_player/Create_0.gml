@@ -6,6 +6,8 @@ iFrames = 0;
 drawX = x
 drawY = y
 
+alarmRecursions = 10
+
 inventory = []
 invSize = 15
 for(var i = 0; i < invSize; i++)
@@ -18,6 +20,7 @@ weightclass  = 0
 weightToNext = getWeightToNext(weightclass)
 armorDisparity = 0
 weaponDisparity = 0
+preciseDisparity = 0
 
 max_hp =	getMaxhp(weightclass)
 hp =		max_hp

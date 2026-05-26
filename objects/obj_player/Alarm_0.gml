@@ -1,6 +1,6 @@
 var _enemyCount = instance_number(obj_timeaffected)
 var _instance
-var _time = 0.1
+var _time = min(0.1,waitTime)
 for (var _i = 0; _i < _enemyCount; _i++)
 {
 	_instance = instance_find(obj_timeaffected,_i)
@@ -31,5 +31,8 @@ for (var _i = 0; _i < _enemyCount; _i++)
 if(waitTime>0 && alarm[0] = 0)
 {
 	waitTime -= _time
-	event_perform(ev_alarm,0)
+	alarmRecursions--;
+	
+	if(alarmRecursions>1) event_perform(ev_alarm,0)
+	else alarm[0] = 1
 }

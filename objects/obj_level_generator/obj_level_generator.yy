@@ -10,8 +10,8 @@
   "name":"obj_level_generator",
   "overriddenProperties":[],
   "parent":{
-    "name":"game_objects",
-    "path":"folders/Objects/game_objects.yy",
+    "name":"controllers",
+    "path":"folders/Objects/controllers.yy",
   },
   "parentObjectId":null,
   "persistent":false,

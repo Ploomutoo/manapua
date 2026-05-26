@@ -2,6 +2,7 @@ function clock(_time)
 {
 	global.player.waitTime = _time
 	global.player.alarm[0] = 10
+	global.player.alarmRecursions = 30
 }
 
 function tileDistObj(_o1,_o2)

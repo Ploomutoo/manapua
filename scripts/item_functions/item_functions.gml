@@ -104,6 +104,13 @@ function dealDamage(_damage,_target)
 	
 	//part_particles_create(global.pSystem,x,y,global.partSwing,10)
 	
+	if(_target.evasion > 0 && _target.evasion > irandom(100))
+	{
+		soundRand(choose(fart1,fart2,fart3,fart4))
+		textPopup(_target.x,_target.y,"MISS!")
+		exit;
+	}
+	
 	if(_target.asleep) 
 	{
 		soundRand(sndCrit)

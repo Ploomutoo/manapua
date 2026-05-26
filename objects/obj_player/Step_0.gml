@@ -18,6 +18,7 @@
 	
 	armorDisparity = 0
 	weaponDisparity = 0
+	
 	if(weight >= weightToNext)
 	{
 		var lastMaxhp = max_hp		
@@ -30,7 +31,7 @@
 		
 		textPopup(x+32,y-32,"Size Up!")
 	}
-	
+		
 var _equipped = getEquipped()
 for(var _i = 0; _i < array_length(_equipped); _i++) //Weapon first since it decides base delay
 {
@@ -49,13 +50,21 @@ for(var _i = 0; _i < array_length(_equipped); _i++) //Weapon first since it deci
 			multistrike += _equipped[_i].specialAmt
 			break;
 		}
-		weaponDisparity = weightclass - _equipped[_i].weightclass
-		if(weaponDisparity>0) attackDelay += real(_equipped[_i].weightinterval)*weaponDisparity
+		weaponDisparity = _equipped[_i].weightclass - weightclass 
+		if(weaponDisparity>0) 
+		{
+			preciseDisparity = 0
+			if(weaponDisparity>1) preciseDisparity += weaponDisparity-1
+			
+			preciseDisparity += 1-weight/weightToNext
+			attackDelay += real(_equipped[_i].weightinterval)*preciseDisparity
+		}
 		
 		array_delete(_equipped,_i,1)
 		break;
 	}
 }
+var armorskin = ""
 for(var _i = 0; _i < array_length(_equipped); _i++) 
 {
 	if(_equipped[_i].slot = "Armor")
@@ -78,6 +87,7 @@ for(var _i = 0; _i < array_length(_equipped); _i++)
 			}
 		}
 	}
+	armorskin = _equipped[_i].skinName
 	
 	if(struct_exists(_equipped[_i],"lifesteal")) lifesteal += _equipped[_i].lifesteal
 	defense += _equipped[_i].defense
@@ -153,6 +163,19 @@ if(inp_move && waitTime = 0)
 		}
 		clock(moveDelay)
 	}
+}
+
+var weightskin = weightclass
+with (global.bigSprite) 
+{
+	queuesize = weightskin
+	var skinarray = ["0",string(displaysize)]
+	if(armorskin != "") array_push(skinarray,armorskin)
+	
+	var skin = skeleton_skin_create("playerskin",skinarray)
+	skeleton_skin_set(skin)
+	
+	delete skin
 }
 
 event_inherited()

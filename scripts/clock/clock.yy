@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"clock",
   "parent":{
-    "name":"game_objects",
-    "path":"folders/Objects/game_objects.yy",
+    "name":"player",
+    "path":"folders/Scripts/game/player.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

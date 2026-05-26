@@ -1,10 +1,6 @@
-function getWeaponDelay()
-{
-	
-}
-
 function getWeightToNext(_size)
 {
+	//return(10)
 	return((_size+1)*50)
 }
 

@@ -17,6 +17,7 @@ max_hp = 10
 hp = max_hp
 defense = 1
 damage = 3
+evasion = 0
 
 attackDelay = 1
 moveDelay   = 1

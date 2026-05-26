@@ -49,6 +49,7 @@ function generateFloorItem(_floor,_rarityBonus = 0){
 		case "Armor":
 			_out.defense		= real(_weaponList[# 4, _type])
 			_out.weightclass	= parseWeightclass(_weaponList[# 5, _type])
+			_out.skinName		= _weaponList[# 8, _type]
 			
 			_out = parseSpecials(_out,_weaponList[# 6, _type],_weaponList[# 7, _type])
 			break;

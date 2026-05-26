@@ -2,18 +2,18 @@ Name,Roll Weight,Slot/Type,Sprite,Base Damage,Kinetic Damage,Base Interval,Weigh
 Rusty Dagger,100,Weapon,spr_item_weapon_placeholder,10,0,1,S,0,Sneak Stab,3
 Wood Club,80,Weapon,spr_item_weapon_placeholder,14,0,1,M,1,Sneak Stun,2
 Shortspear,80,Weapon,spr_weapon_spear,12,0,1.2,M,0.5,Reach,1
+Bigass Club,80,Weapon,spr_weapon_club_4,20,0,1.5,2XL,0.5,,
 Cudgel,60,Weapon,spr_item_weapon_placeholder,16,0,1,M,0.4,Sneak Stun,3
 Shortsword,60,Weapon,spr_item_weapon_placeholder,14,0,1,S,0,,
-Name,Roll Weight,Slot/Type,Sprite,Base Defense,Weight Class,Special Qualities,Special Magnitude,,,
-Rags,100,Armor,spr_item_armor_placeholder,1,S,Movespeed,0.5,,,
-Big Rags,60,Armor,spr_item_armor_placeholder,3,L,Evasion %,10,,,
-Prissy Blouse,40,Armor,spr_item_armor_placeholder,3,S,,,,,
-Itchy Gambeson,100,Armor,spr_item_armor_placeholder,5,M,,,,,
-Leather Cuirass,100,Armor,spr_item_armor_placeholder,5,M,,,,,
-Brigandine,60,Armor,spr_item_armor_placeholder,8,L,,,,,
-Dirty Robes,60,Armor,spr_item_armor_placeholder,3,L,Lifesteal,3,,,
-Fairy-skin Armor,10,Armor,spr_item_armor_placeholder,8,S,Evasion %,15,,,
-Rusty Chestplate,40,Armor,spr_item_armor_placeholder,10,L,Movespeed,-0.5,,,
+Name,Roll Weight,Slot/Type,Sprite,Base Defense,Weight Class,Special Qualities,Special Magnitude,Armor Skin,,
+Rags,100,Armor,spr_item_armor_placeholder,1,S,Movespeed,0.5,leatherarmor,,
+Big Rags,60,Armor,spr_item_armor_placeholder,3,L,Evasion %,10,scalemail,,
+Itchy Gambeson,100,Armor,spr_item_armor_placeholder,5,M,,,leatherarmor,,
+Leather Cuirass,100,Armor,spr_item_armor_placeholder,5,M,,,leatherarmor,,
+Brigandine,60,Armor,spr_item_armor_placeholder,8,M,,,brigandine,,
+Dirty Robes,60,Armor,spr_item_armor_alchemistress,3,L,Lifesteal,3,alchemistress,,
+Fairy-skin Armor,10,Armor,spr_item_armor_placeholder,8,S,Evasion %,15,fairyarmor,,
+Rusty Chestplate,40,Armor,spr_item_armor_placeholder,10,L,Movespeed,-0.5,darksquire,,
 Name,Roll Weight,Slot/Type,Sprite,Special Qualities,Special Magnitude,Special Qualities 2,Special Magnitude 2,,,
 Scab Ring,30,Ring,spr_item_ring_placeholder,Lifesteal,10,Defense,2,,,
 Copper Ring,30,Ring,spr_item_ring_placeholder,Defense,4,,,,,
