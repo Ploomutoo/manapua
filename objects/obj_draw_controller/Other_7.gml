@@ -4,5 +4,5 @@ if(!skeleton_animation_is_looping(0))
 	{
 		skeleton_animation_set("weightUp",0)
 	}
-	else skeleton_animation_set("basic")
+	else skeleton_animation_set("basic",0)
 }

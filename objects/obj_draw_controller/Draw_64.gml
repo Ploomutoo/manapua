@@ -8,12 +8,12 @@ with(obj_player)
 {
 	var _subimages = sprite_get_number(spr_clock)*waitTime/4
 	draw_sprite(spr_clock,_subimages,360+16,16)
+	scribble(string(waitTime)).draw(360+48,16)
+	
 	scribble(string(hp)+"/"+string(max_hp)+" HP\n"
 	+string(damage)+"[spr_text_damage] / "+ string(attackDelay) + "[spr_text_interval]\n"
 	+string(defense)+" Defense\n"
-	+"Size "+parseWeightclass(weightclass)+"\n"
-	+string(weight)+"/"+string(weightToNext)+"\n"
-	+string(preciseDisparity)
+	+"Size "+parseWeightclass(weightclass)+": "+string(weight)+"/"+string(weightToNext)
 	//+"\n"+string(mouse_x)+", "+string(mouse_y)
 	).draw(360+16,48)
 	
@@ -43,6 +43,5 @@ with(obj_player)
 
 if(holding != -1)
 {
-	draw_sprite(holding.sprite,0,window_mouse_get_x(),window_mouse_get_y())
-	//draw_sprite(holding.sprite,0,mouse_x,mouse_y)
+	if (mouse_x<0) draw_sprite(holding.sprite,0,mouse_x+360,mouse_y)
 }

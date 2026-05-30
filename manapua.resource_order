@@ -19,8 +19,8 @@
     {"name":"Sounds","order":6,"path":"folders/Sounds.yy",},
     {"name":"manapuaVox","order":33,"path":"folders/Sounds/manapuaVox.yy",},
     {"name":"Sprites","order":7,"path":"folders/Sprites.yy",},
-    {"name":"text inserts","order":56,"path":"folders/Sprites/text inserts.yy",},
     {"name":"items","order":55,"path":"folders/Sprites/items.yy",},
+    {"name":"text inserts","order":56,"path":"folders/Sprites/text inserts.yy",},
     {"name":"Timelines","order":8,"path":"folders/Timelines.yy",},
   ],
   "ResourceOrderSettings":[
@@ -186,6 +186,7 @@
     {"name":"sndMinionStep","order":4,"path":"sounds/sndMinionStep/sndMinionStep.yy",},
     {"name":"sndOw","order":32,"path":"sounds/sndOw/sndOw.yy",},
     {"name":"sndQuaff","order":27,"path":"sounds/sndQuaff/sndQuaff.yy",},
+    {"name":"sndRip","order":38,"path":"sounds/sndRip/sndRip.yy",},
     {"name":"sndShop","order":19,"path":"sounds/sndShop/sndShop.yy",},
     {"name":"sndSleep","order":36,"path":"sounds/sndSleep/sndSleep.yy",},
     {"name":"sndSnore","order":29,"path":"sounds/sndSnore/sndSnore.yy",},

@@ -12,7 +12,7 @@ for (var _i = 0; _i < _enemyCount; _i++)
 			var _playerDist = tileDistObj(_instance,self)
 			if(!inFog(_instance.x,_instance.y) && _playerDist<4)
 			{				
-				if(irandom(3)=0) 
+				if(irandom(3+stealth)=0) 
 				{
 					_instance.asleep = false
 					soundRand(sndBiterHerald)

@@ -1,7 +1,7 @@
 function generateFloorItem(_floor,_rarityBonus = 0){
 	
 	var _out = new Item()
-	var _weaponList
+	static _weaponList = ds_grid_create(0,0)
 	
 	switch(_floor)
 	{

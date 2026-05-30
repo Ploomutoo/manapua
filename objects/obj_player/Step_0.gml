@@ -3,18 +3,18 @@
 	//Default values
 	damage		= 10+baseDamage
 	attackDelay = 1
-	reach		= 1
+	var reach		= 1
 	var multistrike = 1
 	
-	lifesteal	= baseLifesteal
+	var lifesteal	= baseLifesteal
 	defense = baseDefense
 	evasion = baseEvasion
 	stealth = 0
 	
-	foodheal	= baseFoodheal
-	flight  = false
+	var foodheal= baseFoodheal
+	var flight  = false
 	moveDelay = 1
-	thorns  = 0
+	var thorns  = 0
 	
 	armorDisparity = 0
 	weaponDisparity = 0
@@ -72,11 +72,16 @@ for(var _i = 0; _i < array_length(_equipped); _i++)
 		if(_equipped[_i].weightclass != weightclass)
 		{
 			armorDisparity = weightclass - _equipped[_i].weightclass
-			//Tight armor is negative
-			//Loose armor is positive
-			if(abs(armorDisparity)>1)
+			if(armorDisparity>1)
 			{
-				textPopup(x+32,y,"Pop!")
+				textPopup(x+32,y,"Too tight!")
+				soundRand(sndRip)
+				_equipped[_i].equipped = false
+				continue;
+			}
+			else if(armorDisparity<-1)
+			{
+				textPopup(x+32,y,"Too loose!")
 				_equipped[_i].equipped = false
 				continue;
 			}
@@ -101,9 +106,9 @@ for(var _i = 0; _i < array_length(_equipped); _i++)
 #endregion
 
 #region setting inputs
-inp_x = keyboard_check_pressed(ord("D")) - keyboard_check_pressed(ord("A"));
-inp_y = keyboard_check_pressed(ord("S")) - keyboard_check_pressed(ord("W"));
-inp_move = abs(inp_x) || abs(inp_y);
+var inp_x = keyboard_check_pressed(ord("D")) - keyboard_check_pressed(ord("A"));
+var inp_y = keyboard_check_pressed(ord("S")) - keyboard_check_pressed(ord("W"));
+var inp_move = abs(inp_x) || abs(inp_y);
 #endregion
 
 if(drawX!=x)
@@ -177,5 +182,3 @@ with (global.bigSprite)
 	
 	delete skin
 }
-
-event_inherited()
