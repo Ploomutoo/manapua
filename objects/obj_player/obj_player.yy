@@ -35,9 +35,9 @@
   "physicsShapePoints":[],
   "physicsStartAwake":true,
   "properties":[
-    {"$GMObjectProperty":"v1","%Name":"max_move_force","filters":[],"listItems":[],"multiselect":false,"name":"max_move_force","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0.75","varType":0,},
-    {"$GMObjectProperty":"v1","%Name":"minion_slots","filters":[],"listItems":[],"multiselect":false,"name":"minion_slots","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"3","varType":1,},
-    {"$GMObjectProperty":"v1","%Name":"recall_radius","filters":[],"listItems":[],"multiselect":false,"name":"recall_radius","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"128","varType":0,},
+    {"$GMObjectProperty":"v2","%Name":"max_move_force","filters":[],"listItems":[],"multiselect":false,"name":"max_move_force","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0.75","varType":0,},
+    {"$GMObjectProperty":"v2","%Name":"minion_slots","filters":[],"listItems":[],"multiselect":false,"name":"minion_slots","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"3","varType":1,},
+    {"$GMObjectProperty":"v2","%Name":"recall_radius","filters":[],"listItems":[],"multiselect":false,"name":"recall_radius","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"128","varType":0,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

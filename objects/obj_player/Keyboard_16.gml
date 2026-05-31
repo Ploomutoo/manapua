@@ -24,3 +24,10 @@ else if(keyboard_check_pressed(ord("F")))
 {
 	layer_set_visible("ts_fog",!layer_get_visible("ts_fog"))
 }
+else if(keyboard_check_pressed(ord("W")))
+{
+	weightclass = get_integer("Input Weight Class","")
+	weight = 0
+	weightToNext = getWeightToNext(weightclass)
+	with(global.bigSprite) skeleton_animation_set("weightUp",0)
+}

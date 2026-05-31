@@ -1,4 +1,4 @@
-working_layers = layer_get_all()
+var working_layers = layer_get_all()
 global.cellSize = 64
 global.mapSize = [ceil(room_width/global.cellSize),ceil(room_height/global.cellSize)]
 
@@ -17,16 +17,16 @@ function tilemap_grab(_map,_x,_y)
 
 for(var _layer = 0; _layer<array_length(working_layers); _layer++)
 {
-	grid_in = layer_tilemap_get_id(_layer)
-	if(!layer_tilemap_exists(_layer,grid_in)) continue;
-	if(layer_get_name(_layer) = "ts_fog") continue;
+	grid_in = layer_tilemap_get_id(working_layers[_layer])
+	if(!layer_tilemap_exists(working_layers[_layer],grid_in)) continue;
+	if(layer_get_name(working_layers[_layer]) = "ts_fog") continue;
 
 	grid_width = tilemap_get_width(grid_in)+1
 	grid_height = tilemap_get_height(grid_in)+1
 
 	tileset_out_index = asset_get_index(tileset_get_name(tilemap_get_tileset(grid_in))+"_out")
 	grid_out = layer_tilemap_create(
-	layer_create(layer_get_depth(_layer),layer_get_name(_layer)+"_out"),
+	layer_create(layer_get_depth(working_layers[_layer]),layer_get_name(working_layers[_layer])+"_out"),
 	-32,-32,
 	tileset_out_index,
 	ceil(room_width/grid_width),
@@ -53,7 +53,7 @@ for(var _layer = 0; _layer<array_length(working_layers); _layer++)
 			tilemap_set(grid_out,out,_i,_i2)
 		}
 	}
-	layer_set_visible(_layer,0)
+	layer_set_visible(working_layers[_layer],0)
 }
 
 grid_in = layer_tilemap_get_id("ts_walls")

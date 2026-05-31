@@ -1,0 +1,190 @@
+manapua.png
+	size: 1842, 650
+	filter: Linear, Linear
+	pma: true
+alchemistress 2
+	bounds: 1444, 40, 162, 119
+	offsets: 1, 1, 164, 121
+	rotate: 90
+ankleL
+	bounds: 1665, 6, 94, 119
+	rotate: 90
+ankleR
+	bounds: 1565, 6, 98, 135
+armL
+	bounds: 597, 5, 111, 102
+armLblocking
+	bounds: 186, 2, 82, 111
+	rotate: 90
+armR
+	bounds: 1652, 274, 110, 89
+armRblocking
+	bounds: 1312, 204, 85, 110
+	rotate: 90
+blouse 5
+	bounds: 621, 129, 243, 175
+	offsets: 1, 1, 245, 177
+	rotate: 90
+bonearmor 4
+	bounds: 946, 200, 223, 151
+	offsets: 73, 1, 297, 225
+	rotate: 90
+brigandine 2
+	bounds: 856, 2, 171, 127
+	offsets: 1, 1, 173, 129
+chew1
+	bounds: 651, 374, 50, 22
+chew2
+	bounds: 456, 367, 53, 24
+chew3
+	bounds: 703, 387, 49, 22
+chew4
+	bounds: 365, 362, 50, 29
+darksquire 3
+	bounds: 1088, 2, 189, 128
+	offsets: 1, 1, 191, 130
+dwarvenplate 4
+	bounds: 682, 411, 237, 167
+	offsets: 1, 1, 239, 169
+	rotate: 90
+ears
+	bounds: 1029, 2, 127, 57
+	rotate: 90
+erlkonigarmor 6
+	bounds: 257, 375, 273, 106
+	offsets: 1, 1, 275, 142
+	rotate: 90
+eyes
+	bounds: 621, 112, 63, 15
+eyesBulged
+	bounds: 884, 131, 78, 40
+fairyarmor 1
+	bounds: 1511, 330, 153, 139
+	offsets: 1, 1, 155, 141
+	rotate: 90
+forearmL
+	bounds: 1248, 136, 53, 65
+forearmL2
+	bounds: 1651, 183, 89, 99
+	rotate: 90
+forearmL3
+	bounds: 1118, 132, 70, 69
+forearmLblocking
+	bounds: 362, 4, 96, 80
+forearmLpot1
+	bounds: 1764, 195, 93, 72
+	rotate: 90
+forearmLpot2
+	bounds: 1752, 102, 91, 77
+	rotate: 90
+forearmR
+	bounds: 1424, 204, 72, 85
+forearmRblocking
+	bounds: 99, 3, 85, 74
+gambeson 3
+	bounds: 1224, 459, 189, 157
+	offsets: 1, 1, 191, 159
+	rotate: 90
+goth 6
+	bounds: 2, 79, 281, 163
+	offsets: 1, 1, 283, 165
+	rotate: 90
+handL
+	bounds: 1565, 143, 59, 80
+	rotate: 90
+handL2
+	bounds: 299, 3, 81, 61
+	rotate: 90
+handL3
+	bounds: 2, 2, 75, 66
+	rotate: 90
+handL4
+	bounds: 1764, 290, 73, 59
+handLblock2
+	bounds: 1190, 133, 68, 56
+	rotate: 90
+handLblocking
+	bounds: 1053, 132, 63, 66
+handLpot1
+	bounds: 964, 131, 67, 87
+	rotate: 90
+handLpot2
+	bounds: 1769, 426, 71, 76
+handR
+	bounds: 1769, 351, 61, 73
+handRblock2
+	bounds: 1770, 598, 50, 70
+	rotate: 90
+handRblocking
+	bounds: 1665, 120, 59, 61
+head
+	bounds: 460, 2, 135, 105
+head 2
+	bounds: 1648, 505, 143, 120
+	rotate: 90
+heroarmor 6
+	bounds: 365, 393, 255, 180
+	offsets: 2, 1, 258, 182
+	rotate: 90
+horn
+	bounds: 396, 88, 19, 49
+	rotate: 90
+leatherarmor 1
+	bounds: 1498, 204, 151, 114
+	offsets: 1, 1, 153, 116
+mouth
+	bounds: 511, 369, 68, 22
+mouthClosed
+	bounds: 581, 374, 68, 22
+mouthGrin
+	bounds: 70, 2, 75, 27
+	rotate: 90
+mouthOpen
+	bounds: 798, 131, 84, 40
+mouthSurprise
+	bounds: 417, 366, 37, 25
+rags 2
+	bounds: 1312, 291, 166, 119
+	offsets: 1, 1, 168, 121
+	rotate: 90
+scalemail 3
+	bounds: 547, 398, 250, 133
+	offsets: 3, 1, 254, 135
+	rotate: 90
+swordBlade
+	bounds: 1433, 320, 76, 163
+swordGuard
+	bounds: 1770, 504, 92, 63
+	rotate: 90
+thighL
+	bounds: 1525, 499, 121, 149
+thighL 2
+	bounds: 1383, 485, 140, 163
+thighR
+	bounds: 1652, 365, 115, 138
+thighR 2
+	bounds: 710, 5, 122, 144
+	rotate: 90
+topazplate 5
+	bounds: 798, 173, 236, 146
+	offsets: 1, 1, 238, 244
+	rotate: 90
+torso
+	bounds: 1046, 426, 176, 222
+torso 2
+	bounds: 851, 425, 193, 223
+torso 3
+	bounds: 1099, 203, 211, 221
+torso 4
+	bounds: 396, 109, 251, 223
+	rotate: 90
+torso 5
+	bounds: 167, 86, 274, 227
+	rotate: 90
+torso6
+	bounds: 2, 362, 286, 253
+	rotate: 90
+trollhide 4
+	bounds: 1303, 9, 192, 139
+	offsets: 1, 1, 194, 141
+	rotate: 90
