@@ -1,7 +1,7 @@
 function clock(_time)
 {
 	global.player.waitTime = _time
-	global.player.alarm[0] = 10
+	global.player.alarm[0] = global.gameDelay
 	global.player.alarmRecursions = 30
 }
 

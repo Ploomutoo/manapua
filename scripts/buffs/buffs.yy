@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"buffs",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"buffs",
+  "parent":{
+    "name":"player",
+    "path":"folders/Scripts/game/player.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

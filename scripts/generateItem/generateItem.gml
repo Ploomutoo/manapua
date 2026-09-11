@@ -8,7 +8,7 @@ function generateFloorItem(_floor,_rarityBonus = 0){
 		case "Garden":
 		default:
 		
-			_weaponList = load_csv("itempools.csv")
+			_weaponList = load_csv("items-test.csv")
 			break;
 	}
 		var _weights = []
@@ -42,8 +42,7 @@ function generateFloorItem(_floor,_rarityBonus = 0){
 			_out.weightclass	= parseWeightclass(_weaponList[# 7, _type])
 			_out.weightinterval	= real(_weaponList[# 8, _type])
 			
-			_out.special		= _weaponList[# 9, _type]
-			if(_out.special != "") _out.specialAmt = real(_weaponList[# 10, _type])
+			_out = parseSpecials(_out,_weaponList[# 9, _type],_weaponList[# 10, _type])
 			break;
 			
 		case "Armor":
@@ -55,10 +54,8 @@ function generateFloorItem(_floor,_rarityBonus = 0){
 			break;
 			
 		case "Ring":
+		case "Amulet":
 			_out = parseSpecials(_out,_weaponList[# 4, _type],_weaponList[# 5, _type])
-			_out.special2 = _out.special
-			_out.special2amt = _out.specialAmt
-			_out = parseSpecials(_out,_weaponList[# 6, _type],_weaponList[# 7, _type])
 			break;
 			
 		case "Consumable":
@@ -75,36 +72,16 @@ function generateFloorItem(_floor,_rarityBonus = 0){
 
 function parseSpecials(_struct,_special,_amt)
 {
-	_struct.special	= _special
+	_struct.special	= string_split(_special,"|")
 	if(_special = "") return(_struct)
-	_struct.specialAmt = _amt
-	switch(_special)
+	
+	var _amtArrayIn = string_split(_amt,"|")
+	_struct.specialAmt = []
+	for(var _i = 0; _i < array_length(_amtArrayIn); _i++)
 	{
-		case "Lifesteal":
-		_struct.lifesteal = real(_amt)
-		break;
-		case "Defense":
-		_struct.defense = real(_amt)
-		break;
-		case "Evasion":
-		_struct.evasion = real(_amt)
-		break;
-		case "Stealth":
-		_struct.stealth = real(_amt)
-		break;
-		case "Food Heal":
-		_struct.foodheal = real(_amt)/100
-		break;
-		case "Flight":
-		_struct.flight = true
-		break;
-		case "Movespeed":
-		_struct.movespeed = real(_amt)
-		break;
-		case "Thorns":
-		_struct.thorns = real(_amt)
-		break;
+		_struct.specialAmt[_i] = real(_amtArrayIn[_i])
 	}
+	
 	return(_struct)
 }
 
@@ -120,16 +97,12 @@ function parseWeightclass(_class)
 		{
 			case 0:
 				return("S")
-				break;
 			case 1:
 				return("M")
-				break;
 			case 2:
 				return("L")
-				break;
 			case 3:
 				return("XL")
-				break;
 		}
 	}
 	else if(is_string(_class)) //letter given, return number
@@ -181,17 +154,10 @@ function weightedRoll(_array,_bonus = 0)
 	return(_array[_outIndex,0])
 }
 
-function potionAll()
-{
-	soundRand(sndQuaff)
-	with(global.bigSprite) skeleton_animation_set("drink",false) 
-}
-
 function generatePotion()
 {
 	var _out = new Item()
 	_out.consumable = true
-	_out.sprite		= spr_item_potion_placeholder
 	_out.slot		= "Potion"
 	
 	var _weights = []
@@ -206,55 +172,53 @@ function generatePotion()
 	{
 		case "curing":
 		_out.name = "Curing Potion"
-		_out.funcUse = function()
-		{
-			potionAll()
-			heal(15,global.player)
-		}
+		_out.sprite	= spr_potion_curing
+		_out.funcUse = potionCure
+		_out.tooltip = _out.name + "\nHeals for 15"
+		_out.weightgain = 15
 		break;
 		
 		case "healWounds":
 		_out.name = "Healing Potion"
-		_out.funcUse = function()
-		{
-			potionAll()
-			heal(45,global.player)
-		}
+		_out.sprite	= spr_potion_healing
+		_out.funcUse = potionHeal
+		_out.tooltip = _out.name + "\nHeals for 45"
+		_out.weightgain = 30
 		break;
 		
 		case "strength":
 		_out.name = "Strength Potion"
-		_out.funcUse = function()
-		{
-			potionAll()
-		}
+		_out.sprite	= spr_potion_might
+		_out.funcUse = potionStrength
+		_out.tooltip = _out.name + "\nTemporary double-damage"
+		_out.weightgain = 30
 		break;
 		
 		case "mana":
 		_out.name = "Mana Frenzy Potion"
-		_out.funcUse = function()
-		{
-			potionAll()
-		}
+		_out.sprite	= spr_potion_mana_frenzy
+		_out.funcUse = potionManaFrenzy
+		_out.tooltip = _out.name + "\nDisables spell cooldown"
+		_out.weightgain = 30
 		break;
 		
 		case "haste":
 		_out.name = "Haste Potion"
-		_out.funcUse = function()
-		{
-			potionAll()
-		}
+		_out.sprite	= spr_potion_haste
+		_out.funcUse = potionHaste
+		_out.tooltip = _out.name + "\nActions are twice as fast"
+		_out.weightgain = 50
 		break;
 		
 		case "divinity":
 		_out.name = "Divinity Potion"
-		_out.funcUse = function()
-		{
-			potionAll()
-		}
-		break;
+		_out.sprite	= spr_potion_divinity
+		_out.funcUse = potionDivinity
+		_out.tooltip = _out.name + "\nTemporary invulnerability"
+		_out.weightgain = 50
 	}
-	_out.tooltip = generateTooltip(_out)
+	
+	_out.tooltip += "\nGain " + string(_out.weightgain) + "lbs"
 	return(_out)
 }
 

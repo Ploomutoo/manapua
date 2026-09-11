@@ -49,6 +49,8 @@ if(mouse_check_button_released(mb_left) && holding != -1)
 				
 				other.holding.funcUse()
 				if(other.holding.slot != "Consumable" && other.holding.slot != "Potion") inventory[other.holdingPrev]=other.holding
+				
+				calcEffectiveStats()
 			}
 			
 		}

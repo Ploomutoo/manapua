@@ -1,1 +1,1 @@
-draw_sprite(item.sprite,0,x,y)
+if(sprite_exists(item.sprite)) draw_sprite(item.sprite,0,x,y)

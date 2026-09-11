@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scrolls",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scrolls",
+  "parent":{
+    "name":"items",
+    "path":"folders/Scripts/items.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

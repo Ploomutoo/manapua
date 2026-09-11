@@ -10,7 +10,7 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.163764,
+  "duration":0.16376418,
   "exportDir":"",
   "name":"sndMinionAtk",
   "parent":{

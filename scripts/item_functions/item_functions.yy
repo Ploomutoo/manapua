@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"item_functions",
   "parent":{
-    "name":"game",
-    "path":"folders/Scripts/game.yy",
+    "name":"items",
+    "path":"folders/Scripts/items.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

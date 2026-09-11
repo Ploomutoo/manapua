@@ -6,13 +6,13 @@ if(iFrames>10 && iFrames%5>3) {
 	
 } else draw_sprite(sprite_index,image_index,drawX,drawY);
 
-if(hp!=max_hp)
+if(hp!=effectiveStats.max_hp)
 {
 	var barLength = 64
 	draw_set_color(c_black)
 	draw_rectangle(x,y+64,x+barLength,y+70,0)
 	
-	barLength = 64*hp/max_hp
+	barLength = 64*hp/effectiveStats.max_hp
 	draw_set_color(c_red)
 	draw_rectangle(x,y+64,x+barLength,y+70,0)
 	

@@ -20,26 +20,71 @@ armorDisparity = 0
 weaponDisparity = 0
 preciseDisparity = 0
 
-max_hp =	getMaxhp(weightclass)
-hp =		max_hp
-baseDefense = 0
-defense		= 0
-evasion		= 0
-stealth		= 0
+baseStats = //all stats permanently modifiable by food
+{
+	max_hp : 100,
+	
+	dmgMod : 100,
+	defense : 3,
+	dodge : 1,
+	lifesteal : 0,
+	intelligence : 1,
+	thorns : 0,
+	critChance : 10,
+	critDamage : 100,
+	
+	rFire : 0,
+	rIce  : 0,
+	rDark : 0,
+	rPois : 0,
+	rElec : 0,
+	
+	reach : 1,
+	multistrike : 1,
+	riposte : 0,
+	flight : false,
+	foodheal : 1,
+	stealth : 1,
+	
+	wepDamage : 10,
+	wepDelay : 1,
+	moveDelay : 1,
+	
+	incomingDamage : 1, //Used by Divinity
+	spellCooldown : 1, //Used by Mana Frenzy
+	speedAll : 1, //Used by Haste
+}
 
-baseDamage = 0
-damage = 10
+effectiveStats = baseStats 
+//stats after being modified by buffs and armor
+//what is actually checked
 
-baseLifesteal = 0
-baseEvasion = 0
-baseFoodheal = 1
-
-attackDelay = 1
-moveDelay   = 1
-
+hp = baseStats.max_hp
 waitTime = 0
+evasion = dodgeToEvasion(effectiveStats.dodge)
+defense = effectiveStats.defense
+finalDelay = 1
 
-asleep = false
+buffList = 
+{
+	healingTerminated : [],
+	damageOverTime : [],
+	killTerminated : [],
+	floorTerminated : [],
+	turnTerminated : [new buff("Optimism","Feelin' fine",,10,"%max_hp",1.25)],
+	attackTerminated : [],
+	killTerminated : [],
+	defendTerminated : [],
+	damageTerminated : [],
+	allBuffs : []
+}
+
+characterPane =
+{
+	open : false,
+	x : 360+128,
+	y : 128
+}
 
 global.player = self
 global.fog = layer_tilemap_get_id("ts_fog")
@@ -49,62 +94,32 @@ global.levelSeed = random_get_seed()
 global.level = 0
 global.cheat = parameter_count()==3&&string_count("GMS2TEMP",parameter_string(2))
 
-defineParticles()
+enum gamespeed 
+{
+	slow,
+	medium,
+	fast,
+	ultra
+}
+global.gameSpeed = gamespeed.medium
+global.gameDelay = 10
 
-function defog(_tx,_ty)
+switch(global.gameSpeed)
 {
-	if(!layer_exists("ts_fog")) exit;
-	checkFog(_tx,_ty)
-	
-	if(checkFog(_tx,_ty-1)) checkFog(_tx,_ty-2) //up
-	if(checkFog(_tx,_ty+1)) checkFog(_tx,_ty+2) //down
-	
-	if(checkFog(_tx+1,_ty)) checkFog(_tx+2,_ty) //right
-	if(checkFog(_tx-1,_ty)) checkFog(_tx-2,_ty) //left
-	
-	if(checkFog(_tx-1,_ty-1)) //up-left
-	{ 
-		checkFog(_tx-1,_ty-2) 
-		checkFog(_tx-2,_ty-2) 
-		checkFog(_tx-2,_ty-1) 
-	}
-	
-	if(checkFog(_tx+1,_ty-1)) //up-right
-	{ 
-		checkFog(_tx+1,_ty-2) 
-		checkFog(_tx+2,_ty-2) 
-		checkFog(_tx+2,_ty-1) 
-	}
-	
-	if(checkFog(_tx-1,_ty+1)) //down-left
-	{ 
-		checkFog(_tx-1,_ty+2) 
-		checkFog(_tx-2,_ty+2) 
-		checkFog(_tx-2,_ty+1) 
-	}
-	
-	if(checkFog(_tx+1,_ty+1)) //down-right
-	{ 
-		checkFog(_tx+1,_ty+2) 
-		checkFog(_tx+2,_ty+2) 
-		checkFog(_tx+2,_ty+1) 
-	}
-	
+	case gamespeed.slow:	global.gameDelay = 15; break;
+	case gamespeed.medium:	global.gameDelay = 10; break;
+	case gamespeed.fast:	global.gameDelay = 5; break;
+	case gamespeed.ultra:	global.gameDelay = 1; break;
 }
-function checkFog(_tx,_ty)
-{
-	if(_tx<0 || _tx >= global.mapSize[0] || _ty<0 || _ty >= global.mapSize[1]) return(false)
-	
-	tilemap_set(global.fog,0,_tx,_ty)
-	return(!tilemap_get(global.walls,_tx,_ty))
-}
+
+defineParticles()
 
 takeDamage = function(_dam)
 {
 	if(_dam<0)
 	{
 		
-		if(abs(_dam)>max_hp/5) 
+		if(abs(_dam)>effectiveStats.max_hp/5) 
 		{
 			soundRand(choose(death1,death2,death3),0.1)
 			with(global.bigSprite) skeleton_animation_set("blockHeavy",0)

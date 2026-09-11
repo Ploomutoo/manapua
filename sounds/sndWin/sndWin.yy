@@ -10,7 +10,7 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":3.030204,
+  "duration":3.000272,
   "exportDir":"",
   "name":"sndWin",
   "parent":{

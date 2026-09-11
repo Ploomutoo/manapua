@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"calcEffectiveStats",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"calcEffectiveStats",
+  "parent":{
+    "name":"player",
+    "path":"folders/Scripts/game/player.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

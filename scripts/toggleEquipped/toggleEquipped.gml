@@ -16,6 +16,7 @@ function toggleEquipped(_wearer)
 			
 			default:
 			soundRand(sndDon)
+			clock(1)
 			break;
 		}
 	}

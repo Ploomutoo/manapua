@@ -24,6 +24,6 @@ moveDelay   = 1
 
 onDeath = function()
 {
-	instance_create_layer(x,y,layer,obj_item_flesh)
+	instance_create_layer(x,y,layer,obj_item)
 	soundRand(sndEnemyDie,0.1)
 }
