@@ -9,6 +9,7 @@ Quick Blade,40,Weapon,spr_item_weapon_placeholder,5,0,0.6,L,0.4,multistrike,1
 Trishula,10,Weapon,spr_weapon_spear,10,0,1.5,L,0.5,reach|multistrike,1|2
 Popper,10,Weapon,spr_item_weapon_placeholder,15,0,1.5,L,0,%critChance|critDamage,0.5|500
 Fairy Wand,10,Weapon,spr_weapon_spear,5,0,1,L,0.5,hitCast|reduceSpellCD,15|1
+Devouring Blade,1000,Weapon,spr_item_weapon_placeholder,50,0,1.5,2XL,1.5,@onKill:devouring_blade,1
 Name,Roll Weight,Slot/Type,Sprite,Base Defense,Weight Class,Special Qualities,Special Magnitude,Armor Skin,,
 Rags,100,Armor,spr_item_armor_placeholder,1,S,moveDelay|dodge,-0.2|5,rags,,
 Big Rags,60,Armor,spr_item_armor_placeholder,3,L,dodge,5,scalemail,,

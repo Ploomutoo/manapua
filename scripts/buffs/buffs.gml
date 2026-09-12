@@ -70,7 +70,7 @@ function givePlayerBuff(_debuffName,_duration = -1)
 		case "Ghost Pepper":
 			_type = "defendTerminated"
 			_buff.duration = 1
-			_buff.tooltip = "You are very stealthy"
+			_buff.tooltip = "You're ethereal! 'Til you aren't"
 			_buff.icon = spr_buff_happy
 			_buff.affectedStat = "dodge"
 			_buff.amount = 100

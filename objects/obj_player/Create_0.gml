@@ -20,8 +20,9 @@ armorDisparity = 0
 weaponDisparity = 0
 preciseDisparity = 0
 
-baseStats = //all stats permanently modifiable by food
+baseStats = //all stats
 {
+	//food modifiable
 	max_hp : 100,
 	
 	dmgMod : 100,
@@ -39,6 +40,7 @@ baseStats = //all stats permanently modifiable by food
 	rPois : 0,
 	rElec : 0,
 	
+	//item modifiable
 	reach : 1,
 	multistrike : 1,
 	riposte : 0,
@@ -53,6 +55,9 @@ baseStats = //all stats permanently modifiable by food
 	incomingDamage : 1, //Used by Divinity
 	spellCooldown : 1, //Used by Mana Frenzy
 	speedAll : 1, //Used by Haste
+	
+	//functionss
+	onKill : []
 }
 
 effectiveStats = baseStats 

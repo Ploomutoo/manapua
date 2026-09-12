@@ -2,8 +2,30 @@ function applyStat(_special,_amt)
 {
 	if(_special = "") exit;
 	
-	var _percent = false
+	if(string_char_at(_special,0)="@")
+	{
+		_special = string_delete(_special,0,1) //Remove @
+		var _func = string_split(_special,":")
+		if(array_length(_func)>2) 
+		{ 
+			show_debug_message("Too many arguments in "+_special)
+			exit;
+		}
+		
+		var _read = struct_get(effectiveStats, _func[0])
+		if (_read != undefined)
+		{
+			array_push(_read,_func[1])
+			struct_set(effectiveStats,_func[0],_read)
+		}
+		else
+		{
+			show_debug_message("Trigger "+_func[0]+" not found")
+		}
+		exit;
+	}
 	
+	var _percent = false
 	if(string_char_at(_special,0)="%")
 	{
 		_special = string_delete(_special,0,1)

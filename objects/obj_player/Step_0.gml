@@ -42,7 +42,6 @@ if(inp_move && waitTime = 0)
 	if(instance_exists(obstacle))
 	{
 		dealDamage(damage,obstacle,effectiveStats.multistrike)
-		if(effectiveStats.lifesteal>0) heal(irandom(effectiveStats.lifesteal),global.player)
 		clock(finalDelay)
 	}
 	else

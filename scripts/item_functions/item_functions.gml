@@ -18,6 +18,31 @@ function Item() constructor
 	}
 }
 
+function runArray(_array)
+{
+	var _func
+	for(var _i = 0; _i<array_length(_array); _i++)
+	{
+		_func = asset_get_index(_array[_i])
+		
+		if(is_callable(_func)) method_call(_func)
+		else show_debug_message("Function is not callable")
+	}
+}
+
+function findWieldedWeapon()
+{
+	for(var _i = 0; _i < array_length(inventory); _i++)
+	{
+		if(inventory[_i] != -1 && inventory[_i].equipped && inventory[_i].slot = "Weapon")
+		{
+			return(_i)
+		}
+	}
+	show_debug_message("Could not find a wielded weapon!")
+	return(-1)
+}
+
 function specialTooltip(_special,_amt)
 {
 	var _out = ""
@@ -220,17 +245,22 @@ function dealDamage(_damage,_target,_multi = 1)
 	while(_multi>0)
 	{
 		_multi--;
-		multiTimeSource[_multi] = time_source_create(time_source_game,1 + 5*_multi,time_source_units_frames,dealDamageInstance,[_damage,_target,_mult,_evade,_crit,_critMult])
+		multiTimeSource[_multi] = time_source_create(time_source_game,1 + 5*_multi,time_source_units_frames,dealDamageInstance,[_damage,_target,self,_mult,_evade,_crit,_critMult])
 		time_source_start(multiTimeSource[_multi])
 	}
 }
 
-function dealDamageInstance(_damage,_target,_mult,_evade,_crit,_critMult)
+function dealDamageInstance(_damage,_target,_executor,_mult,_evade,_crit,_critMult)
 {	
 	if(!instance_exists(_target)) 
 	{
 		soundRand(sndSwing)
 		exit;
+	}
+	if(!instance_exists(_executor))
+	{
+		show_debug_message("No executor for attack")
+		exit;	
 	}
 	
 	if(_evade > 0 && _evade > irandom(100))
@@ -258,10 +288,19 @@ function dealDamageInstance(_damage,_target,_mult,_evade,_crit,_critMult)
 	
 	_target.hp += _dam
 	_target.takeDamage(_dam)
+	
+	if(_executor.object_index = obj_player) 
+	{
+		var _lifesteal = round(random(_executor.effectiveStats.lifesteal))
+		if(_lifesteal > 0) heal(_lifesteal,_executor)
+	}
+	
 	if(_target.hp<=0)
 	{
 		_target.onDeath()
 		instance_destroy(_target)	
+		
+		if(_executor.object_index = obj_player) with(_executor) runArray(effectiveStats.onKill)
 	}
 }
 

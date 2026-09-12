@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"generateItem",
   "parent":{
-    "name":"generation",
-    "path":"folders/Scripts/generation.yy",
+    "name":"items",
+    "path":"folders/Scripts/items.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
