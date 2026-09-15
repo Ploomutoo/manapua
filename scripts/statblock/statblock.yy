@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"statblock",
   "parent":{
-    "name":"generation",
-    "path":"folders/Scripts/generation.yy",
+    "name":"enemy_funcs",
+    "path":"folders/Scripts/enemy_funcs.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

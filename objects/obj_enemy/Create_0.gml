@@ -6,6 +6,9 @@ if(instance_place(x,y,obj_timeaffected))
 
 event_inherited()
 
+lastActionDuration = 1
+meterAmt = 0
+
 target = instance_nearest(x,y,obj_player)
 drawX = x
 drawY = y
@@ -13,17 +16,9 @@ drawY = y
 targetPath = path_add()
 asleep = true
 
-max_hp = 10
-hp = max_hp
-defense = 1
-damage = 3
-evasion = 0
+baseStats = new Statblock()
+effectiveStats = variable_clone(baseStats)
+sprite_index = baseStats.sprite
 
-attackDelay = 1
-moveDelay   = 1
-
-onDeath = function()
-{
-	instance_create_layer(x,y,layer,obj_item)
-	soundRand(sndEnemyDie,0.1)
-}
+hp = effectiveStats.max_hp
+evasion = dodgeToEvasion(effectiveStats.dodge)

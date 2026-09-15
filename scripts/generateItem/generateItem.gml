@@ -11,7 +11,7 @@ function generateFloorItem(_floor,_rarityBonus = 0){
 			_weaponList = load_csv("items-test.csv")
 			break;
 	}
-		var _weights = []
+	var _weights = []
 	var _weightsOn = 0
 	for(var _parser = 0; _parser < ds_grid_height(_weaponList); _parser++)
 	{

@@ -58,7 +58,12 @@ baseStats = //all stats
 	speedAll : 1, //Used by Haste
 	
 	//functionss
-	onKill : []
+	onKill : [],
+	onStrike : [],
+	onSeeDeath : [],
+	onHit : [],
+	onDeath : []
+	
 }
 
 effectiveStats = baseStats 
@@ -68,7 +73,6 @@ effectiveStats = baseStats
 hp = baseStats.max_hp
 waitTime = 0
 evasion = dodgeToEvasion(effectiveStats.dodge)
-defense = effectiveStats.defense
 finalDelay = 1
 
 buffList = 
@@ -109,6 +113,7 @@ global.walls = layer_tilemap_get_id("ts_walls")
 global.levelSeed = random_get_seed()
 global.level = 0
 global.cheat = parameter_count()==3&&string_count("GMS2TEMP",parameter_string(2))
+global.enemyGenList = load_csv("enemies-test.csv")
 
 enum gamespeed 
 {

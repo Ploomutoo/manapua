@@ -21,12 +21,30 @@ function Item() constructor
 function runArray(_array)
 {
 	var _func
+	var _funcName = ""
+	var _funcArray = []
 	for(var _i = 0; _i<array_length(_array); _i++)
 	{
-		_func = asset_get_index(_array[_i])
+		_funcArray = string_split(_array[_i],":",true)
+		_funcName = _funcArray[0]
+		array_delete(_funcArray,0,1)
 		
-		if(is_callable(_func)) method_call(_func)
-		else show_debug_message("Function is not callable")
+		_func = asset_get_index(_funcName)
+		
+		if(_func != -1) 
+		{
+			if(array_length(_funcArray)>0)
+			{
+				//show_debug_message("Calling method {0} with parameters {1}",_funcName,_funcArray)
+				method_call(_func,_funcArray)
+			}
+			else
+			{
+				//show_debug_message("Calling method {0} with no parameters ",_funcName)
+				method_call(_func)
+			}
+		}
+		else show_debug_message("Function {0} is not callable",_funcName)
 	}
 }
 
@@ -213,16 +231,13 @@ function dealDamage(_damage,_target,_multi = 1)
 	if(!instance_exists(_target)) exit;
 	
 	var _source = other
-	var _mult = 1
+	var _mult = effectiveStats.incomingDamage
 	var _evade = _target.evasion
 	var _crit = 0
 	var _critMult = 100
 	
-	if(_target.object_index = obj_player)
-	{
-		_mult = _target.effectiveStats.incomingDamage
-	}
-	else if(object_index = obj_player)
+
+	if(object_index = obj_player)
 	{
 		if(_target.asleep)
 		{
@@ -238,9 +253,6 @@ function dealDamage(_damage,_target,_multi = 1)
 		_critMult = effectiveStats.critDamage
 	}
 	
-	drawX += (_target.x-drawX)/2
-	drawY += (_target.y-drawY)/2
-
 	global.player.alarm[0] = 1 + _multi*5
 	while(_multi>0)
 	{
@@ -270,7 +282,7 @@ function dealDamageInstance(_damage,_target,_executor,_mult,_evade,_crit,_critMu
 		exit;
 	}
 
-	var _dam = min(0,random(_target.defense)-random_range(_damage/2,_damage))
+	var _dam = min(0,random(_target.effectiveStats.defense)-random_range(_damage/2,_damage))
 	if(_crit != 0 && _crit > irandom(100))
 	{
 		_mult *= 1 + _critMult/100	
@@ -289,18 +301,15 @@ function dealDamageInstance(_damage,_target,_executor,_mult,_evade,_crit,_critMu
 	_target.hp += _dam
 	_target.takeDamage(_dam)
 	
-	if(_executor.object_index = obj_player) 
-	{
-		var _lifesteal = round(random(_executor.effectiveStats.lifesteal))
-		if(_lifesteal > 0) heal(_lifesteal,_executor)
-	}
+	var _lifesteal = round(random(_executor.effectiveStats.lifesteal))
+	if(_lifesteal > 0) heal(_lifesteal,_executor)
 	
 	if(_target.hp<=0)
 	{
-		_target.onDeath()
-		instance_destroy(_target)	
+		with(_target) runArray(effectiveStats.onDeath)		
+		with(_executor) runArray(effectiveStats.onKill)
 		
-		if(_executor.object_index = obj_player) with(_executor) runArray(effectiveStats.onKill)
+		instance_destroy(_target)
 	}
 }
 

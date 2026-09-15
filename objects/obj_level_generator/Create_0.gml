@@ -20,9 +20,8 @@ nodesAmt = 50
 var _ix,_iy,_desiredx,_desiredy,_diffx,_diffy,_breakout=false,_whatToPlace
 var _placeableList = []
 _placeableList[0] = [obj_enemy,100]
-_placeableList[1] = [obj_gogre,25]
-_placeableList[2] = [obj_item,150]
-_placeableList[3] = [obj_stairs,10]
+_placeableList[1] = [obj_item,100]
+_placeableList[2] = [obj_stairs,10]
 
 random_set_seed(global.levelSeed+global.level)
 for(var _i = 0; _i <= nodesAmt; _i++)

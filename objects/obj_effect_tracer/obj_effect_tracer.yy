@@ -1,20 +1,18 @@
 {
   "$GMObject":"",
-  "%Name":"obj_gogre",
+  "%Name":"obj_effect_tracer",
   "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_gogre",
+  "name":"obj_effect_tracer",
   "overriddenProperties":[],
   "parent":{
     "name":"game_objects",
     "path":"folders/Objects/game_objects.yy",
   },
-  "parentObjectId":{
-    "name":"obj_enemy",
-    "path":"objects/obj_enemy/obj_enemy.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -33,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_gogre",
-    "path":"sprites/spr_gogre/spr_gogre.yy",
+    "name":"spr_enemy_ratGun",
+    "path":"sprites/spr_enemy_ratGun/spr_enemy_ratGun.yy",
   },
   "spriteMaskId":null,
   "visible":true,

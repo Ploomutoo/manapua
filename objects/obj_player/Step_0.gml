@@ -87,6 +87,9 @@ else
 		if(instance_exists(obstacle))
 		{
 			dealDamage(damage,obstacle,effectiveStats.multistrike)
+			drawX += (obstacle.x-drawX)/2
+			drawY += (obstacle.y-drawY)/2
+			
 			clock(finalDelay)
 		}
 		else

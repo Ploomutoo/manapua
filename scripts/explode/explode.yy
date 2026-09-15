@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"explode",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"explode",
+  "parent":{
+    "name":"enemy_funcs",
+    "path":"folders/Scripts/enemy_funcs.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
