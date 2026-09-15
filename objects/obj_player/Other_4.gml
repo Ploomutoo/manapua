@@ -9,7 +9,7 @@ with(obj_level_generator)
 drawX = x
 drawY = y
 			
-layer_set_visible(layer_get_id("ts_fog"),1)
-defog(x/global.cellSize,y/global.cellSize)
-
 calcEffectiveStats()
+
+layer_set_visible(layer_get_id("ts_fog"),1)
+defog(x/global.cellSize,y/global.cellSize,effectiveStats.viewRadius)

@@ -315,7 +315,7 @@ function hurt(_amt,_target)
 	//_target.takeDamage(_amt)
 	
 	textPopup(_target.x+32,_target.y,string(_amt))
-	soundRand(sndFireHiss)
+	//soundRand(sndFireHiss)
 	if(_target.hp<=0)
 	{
 		_target.onDeath()

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"statblock",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"statblock",
+  "parent":{
+    "name":"generation",
+    "path":"folders/Scripts/generation.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

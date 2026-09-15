@@ -30,3 +30,8 @@ for(var i = 0; i < array_length(inst_arr); i++)
 		y = old_y;
 	}
 }
+
+with(global.player)
+{
+	event_perform(ev_draw_end,0)	
+}

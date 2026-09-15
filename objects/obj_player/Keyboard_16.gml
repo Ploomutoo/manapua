@@ -42,3 +42,8 @@ else if(keyboard_check_pressed(ord("W")))
 	weightToNext = getWeightToNext(weightclass)
 	with(global.bigSprite) skeleton_animation_set("weightUp",0)
 }
+else if(keyboard_check_pressed(ord("B")))
+{
+	var _buff = get_string("Input Buff","")
+	givePlayerBuff(_buff)
+}

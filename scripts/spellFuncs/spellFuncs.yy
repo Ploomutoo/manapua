@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"spellFuncs",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"spellFuncs",
+  "parent":{
+    "name":"player",
+    "path":"folders/Scripts/game/player.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

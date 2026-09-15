@@ -102,6 +102,7 @@ function givePlayerBuff(_debuffName,_duration = -1)
 		{
 			show_debug_message("Buff type " + _type + " not found")	
 		}
+		calcEffectiveStats()
 	}
 	
 	delete _buff;

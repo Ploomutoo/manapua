@@ -52,6 +52,7 @@ baseStats = //all stats
 	wepDelay : 1,
 	moveDelay : 1,
 	
+	viewRadius : 3,
 	incomingDamage : 1, //Used by Divinity
 	spellCooldown : 1, //Used by Mana Frenzy
 	speedAll : 1, //Used by Haste
@@ -89,6 +90,16 @@ characterPane =
 	open : false,
 	x : 360+128,
 	y : 128
+}
+
+spellCasting =
+{
+	targets : [],
+	selected : -1,
+	
+	targetStyle : spellTargeting.cursor,
+	spellRange : 3,
+	diameter : 3
 }
 
 global.player = self
