@@ -30,6 +30,8 @@ function giveBuff(_target,_debuffName,_duration = -1)
 {
 	var _buff = new buff(_debuffName)
 	var _type = "turnTerminated"
+	var _enemyOnly = false
+	
 	switch(_debuffName)
 	{
 		case "Might":
@@ -82,6 +84,7 @@ function giveBuff(_target,_debuffName,_duration = -1)
 			_buff.amount = "Cowardly"
 		break;
 		case "Confusion":
+			_enemyOnly = true
 			_buff.duration = 10
 			_buff.tooltip = "Huh whuh??"
 			_buff.affectedStat = "=behavior"
@@ -98,6 +101,7 @@ function giveBuff(_target,_debuffName,_duration = -1)
 	
 	with(_target)
 	{
+		if(object_index = obj_player && _enemyOnly) exit;
 		var _buffArray = struct_get(buffList,_type)
 		if(_buffArray != undefined)
 		{

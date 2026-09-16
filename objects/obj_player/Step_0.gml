@@ -20,6 +20,44 @@ if(spellCasting.selected != -1)
 {
 	switch(spellCasting.targetStyle)
 	{
+		case spellTargeting.directional:
+		if(inp_move)
+		{
+			var _desiredPos = [
+			x + inp_x*global.cellSize,
+			y + inp_y*global.cellSize]
+			
+			spellCasting.targets[0].x = _desiredPos[0]
+			spellCasting.targets[0].y = _desiredPos[1]
+			
+			if(inp_x > 0) //right
+			{
+				spellCasting.targets[1].image_xscale = spellCasting.spellRange
+				spellCasting.targets[1].image_yscale = 1
+			}
+			else if(inp_x < 0) //left
+			{
+				spellCasting.targets[1].image_xscale = spellCasting.spellRange
+				spellCasting.targets[1].image_yscale = 1
+				_desiredPos[0] = x - spellCasting.spellRange*global.cellSize
+			}
+			else if(inp_y > 0) //down
+			{
+				spellCasting.targets[1].image_xscale = 1
+				spellCasting.targets[1].image_yscale = spellCasting.spellRange
+			}
+			else if(inp_y < 0) //up
+			{
+				spellCasting.targets[1].image_xscale = 1
+				spellCasting.targets[1].image_yscale = spellCasting.spellRange
+				_desiredPos[1] = y- spellCasting.spellRange*global.cellSize
+			}
+									
+			spellCasting.targets[1].x = _desiredPos[0]
+			spellCasting.targets[1].y = _desiredPos[1]
+			
+		}
+		break;
 		case spellTargeting.singleEnemy:
 		if(inp_x>0 || inp_y>0)
 		{
@@ -49,16 +87,67 @@ if(spellCasting.selected != -1)
 		break;
 	}
 	
-	if(keyboard_check_pressed(vk_space))
+	if(keyboard_check_pressed(vk_space)) //cast spell
 	{
-		var _caster = self
-		var _spell = instance_create_layer(spellCasting.targets[spellCasting.selected].x,spellCasting.targets[spellCasting.selected].y,"effects",obj_spell_aoe,
+		var _validCast = true;
+		var _center = [spellCasting.targets[spellCasting.selected].x,spellCasting.targets[spellCasting.selected].y]
+		if(spellCasting.diameter>1)
 		{
-			size : spellCasting.diameter,
-			caster : _caster,
-			hitsPlayer : true,
-			damage : 25,
-		})
+			var _offset = floor((spellCasting.diameter-1)/2)*global.cellSize
+			_center[0] += _offset
+			_center[1] += _offset
+		}
+		
+		switch(spellCasting.targetStyle)
+		{
+			case spellTargeting.cursor:
+			case spellTargeting.directional:
+			if(!spellCasting.valid.onPlayer 
+			&& instance_position(_center[0],_center[1],obj_player)) _validCast = false
+			
+			if(!spellCasting.valid.onEnemy
+			&& instance_position(_center[0],_center[1],obj_enemy)) _validCast = false
+			
+			if(!spellCasting.valid.onWall
+			&& tilemap_get_at_pixel(global.walls,_center[0],_center[1])>0) _validCast = false
+			break;
+		}
+		
+		if(_validCast)
+		{
+			var _caster = self
+			if(spellCasting.targetStyle = spellTargeting.directional) 
+			{
+				var _vector = [spellCasting.targets[0].x-x,spellCasting.targets[0].y-y]
+				var _place = []
+				for(var _i = 0; _i < spellCasting.spellRange; _i++)
+				{
+					_place = [spellCasting.targets[spellCasting.selected].x+_vector[0]*_i,spellCasting.targets[spellCasting.selected].y+_vector[1]*_i]
+					if(!spellCasting.valid.onWall
+					&& tilemap_get_at_pixel(global.walls,_place[0],_place[1])>0) break;
+					
+					instance_create_layer(_place[0],_place[1],"effects",obj_spell_aoe,
+					{
+						size : spellCasting.diameter,
+						caster : _caster,
+						hitsPlayer : true,
+						damage : 25,
+					})
+				}
+			}
+			else
+			{
+				var _spell = instance_create_layer(spellCasting.targets[spellCasting.selected].x,spellCasting.targets[spellCasting.selected].y,"effects",obj_spell_aoe,
+				{
+					size : spellCasting.diameter,
+					caster : _caster,
+					hitsPlayer : true,
+					damage : 25,
+				})
+			}
+		}
+		else soundRand(sndSpellFail)
+		
 		cancelSpell()
 	}
 }
@@ -127,6 +216,7 @@ if(keyboard_check_pressed(ord("M"))) //Aim spell
 	
 	if(spellCasting.selected != -1) 
 	{
+		soundRand(sndSpellFail)	
 		cancelSpell()
 	}
 	else 
@@ -143,6 +233,9 @@ if(keyboard_check_pressed(ord("M"))) //Aim spell
 			case spellTargeting.selfRadius:
 			case spellTargeting.cursor:
 			spellCasting.targets = [createCursor(x,y,spellCasting.diameter)]
+			case spellTargeting.directional:
+			if(spellCasting.spellRange>1) spellCasting.targets = [createCursor(x,y,spellCasting.diameter),createCursor(x,y,spellCasting.diameter)]
+			else spellCasting.targets = [createCursor(x,y,spellCasting.diameter)]
 			break;
 		}
 		if(array_length(spellCasting.targets)>0) 

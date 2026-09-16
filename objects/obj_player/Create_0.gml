@@ -101,9 +101,15 @@ spellCasting =
 	targets : [],
 	selected : -1,
 	
-	targetStyle : spellTargeting.cursor,
+	targetStyle : spellTargeting.directional,
 	spellRange : 3,
-	diameter : 3
+	diameter : 1,
+	valid : 
+	{
+		onPlayer : false,
+		onWall : false,
+		onEnemy : false
+	}
 }
 
 global.player = self

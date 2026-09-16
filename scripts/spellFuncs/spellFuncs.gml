@@ -4,7 +4,8 @@ enum spellTargeting
 	allEnemy,
 	selfEnch,
 	selfRadius,
-	cursor
+	cursor,
+	directional
 }
 
 function canLos(_desx,_desy,_range)
@@ -49,7 +50,6 @@ function cancelSpell()
 {
 	spellCasting.selected = -1
 	with(obj_spell_cursor) instance_destroy()
-	soundRand(sndSpellFail)	
 }
 
 function createCursor(_x,_y,_diameter=1)

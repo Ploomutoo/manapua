@@ -67,6 +67,7 @@
     {"$GMIncludedFile":"","%Name":"enemies-test.ods","CopyToMask":-1,"filePath":"datafiles","name":"enemies-test.ods","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"itempools.ods","CopyToMask":-1,"filePath":"datafiles","name":"itempools.ods","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"items-food.csv","CopyToMask":-1,"filePath":"datafiles","name":"items-food.csv","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
+    {"$GMIncludedFile":"","%Name":"items-spells.csv","CopyToMask":-1,"filePath":"datafiles","name":"items-spells.csv","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"items-test.csv","CopyToMask":-1,"filePath":"datafiles","name":"items-test.csv","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
   ],
   "isEcma":false,
