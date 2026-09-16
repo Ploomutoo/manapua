@@ -100,11 +100,14 @@ spellCasting =
 {
 	targets : [],
 	selected : -1,
-	
 	targetStyle : spellTargeting.directional,
+	
+	element : "Fire",
+	damage : [20,[spellScalingSources.int,5]],
+	
 	spellRange : 3,
 	diameter : 1,
-	valid : 
+	valid : //targeting filters
 	{
 		onPlayer : false,
 		onWall : false,

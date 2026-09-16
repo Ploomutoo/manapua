@@ -116,6 +116,8 @@ if(spellCasting.selected != -1)
 		if(_validCast)
 		{
 			var _caster = self
+			var _damage = evalSpellDamage(spellCasting.damage)
+			
 			if(spellCasting.targetStyle = spellTargeting.directional) 
 			{
 				var _vector = [spellCasting.targets[0].x-x,spellCasting.targets[0].y-y]
@@ -131,7 +133,7 @@ if(spellCasting.selected != -1)
 						size : spellCasting.diameter,
 						caster : _caster,
 						hitsPlayer : true,
-						damage : 25,
+						damage : _damage,
 					})
 				}
 			}
@@ -142,7 +144,7 @@ if(spellCasting.selected != -1)
 					size : spellCasting.diameter,
 					caster : _caster,
 					hitsPlayer : true,
-					damage : 25,
+					damage : _damage,
 				})
 			}
 		}

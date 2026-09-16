@@ -1,4 +1,4 @@
-if(event_data[? "message"] = "boom")
+if(!fired && image_index>3)
 {
 	var _targets = []
 	var _instance = noone
@@ -22,8 +22,9 @@ if(event_data[? "message"] = "boom")
 	
 	for(var _i = 0; _i < array_length(_targets); _i++)
 	{
-		giveBuff(_targets[_i],"Confusion")
-		//dealDamageInstance(damage,_targets[_i],caster,1,0,0,0)
-		//instance_destroy(_targets[_i])
+		//giveBuff(_targets[_i],"Confusion")
+		dealDamageInstance(damage,_targets[_i],caster,1,0,0,0)
 	}
+	
+	fired = true
 }

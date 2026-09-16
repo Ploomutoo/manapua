@@ -8,6 +8,35 @@ enum spellTargeting
 	directional
 }
 
+enum spellScalingSources
+{
+	int,
+	wepDamage,
+	weightclass,
+	weight
+}
+
+function evalSpellDamage(_array)
+{
+	var _out = _array[0]
+	var _getStat = 0
+	
+	for(var _i = 1; _i < array_length(_array); _i++)
+	{
+		switch(_array[_i][0])
+		{
+			case spellScalingSources.int:			_getStat = effectiveStats.intelligence; break;
+			case spellScalingSources.wepDamage:		_getStat = effectiveStats.wepDamage; break;
+			case spellScalingSources.weightclass:	_getStat = weightclass; break;
+			case spellScalingSources.weight:		_getStat = weight; break;
+		}
+		//show_debug_message("Adding {0} damage",_getStat*_array[_i][1])
+		_out += _getStat*_array[_i][1]
+	}
+	
+	return(_out)
+}
+
 function canLos(_desx,_desy,_range)
 {
 	var _iterations = _range + 1 //One for the road :)
