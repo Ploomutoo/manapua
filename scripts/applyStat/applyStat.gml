@@ -1,8 +1,11 @@
 function applyStat(_special,_amt)
 {
 	if(_special = "") exit;
+	var _percent = false
+	var _overwrite = false
+	var _firstChar = string_char_at(_special,0)
 	
-	if(string_char_at(_special,0)="@")
+	if(_firstChar="@")
 	{
 		_special = string_delete(_special,0,1) //Remove @
 		var _func = string_split(_special,":")
@@ -24,21 +27,29 @@ function applyStat(_special,_amt)
 		}
 		exit;
 	}
-	
-	var _percent = false
-	if(string_char_at(_special,0)="%")
+	else if(_firstChar="%")
 	{
 		_special = string_delete(_special,0,1)
 		_percent = true
 	}
+	else if(_firstChar="=")
+	{
+		_special = string_delete(_special,0,1)
+		_overwrite = true
+	}	
 	
 	var _read = struct_get(effectiveStats, _special)
 	if (_read != undefined)
 	{
-		if(is_real(_read)) 
+		if(_overwrite)
+		{
+			if(is_real(_read)) _amt = real(_amt)
+			struct_set(effectiveStats, _special,_amt);
+		}
+		else if(is_real(_read)) 
 		{
 			if(_percent)
-			{
+			{  
 				struct_set(effectiveStats, _special, ceil(_read * _amt));
 			}
 			else struct_set(effectiveStats, _special, _read + _amt);

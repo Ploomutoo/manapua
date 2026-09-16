@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"ranger",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"ranger",
+  "parent":{
+    "name":"behaviors",
+    "path":"folders/Scripts/enemy_funcs/behaviors.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

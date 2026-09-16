@@ -1,0 +1,4 @@
+function cowardly()
+{
+	//Run away!
+}

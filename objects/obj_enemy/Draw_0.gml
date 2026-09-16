@@ -1,11 +1,15 @@
 if(hide) exit;
 
-draw_sprite(sprite_index,0,drawX,drawY)
+draw_sprite(effectiveStats.sprite,0,drawX,drawY)
 //draw_text(drawX,drawY,string(actionTimer))
 
 if(asleep)
 {
 	draw_sprite(spr_sleeping,0,drawX,drawY)	
+}
+else if(effectiveStats.behavior = "Confused")
+{
+	draw_sprite(spr_confused,0,drawX,drawY)	
 }
 else
 {

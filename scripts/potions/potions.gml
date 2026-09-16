@@ -20,23 +20,23 @@ function potionHeal()
 function potionStrength()
 {
 	potionAll()
-	givePlayerBuff("Might")
+	giveBuff(global.player,"Might")
 }
 
 function potionManaFrenzy()
 {
 	potionAll()
-	givePlayerBuff("Mana Frenzy")
+	giveBuff(global.player,"Mana Frenzy")
 }
 
 function potionHaste()
 {
 	potionAll()
-	givePlayerBuff("Haste")
+	giveBuff(global.player,"Haste")
 }
 
 function potionDivinity()
 {
 	potionAll()	
-	givePlayerBuff("Divinity")
+	giveBuff(global.player,"Divinity")
 }

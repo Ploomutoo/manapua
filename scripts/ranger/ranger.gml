@@ -1,0 +1,4 @@
+function ranger()
+{
+	//Maintain distance
+}

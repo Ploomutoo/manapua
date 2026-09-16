@@ -1,0 +1,4 @@
+function cannibal()
+{
+	//Prioritize allies
+}

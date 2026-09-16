@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"cowardly",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"cowardly",
+  "parent":{
+    "name":"behaviors",
+    "path":"folders/Scripts/enemy_funcs/behaviors.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -51,10 +51,13 @@ if(spellCasting.selected != -1)
 	
 	if(keyboard_check_pressed(vk_space))
 	{
+		var _caster = self
 		var _spell = instance_create_layer(spellCasting.targets[spellCasting.selected].x,spellCasting.targets[spellCasting.selected].y,"effects",obj_spell_aoe,
 		{
 			size : spellCasting.diameter,
-			caster : self,
+			caster : _caster,
+			hitsPlayer : true,
+			damage : 25,
 		})
 		cancelSpell()
 	}

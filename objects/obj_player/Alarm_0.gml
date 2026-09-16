@@ -2,19 +2,7 @@ var _enemyCount = instance_number(obj_timeaffected)
 var _instance
 var _time = min(0.1,waitTime)
 
-for(var _i = array_length(buffList.turnTerminated); _i > 0; _i--) //decrement TTE
-{
-	buffList.turnTerminated[_i-1].duration -= _time
-	if(buffList.turnTerminated[_i-1].duration<=0)
-	{
-		buffList.turnTerminated[_i-1].expireFunc()
-		
-		delete buffList.turnTerminated[_i-1]
-		array_delete(buffList.turnTerminated,_i-1,1)
-		
-		calcEffectiveStats()
-	}
-}
+decayBuff("turnTerminated",_time)
 
 for (var _i = 0; _i < _enemyCount; _i++)
 {

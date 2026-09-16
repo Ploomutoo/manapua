@@ -45,5 +45,5 @@ else if(keyboard_check_pressed(ord("W")))
 else if(keyboard_check_pressed(ord("B")))
 {
 	var _buff = get_string("Input Buff","")
-	givePlayerBuff(_buff)
+	giveBuff(self,_buff)
 }

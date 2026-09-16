@@ -26,7 +26,7 @@ function expireExample()
 	//nothing lol
 }
 
-function givePlayerBuff(_debuffName,_duration = -1)
+function giveBuff(_target,_debuffName,_duration = -1)
 {
 	var _buff = new buff(_debuffName)
 	var _type = "turnTerminated"
@@ -75,6 +75,19 @@ function givePlayerBuff(_debuffName,_duration = -1)
 			_buff.affectedStat = "dodge"
 			_buff.amount = 100
 		break;
+		case "Fear":
+			_buff.duration = 10
+			_buff.tooltip = "Running away!"
+			_buff.affectedStat = "=behavior"
+			_buff.amount = "Cowardly"
+		break;
+		case "Confusion":
+			_buff.duration = 10
+			_buff.tooltip = "Huh whuh??"
+			_buff.affectedStat = "=behavior"
+			_buff.amount = "Confused"
+			_buff.expireFunc = unconfused
+		break;
 		
 		default:
 			show_debug_message("Buff " + _debuffName + " not found")
@@ -83,7 +96,7 @@ function givePlayerBuff(_debuffName,_duration = -1)
 	
 	if(_duration != -1) _buff.duration = _duration //overwrite duration if one is given	
 	
-	with(global.player)
+	with(_target)
 	{
 		var _buffArray = struct_get(buffList,_type)
 		if(_buffArray != undefined)
@@ -102,8 +115,38 @@ function givePlayerBuff(_debuffName,_duration = -1)
 		{
 			show_debug_message("Buff type " + _type + " not found")	
 		}
-		calcEffectiveStats()
+		
+		if(object_index = obj_player) calcEffectiveStats()
+		else calcEffectiveEnemy()
 	}
 	
 	delete _buff;
+}
+
+function decayBuff(_category,_amt = 1)
+{
+	var _buffArray = struct_get(buffList,_category)
+	
+	if(_buffArray != undefined)
+	{
+		for(var _i = array_length(_buffArray)-1; _i >= 0; _i--)
+		{
+			_buffArray[_i].duration -= _amt
+			
+			if(_buffArray[_i].duration<=0)
+			{
+				_buffArray[_i].expireFunc()
+		
+				delete _buffArray[_i]
+				array_delete(_buffArray,_i,1)
+			}
+		}
+	}
+	else
+	{
+		show_debug_message("No such buff category as {0}!",_category)	
+	}
+	
+	if(object_index = obj_player) calcEffectiveStats()
+	else calcEffectiveEnemy()
 }

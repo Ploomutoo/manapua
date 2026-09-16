@@ -269,11 +269,6 @@ function dealDamageInstance(_damage,_target,_executor,_mult,_evade,_crit,_critMu
 		soundRand(sndSwing)
 		exit;
 	}
-	if(!instance_exists(_executor))
-	{
-		show_debug_message("No executor for attack")
-		exit;	
-	}
 	
 	if(_evade > 0 && _evade > irandom(100))
 	{
@@ -301,13 +296,16 @@ function dealDamageInstance(_damage,_target,_executor,_mult,_evade,_crit,_critMu
 	_target.hp += _dam
 	_target.takeDamage(_dam)
 	
-	var _lifesteal = round(random(_executor.effectiveStats.lifesteal))
-	if(_lifesteal > 0) heal(_lifesteal,_executor)
+	if(_executor!=noone)
+	{
+		var _lifesteal = round(random(_executor.effectiveStats.lifesteal))
+		if(_lifesteal > 0) heal(_lifesteal,_executor)
+	}
 	
 	if(_target.hp<=0)
 	{
 		with(_target) runArray(effectiveStats.onDeath)		
-		with(_executor) runArray(effectiveStats.onKill)
+		if(_executor != noone) with(_executor) runArray(effectiveStats.onKill)
 		
 		instance_destroy(_target)
 	}
