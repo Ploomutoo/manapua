@@ -16,6 +16,106 @@ enum spellScalingSources
 	weight
 }
 
+function Spell(_name) constructor
+{
+	targets = []
+	selected = -1
+	
+	var _spellGrid = load_csv("spell-index.csv")
+	var _index = ds_grid_value_y(_spellGrid,0,0,0,ds_grid_height(_spellGrid)-1,_name)
+	
+	name = _spellGrid[# 0,_index]
+	switch(_spellGrid[# 1,_index])
+	{
+		case "singleEnemy":
+			targetStyle = spellTargeting.singleEnemy
+			break;
+		case "allEnemy":
+			targetStyle = spellTargeting.allEnemy
+			break;
+		case "selfEnch":
+			targetStyle = spellTargeting.selfEnch
+			break;
+		case "selfRadius":
+			targetStyle = spellTargeting.selfRadius
+			break;
+		case "cursor":
+			targetStyle = spellTargeting.cursor
+			break;
+		case "directional":
+			targetStyle = spellTargeting.directional
+			break;
+	}
+	
+	element = _spellGrid[# 2,_index]
+	damage = processEval(_spellGrid[# 3,_index])
+	
+	if(_spellGrid[# 4,_index]!="") diameter = real(_spellGrid[# 4,_index])
+	else diameter = 1
+	
+	if(_spellGrid[# 5,_index]!="") spellRange = real(_spellGrid[# 5,_index])
+	else spellRange = 1
+	
+	valid = 
+	{
+		onPlayer : false,
+		onWall : false,
+		onEnemy : true
+	}
+	outBuff =
+	{
+		name : "",
+		duration : 0,
+		strength : 0
+	}
+	selfBuff =
+	{
+		name : "",
+		duration : 0,
+		strength : 0
+	}
+	description = ""
+	cooldown =
+	{
+		type : "turns",
+		length : 10
+	}
+	ds_grid_destroy(_spellGrid)
+}
+
+function processEval(_string)
+{
+	if (_string = "") return([0])
+	
+	_string = string_split(_string," ",true)
+	var _out = [real(_string[0])]
+	var _split = []
+	var _addOut = []
+	
+	for(var _i = 1; _i < array_length(_string); _i++)
+	{
+		_split = string_split(_string[_i],"*",true,2)
+		switch(_split[0])
+		{
+			case "int":
+			_addOut[0] = spellScalingSources.int
+			break;
+			case "wepDamage":
+			_addOut[0] = spellScalingSources.wepDamage
+			break;
+			case "weightclass":
+			_addOut[0] = spellScalingSources.weightclass
+			break;
+			case "weight":
+			_addOut[0] = spellScalingSources.weight
+			break;
+		}
+		_addOut[1] = real(_split[1])
+		_out[_i] = _addOut
+	}
+	return(_out)
+}
+
 function evalSpellDamage(_array)
 {
 	var _out = _array[0]

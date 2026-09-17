@@ -235,6 +235,7 @@ if(keyboard_check_pressed(ord("M"))) //Aim spell
 			case spellTargeting.selfRadius:
 			case spellTargeting.cursor:
 			spellCasting.targets = [createCursor(x,y,spellCasting.diameter)]
+			break;
 			case spellTargeting.directional:
 			if(spellCasting.spellRange>1) spellCasting.targets = [createCursor(x,y,spellCasting.diameter),createCursor(x,y,spellCasting.diameter)]
 			else spellCasting.targets = [createCursor(x,y,spellCasting.diameter)]

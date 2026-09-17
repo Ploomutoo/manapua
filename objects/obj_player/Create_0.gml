@@ -96,7 +96,9 @@ characterPane =
 	y : 128
 }
 
-spellCasting =
+spellCasting = new Spell("Fireball")
+
+/*spellCasting =
 {
 	targets : [],
 	selected : -1,
@@ -113,7 +115,7 @@ spellCasting =
 		onWall : false,
 		onEnemy : false
 	}
-}
+}*/
 
 global.player = self
 global.fog = layer_tilemap_get_id("ts_fog")
