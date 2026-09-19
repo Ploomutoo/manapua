@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"unconfused",
   "parent":{
-    "name":"enemy_funcs",
-    "path":"folders/Scripts/enemy_funcs.yy",
+    "name":"buffStuff",
+    "path":"folders/Scripts/game/buffStuff.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

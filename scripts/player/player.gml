@@ -5,7 +5,7 @@ function getWeightToNext(_size)
 
 function textPopup(ix,iy,text) {
 
-	var obj = instance_create_layer(ix,iy,"Instances",oPopupText);
+	var obj = instance_create_layer(ix,iy,"effects",oPopupText);
 	obj.txt = scribble("[fa_center][scale,1.5]"+text);
 	return(obj)
 }

@@ -7,29 +7,34 @@ decayBuff("turnTerminated",_time)
 for (var _i = 0; _i < _enemyCount; _i++)
 {
 	_instance = instance_find(obj_timeaffected,_i)
-	_instance.actionTimer -= _time
-	if(_instance.actionTimer <= 0)
+	with(_instance)
 	{
-		if (_instance.asleep) //wakey func
+		actionTimer -= _time
+		if(actionTimer <= 0)
 		{
-			var _playerDist = tileDistObj(_instance,self)
-			if(!inFog(_instance.x,_instance.y) && _playerDist<4)
-			{				
-				if(floor(random(3/effectiveStats.stealth))=0) 
-				{
-					_instance.asleep = false
-					soundRand(sndBiterHerald)
-				}
-			}	
-			_instance.actionTimer = 1
-		}
-		else
-		{
-			with(_instance) event_user(0)
+			if (asleep) //wakey func
+			{
+				var _playerDist = tileDistObj(self,other)
+				if(!inFog(x,y) && _playerDist<4)
+				{				
+					if(floor(random(3/other.effectiveStats.stealth))=0) 
+					{
+						asleep = false
+						soundRand(sndBiterHerald)
+					}
+				}	
+				actionTimer = 1
+			}
+			else
+			{
+				event_user(0)
 			
-			alarm[0] = global.gameDelay
-			break;
-		}	
+				other.alarm[0] = global.gameDelay
+				break;
+			}
+		}
+		
+		decayBuff("turnTerminated",_time)
 	}
 }
 if(waitTime>0 && alarm[0] = 0)

@@ -31,7 +31,7 @@ function dotEffect(_name = "",_tooltip = "",_icon = spr_buff_sad,_duration = 10,
 	amount = _amount
 }
 
-function expireExample()
+function expireExample(_target)
 {
 	//nothing lol
 }
@@ -66,6 +66,14 @@ function giveBuff(_target,_debuffName,_duration = -1,_strength = -1)
 	var _expireString = ini_read_string("Default","expireFunc","")	
 	var _expireFunc = asset_get_index(_expireString)
 	if(is_callable(_expireFunc)) _buff.expireFunc = _expireFunc
+	else show_debug_message("Cannot call {0}",_expireString)
+	
+	_buff.stacks = ini_read_real("Default","stacks",0)
+	//Does it stack with itself
+	
+	var _adj = ini_read_string("Default","adjective","")	
+	if(_adj = "") _buff.adjective = _buff.name + "ed"
+	else _buff.adjective = _adj
 	
 	with(_target)
 	{
@@ -130,7 +138,7 @@ function decayBuff(_category,_amt = 1)
 			
 			if(_buffArray[_i].duration<=0)
 			{
-				_buffArray[_i].expireFunc()
+				_buffArray[_i].expireFunc(self)
 		
 				delete _buffArray[_i]
 				array_delete(_buffArray,_i,1)

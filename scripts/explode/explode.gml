@@ -11,5 +11,9 @@ function explode(_damage,_diameter)
 		caster : noone,
 		hitsPlayer : true,
 		damage : _damage,
+		outBuff : 
+		{
+			name : ""	
+		}
 	})
 }

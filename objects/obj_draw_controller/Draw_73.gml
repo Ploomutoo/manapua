@@ -4,9 +4,21 @@ if(holding != -1)
 }
 else
 {
-	if(mouseOn != noone)
+	if(instance_exists(mouseOn))
 	{
+		var _text = mouseOn.effectiveStats.name
+		var _id = "Enemy Mouseover"
+		scribble(_text,_id).align(fa_left,fa_bottom)
 		
+		var _bbox = scribble(_text,_id).get_bbox(mouse_x,mouse_y)
+		draw_set_alpha(0.5)
+		draw_set_color(c_black)
+		draw_rectangle(_bbox.x0,_bbox.y0,_bbox.x3,_bbox.y3,0)
+		draw_set_alpha(1)
+		draw_set_color(c_white)
+		draw_rectangle(_bbox.x0,_bbox.y0,_bbox.x3,_bbox.y3,1)
+		
+		scribble(_text,_id).draw(mouse_x,mouse_y)
 	}
 }
 

@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"sndCoin",
+  "%Name":"sndPoison",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -10,9 +10,9 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.14979592,
+  "duration":0.21333334,
   "exportDir":"",
-  "name":"sndCoin",
+  "name":"sndPoison",
   "parent":{
     "name":"Sounds",
     "path":"folders/Sounds.yy",
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"sndCoin.wav",
+  "soundFile":"sndPoison.mp3",
   "volume":1.0,
 }

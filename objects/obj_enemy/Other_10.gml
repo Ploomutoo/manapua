@@ -10,4 +10,4 @@ switch(effectiveStats.behavior)
 		break;
 }
 
-decayBuff("turnTerminated",lastActionDuration)
+//decayBuff("turnTerminated",lastActionDuration)

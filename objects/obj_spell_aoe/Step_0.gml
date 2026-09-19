@@ -1,6 +1,6 @@
 if(!fired && image_index>3)
 {
-	show_debug_message("Damage is {0}",damage)
+	//show_debug_message("Damage is {0}",damage)
 	
 	var _targets = []
 	var _instance = noone
@@ -25,11 +25,11 @@ if(!fired && image_index>3)
 	
 	for(var _i = 0; _i < array_length(_targets); _i++)
 	{
-		if(outBuff != undefined && outBuff.name != "")
+		if(outBuff.name != "")
 		{
 			giveBuff(_targets[_i],outBuff.name,outBuff.duration,outBuff.strength)
 		}
-		dealDamageInstance(damage,_targets[_i],caster,1,0,0,0)
+		if(damage > 0) dealDamageInstance(damage,_targets[_i],caster,1,0,0,0)
 	}
 	
 	fired = true

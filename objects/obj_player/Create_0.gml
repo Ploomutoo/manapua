@@ -97,7 +97,7 @@ characterPane =
 }
 
 //Spell!!! ------------------------------------------
-spellCasting = new Spell("Glaciate")
+spellCasting = new Spell("Toxic Dart")
 
 global.player = self
 global.fog = layer_tilemap_get_id("ts_fog")

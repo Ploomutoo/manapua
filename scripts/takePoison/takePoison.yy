@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"buffs",
+  "%Name":"takePoison",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"buffs",
+  "name":"takePoison",
   "parent":{
     "name":"buffStuff",
     "path":"folders/Scripts/game/buffStuff.yy",
