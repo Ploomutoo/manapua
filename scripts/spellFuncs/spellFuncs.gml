@@ -24,6 +24,12 @@ function Spell(_name) constructor
 	var _spellGrid = load_csv("spell-index.csv")
 	var _index = ds_grid_value_y(_spellGrid,0,0,0,ds_grid_height(_spellGrid)-1,_name)
 	
+	if(_index = -1)
+	{
+		show_debug_message("Could not find spell {0}",_name)
+		_index = 1
+	}
+
 	name = _spellGrid[# 0,_index]
 	switch(_spellGrid[# 1,_index])
 	{
@@ -58,28 +64,63 @@ function Spell(_name) constructor
 	
 	valid = 
 	{
-		onPlayer : false,
-		onWall : false,
+		onPlayer : true,
+		onWall : true,
 		onEnemy : true
 	}
+	var _arrayValid = string_split(_spellGrid[# 6,_index]," ",true)
+	for (var _i = 0; _i < array_length(_arrayValid); _i++)
+	{
+		switch(_arrayValid[_i])
+		{
+			case "noPlayer": valid.onPlayer = false
+			break;
+			case "noWall": valid.onWall = false
+			break;
+			case "noEnemy": valid.onEnemy = false
+			break;
+		}
+	}
+	
 	outBuff =
 	{
 		name : "",
-		duration : 0,
-		strength : 0
+		duration : -1,
+		strength : -1
 	}
+	if(_spellGrid[# 7,_index]!="")
+	{
+		outBuff.name = _spellGrid[# 7,_index]
+		if(_spellGrid[# 8,_index]!="") outBuff.duration = processEval(_spellGrid[# 8,_index])
+		if(_spellGrid[# 9,_index]!="") outBuff.strength = processEval(_spellGrid[# 9,_index])
+	}
+	
 	selfBuff =
 	{
 		name : "",
 		duration : 0,
 		strength : 0
 	}
-	description = ""
+	if(_spellGrid[# 10,_index]!="")
+	{
+		outBuff.name = _spellGrid[# 10,_index]
+		if(_spellGrid[# 11,_index]!="") outBuff.duration = processEval(_spellGrid[# 11,_index])
+		if(_spellGrid[# 12,_index]!="") outBuff.strength = processEval(_spellGrid[# 12,_index])
+	}
+	
+	description = _spellGrid[# 13,_index]
+	
 	cooldown =
 	{
 		type : "turns",
 		length : 10
 	}
+	if(_spellGrid[# 14,_index]!="")
+	{
+		cooldown.type = _spellGrid[# 14,_index]
+		cooldown.length = real(_spellGrid[# 15,_index])
+	}
+	
 	ds_grid_destroy(_spellGrid)
 }
 

@@ -11,3 +11,5 @@ queuesize = 0
 global.bigSprite = self
 x = 180
 y = 240
+
+mouseOn = noone

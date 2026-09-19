@@ -98,6 +98,7 @@ if(spellCasting.selected != -1)
 			_center[1] += _offset
 		}
 		
+		var _targetList = [spellCasting.targets[spellCasting.selected]]
 		switch(spellCasting.targetStyle)
 		{
 			case spellTargeting.cursor:
@@ -111,12 +112,28 @@ if(spellCasting.selected != -1)
 			if(!spellCasting.valid.onWall
 			&& tilemap_get_at_pixel(global.walls,_center[0],_center[1])>0) _validCast = false
 			break;
+			
+			case spellTargeting.allEnemy:
+			_targetList = spellCasting.targets
+			break;
 		}
 		
 		if(_validCast)
 		{
 			var _caster = self
 			var _damage = evalSpellDamage(spellCasting.damage)
+			
+			var _outBuffEval = 
+			{
+				name : spellCasting.outBuff.name,
+				duration : -1,
+				strength : -1
+			}
+			if(_outBuffEval.name != "") 
+			{
+				if(is_array(spellCasting.outBuff.duration)) _outBuffEval.duration = evalSpellDamage(spellCasting.outBuff.duration)
+				if(is_array(spellCasting.outBuff.strength)) _outBuffEval.strength = evalSpellDamage(spellCasting.outBuff.strength)
+			}
 			
 			if(spellCasting.targetStyle = spellTargeting.directional) 
 			{
@@ -134,19 +151,27 @@ if(spellCasting.selected != -1)
 						caster : _caster,
 						hitsPlayer : true,
 						damage : _damage,
+						outBuff : _outBuffEval
 					})
 				}
 			}
 			else
 			{
-				var _spell = instance_create_layer(spellCasting.targets[spellCasting.selected].x,spellCasting.targets[spellCasting.selected].y,"effects",obj_spell_aoe,
+				for(var _i = 0; _i < array_length(_targetList); _i++)
 				{
-					size : spellCasting.diameter,
-					caster : _caster,
-					hitsPlayer : true,
-					damage : _damage,
-				})
+					instance_create_layer(_targetList[_i].x,_targetList[_i].y,"effects",obj_spell_aoe,
+					{
+						size : spellCasting.diameter,
+						caster : _caster,
+						hitsPlayer : true,
+						damage : _damage,
+						outBuff : _outBuffEval
+					})
+				}
 			}
+			if(spellCasting.selfBuff.name != "") giveBuff(self,spellCasting.selfBuff.name,
+				evalSpellDamage(spellCasting.selfBuff.duration),
+				evalSpellDamage(spellCasting.selfBuff.strength))
 		}
 		else soundRand(sndSpellFail)
 		

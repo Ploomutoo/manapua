@@ -47,3 +47,33 @@ else if(keyboard_check_pressed(ord("B")))
 	var _buff = get_string("Input Buff","")
 	giveBuff(self,_buff)
 }
+else if(keyboard_check_pressed(ord("M")))
+{
+	var _spell = get_string("Set spell to?","")
+	spellCasting = new Spell(_spell)
+}
+else if(keyboard_check_pressed(ord("S")))
+{
+	var _stat = get_string("Set what stat?","")
+	
+	var _get = struct_get(baseStats,_stat)
+	
+	if(_get != undefined)
+	{
+		var _val
+		if(is_real(_get))
+		{
+			_val = get_integer("Setting "+_stat,1)
+		}
+		else
+		{
+			_val = get_string("Setting "+_stat,"")
+		}
+		struct_set(baseStats,_stat,_val)
+		calcEffectiveStats()
+	}
+	else
+	{
+		show_debug_message("No such thing as {0}",_stat)	
+	}
+}

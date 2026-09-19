@@ -26,7 +26,7 @@ function expireExample()
 	//nothing lol
 }
 
-function giveBuff(_target,_debuffName,_duration = -1)
+function giveBuff(_target,_debuffName,_duration = -1,_strength = -1)
 {
 	var _buff = new buff(_debuffName)
 	var _type = "turnTerminated"

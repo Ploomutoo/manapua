@@ -96,26 +96,8 @@ characterPane =
 	y : 128
 }
 
+//Spell!!! ------------------------------------------
 spellCasting = new Spell("Fireball")
-
-/*spellCasting =
-{
-	targets : [],
-	selected : -1,
-	targetStyle : spellTargeting.directional,
-	
-	element : "Fire",
-	damage : [20,[spellScalingSources.int,5]],
-	
-	spellRange : 3,
-	diameter : 1,
-	valid : //targeting filters
-	{
-		onPlayer : false,
-		onWall : false,
-		onEnemy : false
-	}
-}*/
 
 global.player = self
 global.fog = layer_tilemap_get_id("ts_fog")
