@@ -97,7 +97,7 @@ characterPane =
 }
 
 //Spell!!! ------------------------------------------
-spellCasting = new Spell("Fireball")
+spellCasting = new Spell("Glaciate")
 
 global.player = self
 global.fog = layer_tilemap_get_id("ts_fog")

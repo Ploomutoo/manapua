@@ -9,6 +9,16 @@ function buff(_name = "",_tooltip = "",_icon = spr_buff_happy,_duration = 10,_af
 	amount = _amount
 	
 	expireFunc = _expireFunc
+	
+	stacks = false 
+	//False: Replaces existing instances of the buff consulting advanced stacking behavior
+	//True: Adds additional instances of the buff
+	stackBehavior = //Not currently implemented, effectively always on UseNew
+	{
+		//Keywords: UseNew, UseOld, Add, UseGreater, UseLesser
+		duration : "UseNew",
+		amount : "UseNew"
+	}
 }
 
 function dotEffect(_name = "",_tooltip = "",_icon = spr_buff_sad,_duration = 10,_amount = 0) constructor 
@@ -28,76 +38,34 @@ function expireExample()
 
 function giveBuff(_target,_debuffName,_duration = -1,_strength = -1)
 {
-	var _buff = new buff(_debuffName)
-	var _type = "turnTerminated"
-	var _enemyOnly = false
+	var _buff = new buff(_debuffName)	
+	var _path = "Buffs/"+_debuffName+".ini"
 	
-	switch(_debuffName)
+	if(file_exists(_path))	ini_open(_path)
+	else 
 	{
-		case "Might":
-			_buff.duration = 20
-			_buff.tooltip = "You are mighty!"
-			_buff.icon = spr_buff_mighty
-			_buff.affectedStat = "%dmgMod"
-			_buff.amount = 2
-		break;
-		case "Mana Frenzy":
-			_buff.duration = 10
-			_buff.tooltip = "Instant spell cooldown!"
-			_buff.icon = spr_buff_happy
-			_buff.affectedStat = "%spellCooldown"
-			_buff.amount = 0
-		break;
-		case "Haste":
-			_buff.duration = 10
-			_buff.tooltip = "Actions are twice as fast!"
-			_buff.icon = spr_buff_happy
-			_buff.affectedStat = "%speedAll"
-			_buff.amount = 0.5
-		break;
-		case "Divinity":
-			_buff.duration = 20
-			_buff.tooltip = "You feel invincible!"
-			_buff.icon = spr_buff_happy
-			_buff.affectedStat = "%incomingDamage"
-			_buff.amount = 0
-		break;
-		case "Invisibility":
-			_buff.duration = 20
-			_buff.tooltip = "You are very stealthy"
-			_buff.icon = spr_buff_happy
-			_buff.affectedStat = "stealth"
-			_buff.amount = 100
-		break;
-		case "Ghost Pepper":
-			_type = "defendTerminated"
-			_buff.duration = 1
-			_buff.tooltip = "You're ethereal! 'Til you aren't"
-			_buff.icon = spr_buff_happy
-			_buff.affectedStat = "dodge"
-			_buff.amount = 100
-		break;
-		case "Fear":
-			_buff.duration = 10
-			_buff.tooltip = "Running away!"
-			_buff.affectedStat = "=behavior"
-			_buff.amount = "Cowardly"
-		break;
-		case "Confusion":
-			_enemyOnly = true
-			_buff.duration = 10
-			_buff.tooltip = "Huh whuh??"
-			_buff.affectedStat = "=behavior"
-			_buff.amount = "Confused"
-			_buff.expireFunc = unconfused
-		break;
-		
-		default:
-			show_debug_message("Buff " + _debuffName + " not found")
-			exit;
+		show_debug_message("{0} is not a valid file",_path)
+		exit;
 	}
 	
-	if(_duration != -1) _buff.duration = _duration //overwrite duration if one is given	
+	var _type = ini_read_string("Default","durationType","turnTerminated")
+	var _enemyOnly = ini_read_real("Default","enemyOnly",0)
+	
+	var _iconString = ini_read_string("Default","icon","spr_buff_happy")
+	var _iconSprite = asset_get_index(_iconString)
+	if(sprite_exists(_iconSprite)) _buff.sprite = _iconSprite
+	
+	_buff.tooltip = ini_read_string("Default","tooltip","")
+	
+	if(_duration = -1) _buff.duration = ini_read_real("Default","duration",10)
+	else _buff.duration = _duration //overwrite duration if one is given	
+	
+	_buff.affectedStat = ini_read_string("Default","affectedStat","")	
+	_buff.amount = ini_read_string("Default","amount","")	
+	
+	var _expireString = ini_read_string("Default","expireFunc","")	
+	var _expireFunc = asset_get_index(_expireString)
+	if(is_callable(_expireFunc)) _buff.expireFunc = _expireFunc
 	
 	with(_target)
 	{
@@ -107,7 +75,30 @@ function giveBuff(_target,_debuffName,_duration = -1,_strength = -1)
 		{
 			if(is_array(_buffArray))
 			{
-				array_push(_buffArray,_buff)
+				if(!_buff.stacks)
+				{
+					var _findIndex = -1
+					for(var _i = 0; _i < array_length(_buffArray); _i++)
+					{
+						if(_buffArray[_i].name = _buff.name) 
+						{
+							_findIndex = _i
+							break;
+						}
+					}
+					
+					if(_findIndex = -1) array_push(_buffArray,_buff)
+					else 
+					{
+						//show_debug_message("Replacing buff {0} with new instance",_buff.name)
+						delete(_buffArray[_findIndex])
+						_buffArray[_findIndex] = _buff
+					}
+				}
+				else
+				{
+					array_push(_buffArray,_buff)
+				}
 				struct_set(buffList,_type,_buffArray)
 			}
 			else
