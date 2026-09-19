@@ -13,6 +13,8 @@ _topCorner[0]+invSize[0]*64,_topCorner[1]+invSize[1]*64))
 else
 {
 	invOn = -1	
+	
+	mouseOn = instance_position(mouse_x,mouse_y,obj_enemy)
 }
 
 if(mouse_check_button_pressed(mb_left) && invOn != -1)

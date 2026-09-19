@@ -240,6 +240,7 @@
     {"name":"spr_bodega","order":25,"path":"sprites/spr_bodega/spr_bodega.yy",},
     {"name":"spr_border","order":11,"path":"sprites/spr_border/spr_border.yy",},
     {"name":"spr_buff_mighty","order":2,"path":"sprites/spr_buff_mighty/spr_buff_mighty.yy",},
+    {"name":"spr_buff_poison","order":3,"path":"sprites/spr_buff_poison/spr_buff_poison.yy",},
     {"name":"spr_buff_sad","order":1,"path":"sprites/spr_buff_sad/spr_buff_sad.yy",},
     {"name":"spr_bumpkinbush","order":24,"path":"sprites/spr_bumpkinbush/spr_bumpkinbush.yy",},
     {"name":"spr_carpet","order":16,"path":"sprites/spr_carpet/spr_carpet.yy",},
