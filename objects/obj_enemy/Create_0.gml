@@ -16,7 +16,7 @@ drawY = y
 targetPath = path_add()
 asleep = true
 
-baseStats = new Statblock()
+baseStats = new Statblock("Magic Rat")
 effectiveStats = variable_clone(baseStats)
 
 buffList = 

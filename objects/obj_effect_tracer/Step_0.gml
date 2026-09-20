@@ -1,2 +1,2 @@
-girth *= 0.8
+girth *= decay
 if(girth<0.5) instance_destroy()

@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"confused",
+  "%Name":"getValidRetreat",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"confused",
+  "name":"getValidRetreat",
   "parent":{
     "name":"behaviors",
     "path":"folders/Scripts/enemy_funcs/behaviors.yy",

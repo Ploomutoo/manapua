@@ -5,7 +5,8 @@ enum spellTargeting
 	selfEnch,
 	selfRadius,
 	cursor,
-	directional
+	directional,
+	randomized
 }
 
 enum spellScalingSources
@@ -50,6 +51,9 @@ function Spell(_name) constructor
 			break;
 		case "directional":
 			targetStyle = spellTargeting.directional
+			break;
+		case "random":
+			targetStyle = spellTargeting.randomized
 			break;
 	}
 	
@@ -161,15 +165,30 @@ function evalSpellDamage(_array)
 {
 	var _out = _array[0]
 	var _getStat = 0
+	var _isEnemy = false
+	if(object_index = obj_enemy) _isEnemy = true
 	
 	for(var _i = 1; _i < array_length(_array); _i++)
 	{
-		switch(_array[_i][0])
+		if(_isEnemy)
 		{
-			case spellScalingSources.int:			_getStat = effectiveStats.intelligence; break;
-			case spellScalingSources.wepDamage:		_getStat = effectiveStats.wepDamage; break;
-			case spellScalingSources.weightclass:	_getStat = weightclass; break;
-			case spellScalingSources.weight:		_getStat = weight; break;
+			switch(_array[_i][0])
+			{
+				case spellScalingSources.int:			_getStat = effectiveStats.intelligence; break;
+				case spellScalingSources.weightclass:	_getStat = 1; break;
+				case spellScalingSources.weight:		_getStat = 50; break;
+				case spellScalingSources.wepDamage:		_getStat = effectiveStats.damage; break;
+			}
+		}
+		else
+		{
+			switch(_array[_i][0])
+			{
+				case spellScalingSources.int:			_getStat = effectiveStats.intelligence; break;
+				case spellScalingSources.weightclass:	_getStat = weightclass; break;
+				case spellScalingSources.weight:		_getStat = weight; break;
+				case spellScalingSources.wepDamage:		_getStat = effectiveStats.wepDamage; break;
+			}
 		}
 		//show_debug_message("Adding {0} damage",_getStat*_array[_i][1])
 		_out += _getStat*_array[_i][1]
@@ -234,4 +253,51 @@ function createCursor(_x,_y,_diameter=1)
 	_cursor.image_yscale = _diameter
 	
 	return(_cursor)
+}
+
+function aimRandom(_range,_validStruct)
+{
+	var _iterations = _range + 1 //One for the road :)
+	
+	var _width = 1+_iterations*2
+	var _gridSize = power(_width,2)
+	var _grid = array_create(_gridSize,0)
+	var _x,_y
+	
+	var _tx = floor(x/global.cellSize),_ty = floor(y/global.cellSize)
+	var _center = _iterations + _iterations*_width
+	var _toCheck = [_center]
+	var _nextCheck = []
+	
+	var _out = []
+	
+	for(var _i = 0; _i < _iterations; _i++)
+	{
+		for(var _j = 0; _j < array_length(_toCheck); _j++)
+		{			
+			_grid[_toCheck[_j]] = 1
+			
+			_x = _tx + _toCheck[_j]%_width-_iterations
+			_y = _ty + floor(_toCheck[_j]/_width)-_iterations
+						
+			if( (_validStruct.onWall	|| !tilemap_get(global.walls,_x,_y)) 
+			&&	(_validStruct.onPlayer	|| instance_position(_x*global.cellSize,_y*global.cellSize,obj_player)=noone)
+			&&	(_validStruct.onEnemy	|| instance_position(_x*global.cellSize,_y*global.cellSize,obj_enemy)=noone))
+			{
+				array_push(_out,[_x*global.cellSize,_y*global.cellSize])
+			}
+						
+			if(!tilemap_get(global.walls,_x,_y))
+			{		
+				if(_grid[_toCheck[_j]+1] = 0) array_push(_nextCheck,_toCheck[_j]+1)
+				if(_grid[_toCheck[_j]-1] = 0) array_push(_nextCheck,_toCheck[_j]-1)
+				if(_grid[_toCheck[_j]+_width] = 0) array_push(_nextCheck,_toCheck[_j]+_width)
+				if(_grid[_toCheck[_j]-_width] = 0) array_push(_nextCheck,_toCheck[_j]-_width)	
+			}	
+		}
+		_toCheck = _nextCheck
+		_nextCheck = []
+	}
+	
+	return(_out[irandom(array_length(_out)-1)])
 }

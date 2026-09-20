@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"miner",
+  "%Name":"actions",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"miner",
+  "name":"actions",
   "parent":{
     "name":"behaviors",
     "path":"folders/Scripts/enemy_funcs/behaviors.yy",

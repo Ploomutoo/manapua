@@ -45,6 +45,7 @@ function Statblock(_name = "Random") constructor
 	
 	dmgMod = 100
 	lifesteal = 0
+	intelligence = 1
 	thorns = 0
 	critChance = 0
 	critDamage = 100
@@ -62,7 +63,7 @@ function Statblock(_name = "Random") constructor
 	speedAll = 1
 	
 	//functionss
-	spells = []
+	spell = []
 	onKill = [] 
 	onStrike = []
 	onSeeDeath = []
@@ -77,9 +78,12 @@ function Statblock(_name = "Random") constructor
 		_specialComponents = string_split(_specials[_i],":",true,1)
 		
 		if(array_length(_specialComponents)<1) continue;
-				
+		
 		if(struct_exists(self,_specialComponents[0]))
 		{
+			var _read
+			var _spell
+						
 			switch(_specialComponents[0])
 			{
 				case "behavior": //single string values
@@ -87,15 +91,23 @@ function Statblock(_name = "Random") constructor
 				struct_set(self,_specialComponents[0],_specialComponents[1])
 				break;
 				
-				case "spells": //string arrays
-				case "onKill":
+				case "onKill":  //string arrays
 				case "onStrike":
 				case "onSeeDeath":
 				case "onHit":
 				case "onDeath":
-				var _read = struct_get(self,_specialComponents[0])
+				_read = struct_get(self,_specialComponents[0])
 				array_push(_read,_specialComponents[1])
 				struct_set(self,_specialComponents[0],_read)
+				break;
+				
+				case "spell": 
+				_read = struct_get(self,_specialComponents[0])
+				_spell = new Spell(_specialComponents[1])
+								
+				array_push(_read,_spell)
+				struct_set(self,_specialComponents[0],_read)
+				delete _spell
 				break;
 				
 				default: //real values

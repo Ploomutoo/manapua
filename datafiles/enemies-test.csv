@@ -1,7 +1,7 @@
 Name,Weight,Sprite,Health,Defense,Dodge,Damage,Attack Delay,Move Delay,Special,Notes
 Rat,100,spr_enemy_rat,10,1,10,5,1,0.8,,
 Rat with Gun,80,spr_enemy_ratGun,10,1,10,10,1.5,1.2,range:3 behavior:ranger ,Rangers will try to move away from the player while adjacent
-Magic Rat,80,spr_enemy_ratMagic,8,1,10,3,1,1,spell:blink spell:scorching_dart,
+Magic Rat,80,spr_enemy_ratMagic,8,1,10,3,1,1,spell:Blink spell:Searing-Dart,
 Cultist Rat,60,spr_enemy_ratCultist,20,1,0,3,1,1,onStrike:scaleSelf:damage:1,
 Crumbler,30,spr_enemy_crumbler,40,20,0,10,1.5,1.5,onHit:scaleSelf:defense:-1,
 Grapple Rat,30,spr_enemy_ratGrappler,10,1,10,5,1.2,0.8,range:3 onStrike:pullOther,
