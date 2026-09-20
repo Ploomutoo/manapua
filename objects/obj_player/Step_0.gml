@@ -116,6 +116,11 @@ if(spellCasting.selected != -1)
 			case spellTargeting.allEnemy:
 			_targetList = spellCasting.targets
 			break;
+			
+			case spellTargeting.randomized:
+			var _pos = aimRandom(spellCasting.spellRange,spellCasting.valid)
+			_targetList = [createCursor(_pos[0],_pos[1])]
+			break;
 		}
 		
 		if(_validCast)
@@ -151,7 +156,8 @@ if(spellCasting.selected != -1)
 						caster : _caster,
 						hitsPlayer : true,
 						damage : _damage,
-						outBuff : _outBuffEval
+						outBuff : _outBuffEval,
+						special : spellCasting.special
 					})
 				}
 			}
@@ -165,7 +171,8 @@ if(spellCasting.selected != -1)
 						caster : _caster,
 						hitsPlayer : true,
 						damage : _damage,
-						outBuff : _outBuffEval
+						outBuff : _outBuffEval,
+						special : spellCasting.special
 					})
 				}
 			}
@@ -255,6 +262,7 @@ if(keyboard_check_pressed(ord("M"))) //Aim spell
 			spellCasting.targets = getVisible(floor(x/global.cellSize),floor(y/global.cellSize),spellCasting.spellRange)
 			break;
 			case spellTargeting.selfEnch:
+			case spellTargeting.randomized:
 			spellCasting.targets = [self]
 			break;
 			case spellTargeting.selfRadius:

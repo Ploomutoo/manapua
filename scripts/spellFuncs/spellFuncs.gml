@@ -125,6 +125,9 @@ function Spell(_name) constructor
 		cooldown.length = real(_spellGrid[# 15,_index])
 	}
 	
+	var _specialString = _spellGrid[# 16,_index]
+	special = string_split(_specialString," ",true)
+	
 	ds_grid_destroy(_spellGrid)
 }
 

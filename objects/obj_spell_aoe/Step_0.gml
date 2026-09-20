@@ -32,5 +32,11 @@ if(!fired && image_index>3)
 		if(damage > 0) dealDamageInstance(damage,_targets[_i],caster,1,0,0,0)
 	}
 	
+	//show_debug_message("Special is {0}",special)
+	if(array_length(special)>0)
+	{
+		runArray(special)	
+	}
+	
 	fired = true
 }

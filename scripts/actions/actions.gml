@@ -140,7 +140,8 @@ function cast(_spell)
 		caster : _caster,
 		hitsPlayer : true,
 		damage : _damage,
-		outBuff : _outBuffEval
+		outBuff : _outBuffEval,
+		special : _spell.special
 	})
 	
 	soundRand(_sound)

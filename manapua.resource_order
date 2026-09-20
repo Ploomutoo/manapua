@@ -150,6 +150,7 @@
     {"name":"string_width_scribble_ext","order":5,"path":"scripts/string_width_scribble_ext/string_width_scribble_ext.yy",},
     {"name":"string_width_scribble","order":4,"path":"scripts/string_width_scribble/string_width_scribble.yy",},
     {"name":"takePoison","order":2,"path":"scripts/takePoison/takePoison.yy",},
+    {"name":"teleportSelf","order":5,"path":"scripts/teleportSelf/teleportSelf.yy",},
     {"name":"tilesetDoesRandom","order":6,"path":"scripts/tilesetDoesRandom/tilesetDoesRandom.yy",},
     {"name":"toggleEquipped","order":2,"path":"scripts/toggleEquipped/toggleEquipped.yy",},
     {"name":"unconfused","order":1,"path":"scripts/unconfused/unconfused.yy",},

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"teleportSelf",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"teleportSelf",
+  "parent":{
+    "name":"enemy_funcs",
+    "path":"folders/Scripts/enemy_funcs.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

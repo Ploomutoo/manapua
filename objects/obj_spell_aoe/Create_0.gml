@@ -4,4 +4,4 @@ image_xscale = _scale
 image_yscale = _scale
 
 fired = false;
-//soundRand(sndBoom)
+//special = []
