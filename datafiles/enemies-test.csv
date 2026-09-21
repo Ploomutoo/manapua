@@ -4,7 +4,7 @@ Rat with Gun,80,spr_enemy_ratGun,10,1,10,10,1.5,1.2,range:3 behavior:ranger ,Ran
 Magic Rat,80,spr_enemy_ratMagic,8,1,10,3,1,1,spell:Blink spell:Searing-Dart,
 Cultist Rat,60,spr_enemy_ratCultist,20,1,0,3,1,1,onStrike:scaleSelf:damage:1,
 Crumbler,30,spr_enemy_crumbler,40,20,0,10,1.5,1.5,onHit:scaleSelf:defense:-1,
-Grapple Rat,30,spr_enemy_ratGrappler,10,1,10,5,1.2,0.8,range:3 onStrike:pullOther,
+Grapple Rat,30,spr_enemy_ratGrappler,10,1,10,5,1.2,0.8,range:3 onStrike:pullOther:addParam,
 Spicy Rat,30,spr_enemy_ratSpicy,10,5,0,10,1.5,1,range:2 onStrike:dotOther:Burning,
 Vampire Rat,30,spr_enemy_ratDracula,30,5,10,8,1.2,1,lifesteal:3,
 Freeze Rat,30,spr_enemy_ratFreeze,30,10,0,10,1.5,1.5,dmgType:Ice onStrike:freezeFood:1,

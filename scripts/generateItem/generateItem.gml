@@ -8,7 +8,7 @@ function generateFloorItem(_floor,_rarityBonus = 0){
 		case "Garden":
 		default:
 		
-			_weaponList = load_csv("items-test.csv")
+			_weaponList = load_csv("itempools-test.csv")
 			break;
 	}
 	var _weights = []

@@ -67,6 +67,7 @@ function meleeAttack(_isWeak = false)
 	if(_isWeak) _damage *= 0.5
 	
 	dealDamage(_damage,target)
+	//runArray(effectiveStats.onStrike,[target])
 	
 	//visuals
 	drawX += (target.x-drawX)/2

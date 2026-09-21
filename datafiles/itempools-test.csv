@@ -1,34 +1,4 @@
-Name,Roll Weight,Slot/Type,Sprite,Base Damage,Kinetic Damage,Min Interval,Weight Class,Weight Dependent Interval,Special Qualities,Special Magnitude
-Rusty Dagger,100,Weapon,spr_item_weapon_placeholder,10,0,1,S,0,sneakStab,3
-Wood Club,80,Weapon,spr_item_weapon_placeholder,14,0,1,M,1,sneakStun,2
-Shortspear,80,Weapon,spr_weapon_spear,12,0,1.2,M,0.5,reach,1
-Bigass Club,80,Weapon,spr_weapon_club_4,20,0,1.5,2XL,0.5,,
-Cudgel,60,Weapon,spr_item_weapon_placeholder,16,0,1,M,0.4,sneakStun,3
-Shortsword,60,Weapon,spr_item_weapon_placeholder,14,0,1,S,0,,
-Quick Blade,40,Weapon,spr_item_weapon_placeholder,5,0,0.6,L,0.4,multistrike,1
-Trishula,10,Weapon,spr_weapon_spear,10,0,1.5,L,0.5,reach|multistrike,1|2
-Popper,10,Weapon,spr_item_weapon_placeholder,15,0,1.5,L,0,%critChance|critDamage,0.5|500
-Fairy Wand,10,Weapon,spr_weapon_spear,5,0,1,L,0.5,hitCast|reduceSpellCD,15|1
-Devouring Blade,1000,Weapon,spr_item_weapon_placeholder,50,0,1.5,2XL,1.5,@onKill:devouring_blade,1
-Name,Roll Weight,Slot/Type,Sprite,Base Defense,Weight Class,Special Qualities,Special Magnitude,Armor Skin,,
-Rags,100,Armor,spr_item_armor_placeholder,1,S,moveDelay|dodge,-0.2|5,rags,,
-Big Rags,60,Armor,spr_item_armor_placeholder,3,L,dodge,5,scalemail,,
-Itchy Gambeson,100,Armor,spr_item_armor_placeholder,5,M,,,gambeson,,
-Leather Cuirass,100,Armor,spr_item_armor_placeholder,5,M,,,leatherarmor,,
-Brigandine,60,Armor,spr_item_armor_placeholder,8,M,,,brigandine,,
-Dirty Robes,60,Armor,spr_item_armor_alchemistress,3,L,lifesteal,3,alchemistress,,
-Fairy-skin Armor,10,Armor,spr_item_armor_placeholder,8,S,dodge,5,fairyarmor,,
-Rusty Chestplate,40,Armor,spr_item_armor_placeholder,10,L,movespeed,-0.5,darksquire,,
-Name,Roll Weight,Slot/Type,Sprite,Special Qualities,Special Magnitude,,,,,
-Scab Ring,30,Ring,spr_item_ring_placeholder,lifesteal|defense,10|2,,,,,
-Copper Ring,30,Ring,spr_item_ring_placeholder,defense,4,,,,,
-Plastic Spider Ring,30,Ring,spr_item_ring_placeholder,moveDelay|dodge,-0.2|2,,,,,
-Recursive Ring,30,Ring,spr_item_ring_placeholder,multistrike|%dmgMod,1|0.75,,,,,
-Polymath Amulet,30,Amulet,spr_amulet_polymath,defense|max_hp|dodge|lifesteal|thorns,1|10|3|1|5,,,,,
-Marksman Amulet,30,Amulet,spr_amulet_polymath,critChance|critDamage|%wepDelay,20|50|1.2,,,,,
 Name,Roll Weight,Slot/Type,Sprite,Healing,Weight Gain,Special Qualities,Special Magnitude,,,
-Roll Potion,200,Consumable,,,,,,,,
-Roll Scroll,100,Consumable,,,,,,,,
 Cupcake,100,Consumable,spr_food_cupcake,30,15,,,,,
 Cake Slice,40,Consumable,spr_food_cake_slice,100,30,,,,,
 Whole Cake,20,Consumable,spr_food_cake,200,50,,,,,
@@ -48,3 +18,43 @@ Bean,10,Consumable,spr_food_bean,5,5,Pois Resist,1,,,
 Banana,5,Consumable,spr_food_banana,5,5,Elec Resist,1,,,
 Butter,30,Consumable,spr_food_butter,-10,100,,,,,
 Celery,30,Consumable,spr_food_celery,10,-100,,,,,
+Roll Potion,200,Consumable,,,,,,,,
+Roll Scroll,100,Consumable,,,,,,,,
+Name,Roll Weight,Slot/Type,Sprite,Base Damage,Kinetic Damage,Min Interval,Weight Class,Weight Dependent Interval,Special Qualities,Special Magnitude
+Rusty Dagger,100,Weapon,spr_item_weapon_placeholder,10,0,1,S,0,sneakStab,3
+Wood Club,80,Weapon,spr_item_weapon_placeholder,14,0,1,M,1,sneakStun,2
+Shortspear,80,Weapon,spr_weapon_spear,12,0,1.2,M,0.5,reach,1
+Bigass Club,80,Weapon,spr_weapon_club_4,20,0,1.5,2XL,0.5,,
+Cudgel,60,Weapon,spr_item_weapon_placeholder,16,0,1,M,0.4,sneakStun,3
+Shortsword,60,Weapon,spr_item_weapon_placeholder,14,0,1,S,0,,
+Quick Blade,40,Weapon,spr_item_weapon_placeholder,5,0,0.6,L,0.4,multistrike,1
+Trishula,10,Weapon,spr_weapon_spear,10,0,1.5,L,0.5,reach|multistrike,1|2
+Popper,10,Weapon,spr_item_weapon_placeholder,15,0,1.5,L,0,%critChance|critDamage,0.5|500
+Fairy Wand,10,Weapon,spr_weapon_spear,5,0,1,L,0.5,hitCast|reduceSpellCD,15|1
+Devouring Blade,10,Weapon,spr_item_weapon_placeholder,50,0,1.5,2XL,1.5,@onKill:devouring_blade,1
+Name,Roll Weight,Slot/Type,Sprite,Base Defense,Weight Class,Special Qualities,Special Magnitude,Armor Skin,,
+Rags,100,Armor,spr_item_armor_placeholder,1,S,moveDelay|dodge,-0.2|5,rags,,
+Big Rags,60,Armor,spr_item_armor_placeholder,3,L,dodge,5,scalemail,,
+Itchy Gambeson,100,Armor,spr_item_armor_placeholder,5,M,,,gambeson,,
+Leather Cuirass,100,Armor,spr_item_armor_placeholder,5,M,,,leatherarmor,,
+Brigandine,60,Armor,spr_item_armor_placeholder,8,M,,,brigandine,,
+Dirty Robes,60,Armor,spr_item_armor_alchemistress,3,L,lifesteal,3,alchemistress,,
+Fairy-skin Armor,10,Armor,spr_item_armor_placeholder,8,S,dodge,5,fairyarmor,,
+Rusty Chestplate,40,Armor,spr_item_armor_placeholder,10,L,movespeed,-0.5,darksquire,,
+Name,Roll Weight,Slot/Type,Sprite,Special Qualities,Special Magnitude,,,,,
+Scab Ring,30,Ring,spr_item_ring_placeholder,lifesteal|defense,10|2,,,,,
+Copper Ring,30,Ring,spr_item_ring_placeholder,defense,4,,,,,
+Plastic Spider Ring,30,Ring,spr_item_ring_placeholder,moveDelay|dodge,-0.2|2,,,,,
+Recursive Ring,30,Ring,spr_item_ring_placeholder,multistrike|%dmgMod,1|0.75,,,,,
+Polymath Amulet,30,Amulet,spr_amulet_polymath,defense|max_hp|dodge|lifesteal|thorns,1|10|3|1|5,,,,,
+Marksman Amulet,30,Amulet,spr_amulet_polymath,critChance|critDamage|%wepDelay,20|50|1.2,,,,,
+Name,Roll Weight,Slot/Type,Sprite,Spells,,,,,,
+Grill Master’s Handbook,10,Spellbook,spr_book_bbq,Fireball|Searing-Dart|Meteor-Storm,,,,,,
+Flippin’ Burgs,10,Spellbook,spr_book_bbq,Blink|Seismic-Stomp,,,,,,
+Death by Chocolate,10,Spellbook,spr_book_bbq,Soul-Bolt|Shadow-Dart|Desperate-Bolt,,,,,,
+Shocking Kitchen Secrets,10,Spellbook,spr_book_bbq,Static-Dart|Seismic-Stomp,,,,,,
+Quick Weekday Recipes,10,Spellbook,spr_book_bbq,Lash|Flurried-Strike,,,,,,
+Cooking for Dummies,10,Spellbook,spr_book_bbq,Stupid-Beam|Confuse,,,,,,
+Book of British Cooking,10,Spellbook,spr_book_bbq,Toxic-Dart|Dig,,,,,,
+Bayou Soul Food,10,Spellbook,spr_book_bbq,Heavy-Strike|Glaciate,,,,,,
+Seafood Cookbook,10,Spellbook,spr_book_bbq,Meathook|Searing-Dart|Stun,,,,,,

@@ -210,7 +210,7 @@ else
 			if(tilemap_get(global.walls,_check[0]/64,_check[1]/64)>0) break;
 		}
 	
-		if(instance_exists(obstacle))
+		if(instance_exists(obstacle)) //Hitting stuff
 		{
 			dealDamage(damage,obstacle,effectiveStats.multistrike)
 			drawX += (obstacle.x-drawX)/2
