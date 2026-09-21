@@ -1,5 +1,7 @@
 function calcEffectiveStats()
 {
+	show_debug_message("Calculating effective stats from {0}",debug_get_callstack())
+	
 	//Default values
 	var _hpRatio = hp/effectiveStats.max_hp
 	effectiveStats = variable_clone(baseStats) 

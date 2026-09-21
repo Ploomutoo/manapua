@@ -64,9 +64,6 @@
     {"link":"io.gamemaker.gm_filter_ripples-1.0.0","name":"io.gamemaker.gm_filter_ripples-1.0.0","path":"io.gamemaker.gm_filter_ripples-1.0.0.yyp",},
   ],
   "IncludedFiles":[
-    {"$GMIncludedFile":"","%Name":".~lock.enemies-test.ods#","CopyToMask":-1,"filePath":"datafiles","name":".~lock.enemies-test.ods#","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
-    {"$GMIncludedFile":"","%Name":".~lock.itempools.ods#","CopyToMask":-1,"filePath":"datafiles","name":".~lock.itempools.ods#","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
-    {"$GMIncludedFile":"","%Name":".~lock.spell-index.ods#","CopyToMask":-1,"filePath":"datafiles","name":".~lock.spell-index.ods#","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"Confusion.ini","CopyToMask":-1,"filePath":"datafiles/Buffs","name":"Confusion.ini","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"Divinity.ini","CopyToMask":-1,"filePath":"datafiles/Buffs","name":"Divinity.ini","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"Dull.ini","CopyToMask":-1,"filePath":"datafiles/Buffs","name":"Dull.ini","resourceType":"GMIncludedFile","resourceVersion":"2.0",},

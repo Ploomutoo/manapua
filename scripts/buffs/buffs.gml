@@ -142,6 +142,9 @@ function decayBuff(_category,_amt = 1)
 		
 				delete _buffArray[_i]
 				array_delete(_buffArray,_i,1)
+				
+				if(object_index = obj_player) calcEffectiveStats()
+				else calcEffectiveEnemy()
 			}
 		}
 	}
@@ -149,7 +152,4 @@ function decayBuff(_category,_amt = 1)
 	{
 		show_debug_message("No such buff category as {0}!",_category)	
 	}
-	
-	if(object_index = obj_player) calcEffectiveStats()
-	else calcEffectiveEnemy()
 }

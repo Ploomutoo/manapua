@@ -31,6 +31,9 @@ function applyStat(_special,_amt)
 	{
 		_special = string_delete(_special,0,1)
 		_percent = true
+		
+		_amt = real(_amt)
+		show_debug_message("Multiplying by {0}",_amt)
 	}
 	else if(_firstChar="=")
 	{
@@ -50,6 +53,8 @@ function applyStat(_special,_amt)
 		{
 			if(_percent)
 			{  
+				//show_debug_message("Gonna set {0} to {1}",_special,ceil(_read * _amt))
+				//show_debug_message("From {0}",debug_get_callstack())
 				struct_set(effectiveStats, _special, ceil(_read * _amt));
 			}
 			else struct_set(effectiveStats, _special, _read + _amt);
