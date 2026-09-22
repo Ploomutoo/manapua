@@ -3,5 +3,5 @@ z = 0;
 hide = false;
 mousedOver = false;
 
-item = generateFloorItem(0)
+item = generateFloorItem()
 mousedOver = false

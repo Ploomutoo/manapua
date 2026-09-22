@@ -133,9 +133,18 @@ function Spell(_name) constructor
 	if(array_length(special)>0)
 	{
 		//hacky but it works
-		var _suffix = string_copy(_specialString,string_length(_specialString)-3,4)
+		var _firstParam = string_split(special[0],":",true)		
+		var _suffix = string_copy(_firstParam[0],string_length(_firstParam[0])-3,4)
 		if(_suffix = "Self") selfSpecial = true
-		//show_debug_message("{0} has a self special value of {1} in string {2}",name,selfSpecial,_suffix)	
+		//mshow_debug_message("{0} has a self special value of {1} in string {2}",name,selfSpecial,_suffix)	
+	}
+	
+	var _multicastString = string_split(_spellGrid[# 17,_index],"|",true)
+	if(array_length(_multicastString) < 2) multicast = [1,0]
+	// [Cast times | Delay between]
+	else 
+	{
+		multicast = [real(_multicastString[0]),real(_multicastString[1])]
 	}
 	
 	ds_grid_destroy(_spellGrid)

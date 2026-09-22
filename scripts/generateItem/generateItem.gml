@@ -1,4 +1,4 @@
-function generateFloorItem(_floor,_rarityBonus = 0){
+function generateFloorItem(_floor = "Garden",_rarityBonus = 0){
 	
 	var _out = new Item()
 	static _weaponList = ds_grid_create(0,0)
@@ -64,6 +64,10 @@ function generateFloorItem(_floor,_rarityBonus = 0){
 			_out.weightgain = _weaponList[# 5, _type]
 			_out.funcUse = eatFood
 			_out = parseSpecials(_out,_weaponList[# 6, _type],_weaponList[# 7, _type])
+			break;
+			
+		case "Spellbook":
+			_out.spells = string_split(_weaponList[# 4, _type],"|",true)
 			break;
 	}
 	_out.tooltip = generateTooltip(_out)
@@ -141,7 +145,7 @@ function weightedRoll(_array,_bonus = 0)
 		_maxRoll += _array[_i,1]	
 	}
 		
-	var _roll = irandom(_maxRoll)+_bonus
+	var _roll = min(irandom(_maxRoll)+_bonus,_maxRoll)
 	var _outIndex = 0
 	
 	_i = _array[0,1]

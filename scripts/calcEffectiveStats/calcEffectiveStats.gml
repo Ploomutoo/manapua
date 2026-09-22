@@ -78,6 +78,11 @@ function calcEffectiveStats()
 		
 			armorskin = _equipped[_i].skinName
 		}
+		else if(_equipped[_i].slot = "Spellbook")
+		{
+			show_debug_message("Reading spellbook {0}",_equipped[_i].name)	
+			effectiveStats.library = _equipped[_i].spells
+		}
 		
 		effectiveStats.defense += _equipped[_i].defense
 		
@@ -85,8 +90,6 @@ function calcEffectiveStats()
 		{
 			applyStat(_equipped[_i].special[_i2],_equipped[_i].specialAmt[_i2])
 		}
-		//array_delete(_equipped,_i,1)
-		//break;
 	}
 
 	buffList.allBuffs = array_concat(

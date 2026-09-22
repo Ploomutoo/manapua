@@ -5,6 +5,7 @@ event_inherited()
 iFrames = 0;
 drawX = x
 drawY = y
+inputBuffer = -1
 
 inventory = []
 invSize = 15
@@ -62,8 +63,9 @@ baseStats = //all stats
 	onStrike : [],
 	onSeeDeath : [],
 	onHit : ["playerTakeDamage:addParam"],
-	onDeath : []
+	onDeath : [],
 	
+	library : ["Blink","Meathook","Meteor-Storm","Mega-Meteor-Storm","Minigun"]
 }
 
 effectiveStats = baseStats 
@@ -97,7 +99,8 @@ characterPane =
 }
 
 //Spell!!! ------------------------------------------
-spellCasting = new Spell("Blink")
+libraryOn = 0
+spellCasting = new Spell(baseStats.library[libraryOn])
 
 global.player = self
 global.fog = layer_tilemap_get_id("ts_fog")

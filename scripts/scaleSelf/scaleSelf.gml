@@ -41,5 +41,5 @@ function scaleSelf(_stat,_amt)
 		show_debug_message("Requested stat "+_stat+" not found!")	
 	}
 	calcEffectiveEnemy()
-	show_debug_message("{0}'s {1} is now {2}!",effectiveStats.name,_stat,struct_get(effectiveStats,_stat))
+	//show_debug_message("{0}'s {1} is now {2}!",effectiveStats.name,_stat,struct_get(effectiveStats,_stat))
 }

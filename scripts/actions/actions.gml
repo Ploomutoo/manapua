@@ -81,21 +81,7 @@ function cast(_spell)
 {
 	//if in range, blast target
 	//show_debug_message("{0} casts {1}!",effectiveStats.name,_spell.name)
-	
-	var _caster = self
-	var _damage = evalSpellDamage(_spell.damage)
-	var _outBuffEval = 
-	{
-		name : _spell.outBuff.name,
-		duration : -1,
-		strength : -1
-	}
-	if(_outBuffEval.name != "") 
-	{
-		if(is_array(_spell.outBuff.duration)) _outBuffEval.duration = evalSpellDamage(_spell.outBuff.duration)
-		if(is_array(_spell.outBuff.strength)) _outBuffEval.strength = evalSpellDamage(_spell.outBuff.strength)
-	}
-	
+		
 	var _aim = []
 	switch(_spell.targetStyle)
 	{
@@ -105,31 +91,10 @@ function cast(_spell)
 		
 		default:
 		_aim = [target.x,target.y]
-		instance_create_layer(x,y,"effects",obj_effect_tracer,
-		{
-			girth : 5,
-			points : 
-			{
-				x1 : x+global.cellSize/2,
-				y1 : y+global.cellSize/2,
-				x2 : target.x+global.cellSize/2,
-				y2 : target.y+global.cellSize/2
-			}
-		})
 		break;
 	}
 		
-	instance_create_layer(_aim[0],_aim[1],"effects",obj_spell_aoe,
-	{
-		size : _spell.diameter,
-		caster : _caster,
-		hitsPlayer : true,
-		damage : _damage,
-		outBuff : _outBuffEval,
-		element : _spell.element,
-		special : _spell.special,
-		selfSpecial : _spell.selfSpecial
-	})
+	createSpellInst(_aim[0],_aim[1],_spell,self)
 	
 	actionTimer += 1
 	lastActionDuration = 1

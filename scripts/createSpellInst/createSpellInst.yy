@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"spellFuncs",
+  "%Name":"createSpellInst",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"spellFuncs",
+  "name":"createSpellInst",
   "parent":{
     "name":"spell_funcs",
     "path":"folders/Scripts/spell_funcs.yy",

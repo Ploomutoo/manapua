@@ -13,8 +13,30 @@ if(drawY!=y)
 	drawY += (y-drawY)/5	
 }
 
+inputBuffer = keyboard_key
+
 if(keyboard_check(vk_shift)) exit;
 //Do not execute remaining code if trying to activate a cheat
+
+if(waitTime > 0 || alarm[0] > 0) exit;
+//Do not execute remaining code if it is the enemy turn
+
+if(keyboard_check_pressed(keyboard_key)) 
+{
+	if(keyboard_key >= ord("1") && keyboard_key <= ord("9")) 
+	{
+		var _num = keyboard_key - ord("1")
+		if(_num < array_length(effectiveStats.library)) 
+		{
+			delete spellCasting
+			
+			libraryOn = _num
+			//show_debug_message("Readying spell {0}",effectiveStats.library[libraryOn])
+			spellCasting = new Spell(effectiveStats.library[libraryOn])
+			textPopup(x+global.cellSize/2,y+global.cellSize/2,effectiveStats.library[libraryOn])
+		}
+	}
+}
 
 if(spellCasting.selected != -1)
 {
@@ -116,30 +138,10 @@ if(spellCasting.selected != -1)
 			case spellTargeting.allEnemy:
 			_targetList = spellCasting.targets
 			break;
-			
-			case spellTargeting.randomized:
-			var _pos = aimRandom(spellCasting.spellRange,spellCasting.valid)
-			_targetList = [createCursor(_pos[0],_pos[1])]
-			break;
 		}
 		
 		if(_validCast)
 		{
-			var _caster = self
-			var _damage = evalSpellDamage(spellCasting.damage)
-			
-			var _outBuffEval = 
-			{
-				name : spellCasting.outBuff.name,
-				duration : -1,
-				strength : -1
-			}
-			if(_outBuffEval.name != "") 
-			{
-				if(is_array(spellCasting.outBuff.duration)) _outBuffEval.duration = evalSpellDamage(spellCasting.outBuff.duration)
-				if(is_array(spellCasting.outBuff.strength)) _outBuffEval.strength = evalSpellDamage(spellCasting.outBuff.strength)
-			}
-			
 			if(spellCasting.targetStyle = spellTargeting.directional) 
 			{
 				var _vector = [spellCasting.targets[0].x-x,spellCasting.targets[0].y-y]
@@ -150,34 +152,14 @@ if(spellCasting.selected != -1)
 					if(!spellCasting.valid.onWall
 					&& tilemap_get_at_pixel(global.walls,_place[0],_place[1])>0) break;
 					
-					instance_create_layer(_place[0],_place[1],"effects",obj_spell_aoe,
-					{
-						size : spellCasting.diameter,
-						caster : _caster,
-						hitsPlayer : true,
-						damage : _damage,
-						outBuff : _outBuffEval,
-						special : spellCasting.special,
-						element : spellCasting.element,
-						selfSpecial : spellCasting.selfSpecial
-					})
+					createSpellInst(_place[0],_place[1],spellCasting,self)
 				}
 			}
 			else
 			{
 				for(var _i = 0; _i < array_length(_targetList); _i++)
 				{
-					instance_create_layer(_targetList[_i].x,_targetList[_i].y,"effects",obj_spell_aoe,
-					{
-						size : spellCasting.diameter,
-						caster : _caster,
-						hitsPlayer : true,
-						damage : _damage,
-						outBuff : _outBuffEval,
-						special : spellCasting.special,
-						element : spellCasting.element,
-						selfSpecial : spellCasting.selfSpecial
-					})
+					createSpellInst(_targetList[_i].x,_targetList[_i].y,spellCasting,self)
 				}
 			}
 			if(spellCasting.selfBuff.name != "") giveBuff(self,spellCasting.selfBuff.name,
@@ -192,7 +174,7 @@ if(spellCasting.selected != -1)
 else
 {
 	var desiredPos = [x,y]
-	if(inp_move && waitTime = 0)
+	if(inp_move)
 	{
 		if(abs(inp_x)>0)
 		{
@@ -251,6 +233,7 @@ if(keyboard_check_pressed(ord("C"))) //Toggle Character Pane
 if(keyboard_check_pressed(ord("M"))) //Aim spell
 {
 	characterPane.open = false
+	spellCasting.targets = []
 	
 	if(spellCasting.selected != -1) 
 	{
@@ -341,3 +324,5 @@ else if(keyboard_check_pressed(ord("G"))) //Pick up floor item or go up stairs
 		with(global.bigSprite) skeleton_animation_set("no",0)
 	}
 }
+
+inputBuffer = -1

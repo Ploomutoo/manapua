@@ -14,6 +14,16 @@ function toggleEquipped(_wearer)
 			clock(3)
 			break;
 			
+			case "Spellbook":
+			var _spell = spells[0]
+			with(global.player)
+			{
+				libraryOn = 0
+				spellCasting = new Spell(_spell)
+				textPopup(x+global.cellSize/2,y+global.cellSize/2,_spell)
+			}	
+			break;
+			
 			default:
 			soundRand(sndDon)
 			clock(1)
@@ -22,7 +32,18 @@ function toggleEquipped(_wearer)
 	}
 	else
 	{
+		if(slot = "Spellbook")
+		{
+			with(global.player)
+			{
+				libraryOn = 0
+				spellCasting = new Spell(baseStats.library[0])
+				//textPopup(x+global.cellSize/2,y+global.cellSize/2,baseStats.library[0])
+			}	
+		}
 		soundRand(sndDoff)
 	}
+	
+	
 	equipped = !equipped
 }
