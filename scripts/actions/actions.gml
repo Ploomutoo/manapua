@@ -118,34 +118,18 @@ function cast(_spell)
 		})
 		break;
 	}
-	
-	var _sprite
-	var _sound
-	switch(_spell.element)
-	{
-		case "Fire":
-		_sprite = spr_explosion
-		_sound = sndBoom
-		break;
 		
-		default:
-		_sprite = spr_explosion_arcane
-		_sound = sndArcane
-		break;
-	}
-	
 	instance_create_layer(_aim[0],_aim[1],"effects",obj_spell_aoe,
 	{
-		sprite_index : _sprite,
 		size : _spell.diameter,
 		caster : _caster,
 		hitsPlayer : true,
 		damage : _damage,
 		outBuff : _outBuffEval,
-		special : _spell.special
+		element : _spell.element,
+		special : _spell.special,
+		selfSpecial : _spell.selfSpecial
 	})
-	
-	soundRand(_sound)
 	
 	actionTimer += 1
 	lastActionDuration = 1

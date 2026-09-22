@@ -157,7 +157,9 @@ if(spellCasting.selected != -1)
 						hitsPlayer : true,
 						damage : _damage,
 						outBuff : _outBuffEval,
-						special : spellCasting.special
+						special : spellCasting.special,
+						element : spellCasting.element,
+						selfSpecial : spellCasting.selfSpecial
 					})
 				}
 			}
@@ -172,7 +174,9 @@ if(spellCasting.selected != -1)
 						hitsPlayer : true,
 						damage : _damage,
 						outBuff : _outBuffEval,
-						special : spellCasting.special
+						special : spellCasting.special,
+						element : spellCasting.element,
+						selfSpecial : spellCasting.selfSpecial
 					})
 				}
 			}

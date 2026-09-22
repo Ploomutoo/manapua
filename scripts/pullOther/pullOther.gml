@@ -19,14 +19,14 @@ function pullOther(_target)
 	}
 }
 
-function findEmptyAdjacent()
+function findEmptyAdjacent(_adjacentTo = self)
 {
 	var _cs = global.cellSize
 	var _places = [
-	[x+_cs,y],
-	[x-_cs,y],
-	[x,y+_cs],
-	[x,y-_cs]]
+	[_adjacentTo.x+_cs,_adjacentTo.y],
+	[_adjacentTo.x-_cs,_adjacentTo.y],
+	[_adjacentTo.x,_adjacentTo.y+_cs],
+	[_adjacentTo.x,_adjacentTo.y-_cs]]
 	
 	var _out = []
 	for(var _i = 0; _i < array_length(_places); _i++)

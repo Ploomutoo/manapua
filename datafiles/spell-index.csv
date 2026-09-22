@@ -16,7 +16,7 @@ Shadow-Dart,singleEnemy,Dark,20 int*5,,5,,,,,,,,Fires a deadly dart,turns,5,
 Toxic-Dart,singleEnemy,Pois,5,,5,,Poison,3,20 int*5,,,,Fires a dart that inflicts delayed damage,turns,5,
 Static-Dart,singleEnemy,Elec,15 int*5,,5,,Stun,0.5,,,,,Fires a stunning dart,,,
 Desperate-Bolt,directional,Dark,50 hp*-1,,3,,,,,Mortality,,,A beam that scales negatively with health. Increases incoming damage for 5 turns,healing,50,
-Blink,random,,,,5,noPlayer noWall noEnemy,,,,,,,Teleport randomly within your line of sight,,,teleportSelf
+Blink,random,Arcane,,,5,noPlayer noWall noEnemy,,,,,,,Teleport randomly within your line of sight,,,teleportSelf
 Meatball Meteor Storm,random,Fire,20 int*5,3,5,,,,,,,,Calls down a swarm of meteors to rain down randomly,,,multicast:3
 Stun,singleEnemy,Elec,,,1,,,,,,,,Stuns an adjacent enemy,,,stun:1.5
-Meathook,singleEnemy,,15,,3,,,,,,,,Pulls an enemy to a random adjacent tile,,,hookOther
+Meathook,singleEnemy,,15,,3,,,,,,,,Pulls an enemy to a random adjacent tile,,,hookOther:addParam

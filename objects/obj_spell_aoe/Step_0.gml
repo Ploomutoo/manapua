@@ -30,13 +30,11 @@ if(!fired && image_index>3)
 			giveBuff(_targets[_i],outBuff.name,outBuff.duration,outBuff.strength)
 		}
 		if(damage > 0) dealDamageInstance(damage,_targets[_i],caster,1,0,0,0)
+		if(!selfSpecial && array_length(special)>0)
+		{
+			runArray(special,[_targets[_i]])	
+		}
 	}
-	
-	//show_debug_message("Special is {0}",special)
-	if(array_length(special)>0)
-	{
-		runArray(special)	
-	}
-	
+	if(selfSpecial) runArray(special,[caster])
 	fired = true
 }

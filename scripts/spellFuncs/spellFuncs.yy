@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"spellFuncs",
   "parent":{
-    "name":"player",
-    "path":"folders/Scripts/game/player.yy",
+    "name":"game",
+    "path":"folders/Scripts/game.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

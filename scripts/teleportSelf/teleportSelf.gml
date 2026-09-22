@@ -1,4 +1,4 @@
-function teleportSelf()
+function teleportSelf(_target)
 {
 	if(!instance_exists(caster)) exit;
 	//soundRand(sndWin)

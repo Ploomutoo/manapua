@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"teleportSelf",
+  "%Name":"hookOther",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"teleportSelf",
+  "name":"hookOther",
   "parent":{
     "name":"spell_funcs",
     "path":"folders/Scripts/spell_funcs.yy",

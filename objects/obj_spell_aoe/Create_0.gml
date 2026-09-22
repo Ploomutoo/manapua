@@ -5,3 +5,14 @@ image_yscale = _scale
 
 fired = false;
 //special = []
+switch(element)
+{
+	case "Fire":
+	soundRand(sndBoom);
+	break;
+	
+	case "Arcane":
+	sprite_index = spr_explosion_arcane;
+	soundRand(sndArcane)
+	break;
+}

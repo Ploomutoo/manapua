@@ -128,6 +128,16 @@ function Spell(_name) constructor
 	var _specialString = _spellGrid[# 16,_index]
 	special = string_split(_specialString," ",true)
 	
+	
+	selfSpecial = false
+	if(array_length(special)>0)
+	{
+		//hacky but it works
+		var _suffix = string_copy(_specialString,string_length(_specialString)-3,4)
+		if(_suffix = "Self") selfSpecial = true
+		//show_debug_message("{0} has a self special value of {1} in string {2}",name,selfSpecial,_suffix)	
+	}
+	
 	ds_grid_destroy(_spellGrid)
 }
 
