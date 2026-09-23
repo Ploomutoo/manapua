@@ -5,7 +5,8 @@ event_inherited()
 iFrames = 0;
 drawX = x
 drawY = y
-inputBuffer = -1
+inputBuffer = 0
+cheatInput = ""
 
 inventory = []
 invSize = 15
@@ -110,6 +111,7 @@ global.levelSeed = random_get_seed()
 global.level = 0
 global.cheat = parameter_count()==3&&string_count("GMS2TEMP",parameter_string(2))
 global.enemyGenList = load_csv("enemies-test.csv")
+global.itemSpawnList = load_csv("itempools-test.csv")
 
 enum gamespeed 
 {

@@ -18,3 +18,5 @@ if(hp!=effectiveStats.max_hp)
 	
 	draw_set_color(c_white)
 }
+
+//draw_text(x,y-16,string(inputBuffer))

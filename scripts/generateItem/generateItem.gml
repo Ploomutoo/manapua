@@ -1,73 +1,64 @@
 function generateFloorItem(_floor = "Garden",_rarityBonus = 0){
 	
 	var _out = new Item()
-	static _weaponList = ds_grid_create(0,0)
 	
-	switch(_floor)
-	{
-		case "Garden":
-		default:
-		
-			_weaponList = load_csv("itempools-test.csv")
-			break;
-	}
 	var _weights = []
 	var _weightsOn = 0
-	for(var _parser = 0; _parser < ds_grid_height(_weaponList); _parser++)
+	for(var _parser = 0; _parser < ds_grid_height(global.itemSpawnList); _parser++)
 	{
-		if(_weaponList[# 0, _parser] != "Name")
+		if(global.itemSpawnList[# 0, _parser] != "Name")
 		{
-			_weights[_weightsOn] = [_parser,real(_weaponList[# 1, _parser])]
+			_weights[_weightsOn] = [_parser,real(global.itemSpawnList[# 1, _parser])]
 			_weightsOn++
 		}
 	}
 	var _type = weightedRoll(_weights,_rarityBonus)	
 	
-	_out.name = _weaponList[# 0, _type]
+	_out.name = global.itemSpawnList[# 0, _type]
 	if(_out.name = "Roll Potion" || _out.name = "Roll Scroll")
 	{
 		_out = generatePotion()
 		return(_out)
 	}
 	
-	_out.sprite = asset_get_index(_weaponList[# 3, _type])
-	_out.slot	= _weaponList[# 2, _type]
+	_out.sprite = asset_get_index(global.itemSpawnList[# 3, _type])
+	_out.slot	= global.itemSpawnList[# 2, _type]
 	switch(_out.slot)
 	{
 		case "Weapon":
 		
-			_out.damage			= real(_weaponList[# 4, _type])
-			_out.kineticdamage	= real(_weaponList[# 5, _type])
-			_out.interval		= real(_weaponList[# 6, _type])
-			_out.weightclass	= parseWeightclass(_weaponList[# 7, _type])
-			_out.weightinterval	= real(_weaponList[# 8, _type])
+			_out.damage			= real(global.itemSpawnList[# 4, _type])
+			_out.kineticdamage	= real(global.itemSpawnList[# 5, _type])
+			_out.interval		= real(global.itemSpawnList[# 6, _type])
+			_out.weightclass	= parseWeightclass(global.itemSpawnList[# 7, _type])
+			_out.weightinterval	= real(global.itemSpawnList[# 8, _type])
 			
-			_out = parseSpecials(_out,_weaponList[# 9, _type],_weaponList[# 10, _type])
+			_out = parseSpecials(_out,global.itemSpawnList[# 9, _type],global.itemSpawnList[# 10, _type])
 			break;
 			
 		case "Armor":
-			_out.defense		= real(_weaponList[# 4, _type])
-			_out.weightclass	= parseWeightclass(_weaponList[# 5, _type])
-			_out.skinName		= _weaponList[# 8, _type]
+			_out.defense		= real(global.itemSpawnList[# 4, _type])
+			_out.weightclass	= parseWeightclass(global.itemSpawnList[# 5, _type])
+			_out.skinName		= global.itemSpawnList[# 8, _type]
 			
-			_out = parseSpecials(_out,_weaponList[# 6, _type],_weaponList[# 7, _type])
+			_out = parseSpecials(_out,global.itemSpawnList[# 6, _type],global.itemSpawnList[# 7, _type])
 			break;
 			
 		case "Ring":
 		case "Amulet":
-			_out = parseSpecials(_out,_weaponList[# 4, _type],_weaponList[# 5, _type])
+			_out = parseSpecials(_out,global.itemSpawnList[# 4, _type],global.itemSpawnList[# 5, _type])
 			break;
 			
 		case "Consumable":
 			_out.slot = "Consumable"
-			_out.healing = _weaponList[# 4, _type]
-			_out.weightgain = _weaponList[# 5, _type]
+			_out.healing = global.itemSpawnList[# 4, _type]
+			_out.weightgain = global.itemSpawnList[# 5, _type]
 			_out.funcUse = eatFood
-			_out = parseSpecials(_out,_weaponList[# 6, _type],_weaponList[# 7, _type])
+			_out = parseSpecials(_out,global.itemSpawnList[# 6, _type],global.itemSpawnList[# 7, _type])
 			break;
 			
 		case "Spellbook":
-			_out.spells = string_split(_weaponList[# 4, _type],"|",true)
+			_out.spells = string_split(global.itemSpawnList[# 4, _type],"|",true)
 			break;
 	}
 	_out.tooltip = generateTooltip(_out)

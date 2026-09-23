@@ -1,9 +1,3 @@
-#region setting inputs
-var inp_x = keyboard_check_pressed(ord("D")) - keyboard_check_pressed(ord("A"));
-var inp_y = keyboard_check_pressed(ord("S")) - keyboard_check_pressed(ord("W"));
-var inp_move = abs(inp_x) || abs(inp_y);
-#endregion
-
 if(drawX!=x)
 {
 	drawX += (x-drawX)/5	
@@ -13,7 +7,14 @@ if(drawY!=y)
 	drawY += (y-drawY)/5	
 }
 
-inputBuffer = keyboard_key
+if(keyboard_key != 0) 
+{
+	if(keyboard_check_pressed(keyboard_key)) 
+	{
+		inputBuffer = keyboard_key
+		//show_debug_message("Input {0}",inputBuffer)
+	}
+}
 
 if(keyboard_check(vk_shift)) exit;
 //Do not execute remaining code if trying to activate a cheat
@@ -21,11 +22,21 @@ if(keyboard_check(vk_shift)) exit;
 if(waitTime > 0 || alarm[0] > 0) exit;
 //Do not execute remaining code if it is the enemy turn
 
-if(keyboard_check_pressed(keyboard_key)) 
+var inp_x = 0, inp_y = 0
+switch(inputBuffer)
 {
-	if(keyboard_key >= ord("1") && keyboard_key <= ord("9")) 
+	case ord("D"): inp_x++; break;
+	case ord("A"): inp_x--; break;
+	case ord("S"): inp_y++; break;
+	case ord("W"): inp_y--; break;
+}
+var inp_move = abs(inp_x) || abs(inp_y);
+
+if(keyboard_check_pressed(inputBuffer)) 
+{
+	if(inputBuffer >= ord("1") && inputBuffer <= ord("9")) 
 	{
-		var _num = keyboard_key - ord("1")
+		var _num = inputBuffer - ord("1")
 		if(_num < array_length(effectiveStats.library)) 
 		{
 			delete spellCasting
@@ -109,7 +120,7 @@ if(spellCasting.selected != -1)
 		break;
 	}
 	
-	if(keyboard_check_pressed(vk_space)) //cast spell
+	if(inputBuffer = vk_space) //cast spell
 	{
 		var _validCast = true;
 		var _center = [spellCasting.targets[spellCasting.selected].x,spellCasting.targets[spellCasting.selected].y]
@@ -224,13 +235,13 @@ else
 	}
 }
 
-if(keyboard_check_pressed(ord("C"))) //Toggle Character Pane
+if(inputBuffer = ord("C")) //Toggle Character Pane
 {
 	characterPane.open = !characterPane.open	
 	if(spellCasting.selected != -1) cancelSpell()
 }
 
-if(keyboard_check_pressed(ord("M"))) //Aim spell
+if(inputBuffer = ord("M")) //Aim spell
 {
 	characterPane.open = false
 	spellCasting.targets = []
@@ -273,7 +284,7 @@ if(keyboard_check_pressed(ord("M"))) //Aim spell
 	}	
 }
 
-if(keyboard_check_pressed(ord("E"))) //Eat item off the floor
+if(inputBuffer = ord("E")) //Eat item off the floor
 {
 	var _item = instance_place(x,y,obj_item_empty)
 
@@ -288,7 +299,7 @@ if(keyboard_check_pressed(ord("E"))) //Eat item off the floor
 		}
 	}
 }
-else if(keyboard_check_pressed(ord("G"))) //Pick up floor item or go up stairs
+else if(inputBuffer = ord("G")) //Pick up floor item or go up stairs
 {
 	var _item = instance_place(x,y,obj_item_empty)
 
@@ -325,4 +336,4 @@ else if(keyboard_check_pressed(ord("G"))) //Pick up floor item or go up stairs
 	}
 }
 
-inputBuffer = -1
+inputBuffer = 0

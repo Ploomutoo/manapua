@@ -15,6 +15,14 @@ switch(element)
 	soundRand(sndBullet);
 	break;
 	
+	case "Buff":
+	soundRand(sndBuff)
+	break;
+	
+	case "Debuff":
+	soundRand(sndDebuff)
+	break;
+	
 	case "Arcane":
 	sprite_index = spr_explosion_arcane;
 	soundRand(sndArcane)

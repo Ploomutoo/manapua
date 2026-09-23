@@ -17,7 +17,16 @@ function createSpellInst(_x,_y,_spellStruct,_caster)
 		if(is_array(_spellStruct.outBuff.strength)) _outBuffEval.strength = evalSpellDamage(_spellStruct.outBuff.strength)
 	}
 	
-	var _tracer = "Bullet"
+	var _tracer = "Standard"
+	if(_spellStruct.diameter > 1)
+	{
+		_tracer = "None"
+	}
+	else switch(_spellStruct.element)
+	{
+		case "Bullet": _tracer = "Bullet"; break;
+		case "Dark": _tracer = "Smoke"; break;
+	}
 	
 	var _castStruct =
 	{
@@ -60,6 +69,13 @@ function createSpellInstJr(_x,_y,_castStruct)
 			_decay = 0.8
 			_color = c_white
 			_variance = [irandom_range(-16,16),irandom_range(-16,16)]
+			break;
+			
+			case "Smoke":
+			_girth = 5
+			_decay = 0.9
+			_color = c_black
+			_variance = [0,0]
 			break;
 			
 			default:

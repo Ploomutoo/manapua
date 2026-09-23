@@ -29,12 +29,12 @@ function dealDamage(_damage,_target,_multi = 1)
 	while(_multi>0)
 	{
 		_multi--;
-		multiTimeSource[_multi] = time_source_create(time_source_game,1 + 5*_multi,time_source_units_frames,dealDamageInstance,[_damage,_target,self,_mult,_evade,_crit,_critMult])
+		multiTimeSource[_multi] = time_source_create(time_source_game,1 + 5*_multi,time_source_units_frames,dealDamageInstance,[_damage,_target,self,_mult,_evade,_crit,_critMult,"Melee"])
 		time_source_start(multiTimeSource[_multi])
 	}
 }
 
-function dealDamageInstance(_damage,_target,_executor,_mult,_evade,_crit,_critMult)
+function dealDamageInstance(_damage,_target,_executor,_mult,_evade,_crit,_critMult,_element)
 {	
 	if(!instance_exists(_target)) 
 	{
@@ -55,6 +55,29 @@ function dealDamageInstance(_damage,_target,_executor,_mult,_evade,_crit,_critMu
 		_mult *= 1 + _critMult/100	
 		soundRand(sndCrit)
 	}
+	
+	//Calculate resistances
+	var _resistance = 0
+	switch(_element)
+	{
+		case "Fire":
+			_resistance = _target.effectiveStats.rFire
+			break;
+		case "Ice":
+			_resistance = _target.effectiveStats.rIce
+			break;
+		case "Dark":
+			_resistance = _target.effectiveStats.rDark
+			break;
+		case "Pois":
+			_resistance = _target.effectiveStats.rPois
+			break;
+		case "Elec":	
+			_resistance = _target.effectiveStats.rDark
+			break;
+	}
+	_resistance = clamp(_resistance*20,-60,60)
+	_mult *= (1-_resistance/100)
 	
 	_dam *= _mult	
 	if(_mult >= 1) _dam = ceil(_dam)
