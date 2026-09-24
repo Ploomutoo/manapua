@@ -7,7 +7,7 @@ Soul-Bolt,singleEnemy,Dark,15 int*10,,3,,,,,Mind Rot,1,0.5,Deadly bolt that redu
 Flurried-Strike,selfEnch,Buff,,,,,,,,StrikeFlurry,1,2 int*0.4,Gives multistrike for one attack,turns,20,,
 Heavy-Strike,selfEnch,Buff,,,,,,,,StrikeHeavy,1,1 int*0.1,Increases damage for one attack,turns,20,,
 Lash,selfEnch,Buff,,,,,,,,Lash,0.5 int*0.1,,Makes movement actions super fast,floors,1,,
-Dig,directional,Earth,,,3,noPlayer noEnemy,,,,,,,Carves a path through walls,,,,
+Dig,directional,Earth,,,3,noPlayer noEnemy,,,,,,,Carves a path through walls,,,digTile,
 Seismic-Stomp,selfRadius,Earth,20 10*weightclass,3,,,,,,,,,Deals damage in an area scaling with your size,,,,
 Stupid-Beam,directional,,30 int*-5,,3,noPlayer noWall,Dull,,0.5,Stupid,,-3,A beam that scales negatively with intelligence. Temporarily reduces enemy spellpower and your own intelligence,,,,
 Searing-Dart,singleEnemy,Fire,20 int*5,,5,,,,,,,,Fires a fiery dart,turns,5,,

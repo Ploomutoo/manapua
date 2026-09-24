@@ -1,4 +1,4 @@
-function createSpellInst(_x,_y,_spellStruct,_caster)
+function createSpellInst(_x,_y,_spellStruct,_caster,_delay = 0)
 {
 	var _hitsPlayer = false
 	if(_caster.object_index = obj_enemy || _spellStruct.valid.onPlayer) _hitsPlayer = true 
@@ -18,7 +18,7 @@ function createSpellInst(_x,_y,_spellStruct,_caster)
 	}
 	
 	var _tracer = "Standard"
-	if(_spellStruct.diameter > 1)
+	if(_spellStruct.diameter > 1 || _spellStruct.targetStyle = "Directional")
 	{
 		_tracer = "None"
 	}
@@ -38,11 +38,12 @@ function createSpellInst(_x,_y,_spellStruct,_caster)
 		special : _spellStruct.special,
 		element : _spellStruct.element,
 		selfSpecial : _spellStruct.selfSpecial,
+		triggerOnTile : _spellStruct.triggerOnTile,
 		tracer : _tracer
 	}
 	
 	var _multi = _spellStruct.multicast[0]
-	global.player.alarm[0] = 1 + _multi*_spellStruct.multicast[1]
+	global.player.alarm[0] = 1 + _multi*_spellStruct.multicast[1] + _delay
 	
 	while(_multi>0)
 	{
@@ -51,7 +52,7 @@ function createSpellInst(_x,_y,_spellStruct,_caster)
 		var _aim = [_x,_y]
 		if(_spellStruct.targetStyle = spellTargeting.randomized) with(_caster) _aim = aimRandom(_spellStruct.spellRange,_spellStruct.valid)
 		
-		_caster.multiTimeSource[_multi] = time_source_create(time_source_game,1 + _multi*_spellStruct.multicast[1],time_source_units_frames,createSpellInstJr,[_aim[0],_aim[1],_castStruct])
+		_caster.multiTimeSource[_multi] = time_source_create(time_source_game,1 + _multi*_spellStruct.multicast[1] + _delay,time_source_units_frames,createSpellInstJr,[_aim[0],_aim[1],_castStruct])
 		time_source_start(multiTimeSource[_multi])
 	}
 	//createSpellInstJr(_x,_y,_spellStruct,_caster)
@@ -109,6 +110,7 @@ function createSpellInstJr(_x,_y,_castStruct)
 		outBuff : _castStruct.outBuff,
 		special : _castStruct.special,
 		element : _castStruct.element,
-		selfSpecial : _castStruct.selfSpecial
+		selfSpecial : _castStruct.selfSpecial,
+		triggerOnTile : _castStruct.triggerOnTile
 	})
 }

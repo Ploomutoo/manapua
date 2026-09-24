@@ -1,3 +1,9 @@
+function tilemap_grab(_map,_x,_y)
+{
+	if(_x<0 || _x>=global.mapSize[0] || _y<0 || _y>=global.mapSize[1]) return(1)
+	else return(tilemap_get(_map,_x,_y))
+}
+
 function checkTerrainLayer(_layer,_x,_y)
 {
 	var _get = layer_get_id(_layer)

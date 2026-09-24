@@ -80,7 +80,7 @@ function calcEffectiveStats()
 		}
 		else if(_equipped[_i].slot = "Spellbook")
 		{
-			show_debug_message("Reading spellbook {0}",_equipped[_i].name)	
+			//show_debug_message("Reading spellbook {0}",_equipped[_i].name)	
 			effectiveStats.library = _equipped[_i].spells
 		}
 		

@@ -36,5 +36,6 @@ if(!fired && image_index>3)
 		}
 	}
 	if(selfSpecial) runArray(special,[caster])
+	if(triggerOnTile) runArray(special)
 	fired = true
 }

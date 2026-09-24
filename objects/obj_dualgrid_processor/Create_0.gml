@@ -9,12 +9,6 @@ global.cellSize,global.cellSize)
 
 mp_grid_clear_all(global.collisionMap)
 
-function tilemap_grab(_map,_x,_y)
-{
-	if(_x<0 || _x>=global.mapSize[0] || _y<0 || _y>=global.mapSize[1]) return(1)
-	else return(tilemap_get(_map,_x,_y))
-}
-
 for(var _layer = 0; _layer<array_length(working_layers); _layer++)
 {
 	grid_in = layer_tilemap_get_id(working_layers[_layer])

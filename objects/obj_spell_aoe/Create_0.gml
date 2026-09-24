@@ -23,6 +23,10 @@ switch(element)
 	soundRand(sndDebuff)
 	break;
 	
+	case "Earth":
+	soundRand(sndEarth)
+	break;
+	
 	case "Arcane":
 	sprite_index = spr_explosion_arcane;
 	soundRand(sndArcane)

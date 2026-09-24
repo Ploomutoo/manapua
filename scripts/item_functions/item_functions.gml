@@ -114,6 +114,13 @@ function generateTooltip(_item)
 	{
 		if(_item.special[0]!="") _tooltip += specialTooltip(_item.special,_item.specialAmt)
 	}
+	else if(_item.slot = "Spellbook")
+	{	
+		for(var _i = 0; _i<array_length(_item.spells); _i++)
+		{
+			_tooltip += "\n[spr_text_basestats,6] "+_item.spells[_i]
+		}
+	}
 	
 	return(_tooltip)
 }

@@ -130,13 +130,14 @@ function Spell(_name) constructor
 	
 	
 	selfSpecial = false
+	triggerOnTile = false
 	if(array_length(special)>0)
 	{
 		//hacky but it works
 		var _firstParam = string_split(special[0],":",true)		
 		var _suffix = string_copy(_firstParam[0],string_length(_firstParam[0])-3,4)
 		if(_suffix = "Self") selfSpecial = true
-		//mshow_debug_message("{0} has a self special value of {1} in string {2}",name,selfSpecial,_suffix)	
+		else if(_suffix = "Tile") triggerOnTile = true
 	}
 	
 	var _multicastString = string_split(_spellGrid[# 17,_index],"|",true)

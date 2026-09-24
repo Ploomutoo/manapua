@@ -66,7 +66,7 @@ baseStats = //all stats
 	onHit : ["playerTakeDamage:addParam"],
 	onDeath : [],
 	
-	library : ["Blink","Meathook","Meteor-Storm","Mega-Meteor-Storm","Minigun"]
+	library : ["Dig"]
 }
 
 effectiveStats = baseStats 

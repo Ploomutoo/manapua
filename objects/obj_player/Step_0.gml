@@ -163,7 +163,7 @@ if(spellCasting.selected != -1)
 					if(!spellCasting.valid.onWall
 					&& tilemap_get_at_pixel(global.walls,_place[0],_place[1])>0) break;
 					
-					createSpellInst(_place[0],_place[1],spellCasting,self)
+					createSpellInst(_place[0],_place[1],spellCasting,self,_i*5)
 				}
 			}
 			else

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"digTile",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"digTile",
+  "parent":{
+    "name":"spell_funcs",
+    "path":"folders/Scripts/spell_funcs.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
