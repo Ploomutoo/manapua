@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"buffStruct",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"buffStruct",
+  "parent":{
+    "name":"buffStuff",
+    "path":"folders/Scripts/game/buffStuff.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

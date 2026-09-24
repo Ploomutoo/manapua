@@ -19,12 +19,7 @@ asleep = true
 baseStats = new Statblock()
 effectiveStats = variable_clone(baseStats)
 
-buffList = 
-{
-	damageOverTime : [],
-	turnTerminated : [],
-	allBuffs : []
-}
+buffList = new buffStruct()
 
 hp = effectiveStats.max_hp
 evasion = dodgeToEvasion(effectiveStats.dodge)

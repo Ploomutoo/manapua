@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"nextLevel",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"nextLevel",
+  "parent":{
+    "name":"player",
+    "path":"folders/Scripts/game/player.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

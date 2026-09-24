@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"foodDecay",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"foodDecay",
+  "parent":{
+    "name":"items",
+    "path":"folders/Scripts/items.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

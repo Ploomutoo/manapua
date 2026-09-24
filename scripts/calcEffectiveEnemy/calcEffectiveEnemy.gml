@@ -5,8 +5,14 @@ function calcEffectiveEnemy()
 	effectiveStats = variable_clone(baseStats) 
 
 	buffList.allBuffs = array_concat(
+	buffList.floorTerminated,
 	buffList.turnTerminated,
-	buffList.damageOverTime)
+	buffList.healingTerminated,
+	buffList.damageOverTime,
+	buffList.killTerminated,
+	buffList.attackTerminated,
+	buffList.defendTerminated,
+	buffList.damageTerminated)
 
 	//scan buffs for stat changes	
 	var _adjectives = ""

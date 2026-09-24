@@ -54,6 +54,7 @@ function generateFloorItem(_floor = "Garden",_rarityBonus = 0){
 			_out.healing = global.itemSpawnList[# 4, _type]
 			_out.weightgain = global.itemSpawnList[# 5, _type]
 			_out.funcUse = eatFood
+			_out.condition = "Fresh"
 			_out = parseSpecials(_out,global.itemSpawnList[# 6, _type],global.itemSpawnList[# 7, _type])
 			break;
 			
@@ -152,7 +153,6 @@ function weightedRoll(_array,_bonus = 0)
 function generatePotion()
 {
 	var _out = new Item()
-	_out.consumable = true
 	_out.slot		= "Potion"
 	
 	var _weights = []
@@ -219,10 +219,7 @@ function generatePotion()
 
 function generateScroll()
 {
-	var _out = new Item()
-	
-	_out.consumable = true
-	
+	var _out = new Item()	
 	return(_out)
 }
 

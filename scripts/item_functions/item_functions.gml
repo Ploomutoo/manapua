@@ -8,7 +8,6 @@ function Item() constructor
 	defense = 0
 	damage	= 0
 	equipped	= false
-	consumable	= false
 	special = [""]
 	specialAmt = [0]
 	tooltip = ""
@@ -101,7 +100,9 @@ function generateTooltip(_item)
 	else if(_item.slot = "Consumable")
 	{
 		if(_item.special[0] != "") _tooltip += "\nAdds " + string(_item.specialAmt[0]) + " " + _item.special[0]
-		_tooltip += "\nHeals for " + string(_item.healing)+". Gain " + string(_item.weightgain) + " lbs"	
+		_tooltip += "\nHeals for " + string(_item.healing)+". Gain " + string(_item.weightgain) + " lbs"
+		
+		if(_item.condition != "Fresh") _tooltip = _item.condition + " " + _tooltip
 	}
 	else if(_item.slot = "Armor")
 	{

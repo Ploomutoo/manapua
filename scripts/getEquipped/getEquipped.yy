@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"getEquipped",
   "parent":{
-    "name":"player",
-    "path":"folders/Scripts/game/player.yy",
+    "name":"items",
+    "path":"folders/Scripts/items.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

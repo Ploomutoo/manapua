@@ -26,6 +26,9 @@ function dealDamage(_damage,_target,_multi = 1)
 	}
 	
 	global.player.alarm[0] = 1 + _multi*5
+	multiTimeSource[_multi] = time_source_create(time_source_game,2 + 5*_multi,time_source_units_frames,decayBuff,["attackTerminated",1,self])
+	time_source_start(multiTimeSource[_multi])
+	
 	while(_multi>0)
 	{
 		_multi--;

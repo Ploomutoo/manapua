@@ -45,3 +45,7 @@ else if(keyboard_check_pressed(ord("S")))
 	get_string_async("Set what stat?","")
 	cheatInput = "Set Stat"
 }
+else if(keyboard_check_pressed(ord("D")))
+{
+	foodDecayAll()
+}

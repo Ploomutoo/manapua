@@ -66,7 +66,8 @@ baseStats = //all stats
 	onHit : ["playerTakeDamage:addParam"],
 	onDeath : [],
 	
-	library : ["Dig"]
+	library : ["Flurried-Strike"],
+	castFatigue : 0 //when greater than or equal to 1, cannot cast spells
 }
 
 effectiveStats = baseStats 
@@ -78,19 +79,8 @@ waitTime = 0
 evasion = dodgeToEvasion(effectiveStats.dodge)
 finalDelay = 1
 
-buffList = 
-{
-	healingTerminated : [],
-	damageOverTime : [],
-	killTerminated : [],
-	floorTerminated : [],
-	turnTerminated : [new buff("Optimism","Feelin' fine",,10,"%max_hp",1.25)],
-	attackTerminated : [],
-	killTerminated : [],
-	defendTerminated : [],
-	damageTerminated : [],
-	allBuffs : []
-}
+buffList = new buffStruct() 
+array_push(buffList.turnTerminated,new buff("Optimism","Feelin' fine",,10,"%max_hp",1.25))
 
 characterPane =
 {

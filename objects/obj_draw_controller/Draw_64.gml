@@ -26,13 +26,31 @@ with(obj_player)
 			}
 			else
 			{
+				var _bg = [-1,0]
 				if(inventory[_invOn].equipped)
 				{
-					draw_sprite(spr_ui_box,0,_topcorner[0]+_ix*64,_topcorner[1]+_iy*64)
+					_bg = [spr_ui_box,0]
 				}
+				else 
+				{
+					_bg = [spr_item_backgrounds,0]
+					switch(inventory[_invOn].slot)
+					{
+						//case "Weapon":		_bg[1] = 1; break;
+						//case "Armor":		_bg[1] = 2; break;
+						case "Consumable":	_bg[1] = 3; break;
+						case "Potion":		_bg[1] = 4; break;
+						case "Spellbook":	_bg[1] = 5; break;
+					}
+				}
+				draw_sprite(_bg[0],_bg[1],_topcorner[0]+_ix*64,_topcorner[1]+_iy*64)
 				draw_sprite(inventory[_invOn].sprite,0,_topcorner[0]+_ix*64,_topcorner[1]+_iy*64)
 				
-				if(inventory[_invOn].slot = "Weapon" ||  inventory[_invOn].slot = "Armor") draw_sprite(spr_text_weight,inventory[_invOn].weightclass,_topcorner[0]+_ix*64,_topcorner[1]+_iy*64)
+				if(inventory[_invOn].slot = "Weapon" ||  inventory[_invOn].slot = "Armor") 
+				{
+					//draw_sprite(spr_size_borders,inventory[_invOn].weightclass,_topcorner[0]+_ix*64,_topcorner[1]+_iy*64)
+					draw_sprite(spr_text_weight,inventory[_invOn].weightclass,_topcorner[0]+_ix*64,_topcorner[1]+_iy*64)
+				}
 			}
 			_invOn++;
 		}
@@ -44,10 +62,10 @@ with(obj_player)
 	var _i = 0, _ix = 360, _iy = 720-48
 	draw_set_halign(fa_right)
 	draw_set_valign(fa_bottom)
-	for(_i = array_length( buffList.allBuffs); _i>0; _i--)
+	for(_i = 0; _i < array_length( buffList.allBuffs); _i++)
 	{
-		draw_sprite( buffList.allBuffs[_i-1].icon,0,_ix,_iy)
-		draw_text(_ix+48,_iy+48,string(round( buffList.allBuffs[_i-1].duration)))		
+		draw_sprite( buffList.allBuffs[_i].icon,0,_ix,_iy)
+		draw_text(_ix+48,_iy+48,string(round( buffList.allBuffs[_i].duration)))		
 		_ix += 48;
 	}
 	

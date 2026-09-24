@@ -313,6 +313,7 @@ else if(inputBuffer = ord("G")) //Pick up floor item or go up stairs
 			{ //inventory full :(
 				soundRand(choose(invFull1,invFull2),0.1)
 				with(global.bigSprite) skeleton_animation_set("no",0)
+				inputBuffer = 0
 				exit;	
 			}
 		}
@@ -326,7 +327,7 @@ else if(inputBuffer = ord("G")) //Pick up floor item or go up stairs
 	
 		if(_stairs != noone)
 		{
-			room_goto(room)
+			nextLevel()
 			exit;
 		}
 	

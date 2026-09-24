@@ -98,6 +98,7 @@ switch(cheatInput)
 			_out.healing = global.itemSpawnList[# 4, _type]
 			_out.weightgain = global.itemSpawnList[# 5, _type]
 			_out.funcUse = eatFood
+			_out.condition = "Fresh"
 			_out = parseSpecials(_out,global.itemSpawnList[# 6, _type],global.itemSpawnList[# 7, _type])
 			break;
 			
@@ -118,4 +119,4 @@ switch(cheatInput)
 }
 
 cheatInput = ""
-		
+keyboard_key_release(vk_shift)

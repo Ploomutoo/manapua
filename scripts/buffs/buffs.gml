@@ -53,7 +53,8 @@ function giveBuff(_target,_debuffName,_duration = -1,_strength = -1)
 	
 	var _iconString = ini_read_string("Default","icon","spr_buff_happy")
 	var _iconSprite = asset_get_index(_iconString)
-	if(sprite_exists(_iconSprite)) _buff.sprite = _iconSprite
+	if(sprite_exists(_iconSprite)) _buff.icon = _iconSprite
+	else show_debug_message("Could not find {0}",_iconString)
 	
 	_buff.tooltip = ini_read_string("Default","tooltip","")
 	
@@ -64,9 +65,12 @@ function giveBuff(_target,_debuffName,_duration = -1,_strength = -1)
 	_buff.amount = ini_read_string("Default","amount","")	
 	
 	var _expireString = ini_read_string("Default","expireFunc","")	
-	var _expireFunc = asset_get_index(_expireString)
-	if(is_callable(_expireFunc)) _buff.expireFunc = _expireFunc
-	else show_debug_message("Cannot call {0}",_expireString)
+	if(_expireString != "")
+	{
+		var _expireFunc = asset_get_index(_expireString)
+		if(is_callable(_expireFunc)) _buff.expireFunc = _expireFunc
+		else show_debug_message("Cannot call {0}",_expireString)
+	}
 	
 	_buff.stacks = ini_read_real("Default","stacks",0)
 	//Does it stack with itself
@@ -126,30 +130,34 @@ function giveBuff(_target,_debuffName,_duration = -1,_strength = -1)
 	delete _buff;
 }
 
-function decayBuff(_category,_amt = 1)
+function decayBuff(_category,_amt = 1,_executor = self)
 {
-	var _buffArray = struct_get(buffList,_category)
-	
-	if(_buffArray != undefined)
+	if(!instance_exists(_executor)) show_debug_message("Executor does not exist!")
+	with(_executor)
 	{
-		for(var _i = array_length(_buffArray)-1; _i >= 0; _i--)
+		var _buffArray = struct_get(buffList,_category)
+	
+		if(_buffArray != undefined)
 		{
-			_buffArray[_i].duration -= _amt
-			
-			if(_buffArray[_i].duration<=0)
+			for(var _i = array_length(_buffArray)-1; _i >= 0; _i--)
 			{
-				_buffArray[_i].expireFunc(self)
+				_buffArray[_i].duration -= _amt
+			
+				if(_buffArray[_i].duration<=0)
+				{
+					_buffArray[_i].expireFunc(self)
 		
-				delete _buffArray[_i]
-				array_delete(_buffArray,_i,1)
+					delete _buffArray[_i]
+					array_delete(_buffArray,_i,1)
 				
-				if(object_index = obj_player) calcEffectiveStats()
-				else calcEffectiveEnemy()
+					if(object_index = obj_player) calcEffectiveStats()
+					else calcEffectiveEnemy()
+				}
 			}
 		}
-	}
-	else
-	{
-		show_debug_message("No such buff category as {0}!",_category)	
+		else
+		{
+			show_debug_message("No such buff category as {0}!",_category)	
+		}
 	}
 }
