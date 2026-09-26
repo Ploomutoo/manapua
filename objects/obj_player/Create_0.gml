@@ -2,6 +2,7 @@ event_inherited()
 //macros
 #macro PlayDebug:DEVELOPMENT_MODE true
 #macro PlayRelease:DEVELOPMENT_MODE false
+#macro Default:DEVELOPMENT_MODE false
 
 //resources
 
