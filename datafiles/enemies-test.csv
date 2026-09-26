@@ -13,3 +13,4 @@ Soul Snacker,20,spr_enemy_ratSkeleton,40,10,0,15,2,1.2,onSeeDeath:healSelf:15,
 Cannibal Rat,20,spr_enemy_ratCannibal,30,1,0,10,1,1,behavior:cannibal onKill:absorb,
 Miner Rat,20,spr_enemy_ratMiner,20,5,5,12,1.2,0.8,behavior:miner onDeath:explode:25:3,Miners will path through walls
 Tainter,20,spr_enemy_ratTainter,10,1,15,5,1,1.2,behavior:tainter,Tainters will seek out visible food and taint it
+Pit Fiend,20,spr_enemy_pitFiend,30,3,5,10,1.5,1,onStrike:skewerRandomFood:1,

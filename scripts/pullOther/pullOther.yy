@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"pullOther",
   "parent":{
-    "name":"enemy_funcs",
-    "path":"folders/Scripts/enemy_funcs.yy",
+    "name":"gimmicks",
+    "path":"folders/Scripts/enemy_funcs/gimmicks.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

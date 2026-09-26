@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"explode",
+  "%Name":"skewerFood",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"explode",
+  "name":"skewerFood",
   "parent":{
-    "name":"gimmicks",
-    "path":"folders/Scripts/enemy_funcs/gimmicks.yy",
+    "name":"special_item_funcs",
+    "path":"folders/Scripts/items/special_item_funcs.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

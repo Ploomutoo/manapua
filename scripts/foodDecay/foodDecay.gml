@@ -36,9 +36,10 @@ function foodDecay(_index)
 		case "Thawed":
 		case "Sweetened":
 		case "Pepper":
+		case "Skewered":
 		inventory[_index].condition = "Rotten"
 		inventory[_index].healing = min(inventory[_index].healing,-10)
-		inventory[_index].specialAmt = 0
+		inventory[_index].specialAmt[0] = 0
 		break;
 		
 		case "Rotten":

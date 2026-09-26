@@ -136,6 +136,7 @@ function eatFood()
 	{
 		case "Frozen":
 		case "Deep Frozen":
+		case "Skewered":
 		return(false)
 	}
 	
