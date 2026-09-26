@@ -1,4 +1,9 @@
 event_inherited()
+//macros
+#macro PlayDebug:DEVELOPMENT_MODE true
+#macro PlayRelease:DEVELOPMENT_MODE false
+#macro Default:DEVELOPMENT_MODE false
+
 //resources
 
 //counters and tracking
@@ -99,7 +104,8 @@ layer_set_visible(layer_get_id("ts_fog"),1)
 global.walls = layer_tilemap_get_id("ts_walls")
 global.levelSeed = random_get_seed()
 global.level = 0
-global.cheat = parameter_count()==3&&string_count("GMS2TEMP",parameter_string(2))
+global.cheat = parameter_count()==3&&string_count("GMS2TEMP",parameter_string(2)) // Windows debugmode check
+if(DEVELOPMENT_MODE) global.cheat = 1 // dev mode cheat- set with PlayDebug config (crossplatform)
 global.enemyGenList = load_csv("enemies-test.csv")
 global.itemSpawnList = load_csv("itempools-test.csv")
 
