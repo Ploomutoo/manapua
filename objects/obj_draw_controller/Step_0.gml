@@ -34,7 +34,7 @@ if(mouse_check_button_released(mb_left) && holding != -1)
 		var _hitbox = [-320,146,-81,317] //body hitbox
 		if(holding.slot = "Consumable" || holding.slot = "Potion") _hitbox = [-280,60,-100,180] //mouth hitbox
 		
-		if(point_in_rectangle(mouse_x,mouse_y,_hitbox[0],_hitbox[1],_hitbox[2],_hitbox[3]))
+		if(holding.slot != "Spice" && point_in_rectangle(mouse_x,mouse_y,_hitbox[0],_hitbox[1],_hitbox[2],_hitbox[3]))
 		{
 			with(global.player)
 			{
@@ -49,8 +49,8 @@ if(mouse_check_button_released(mb_left) && holding != -1)
 					}
 				}
 				
-				other.holding.funcUse()
-				if(other.holding.slot != "Consumable" && other.holding.slot != "Potion") inventory[other.holdingPrev]=other.holding
+				var _consumed = other.holding.funcUse()
+				if(!_consumed) inventory[other.holdingPrev]=other.holding
 				
 				calcEffectiveStats()
 			}
@@ -76,8 +76,22 @@ if(mouse_check_button_released(mb_left) && holding != -1)
 		}
 		else //slot already occupied
 		{
-			global.player.inventory[holdingPrev] = global.player.inventory[invOn]
-			global.player.inventory[invOn] = holding
+			if(holding.slot = "Spice" && global.player.inventory[invOn].slot = "Consumable")
+			{
+				if(!is_callable(holding.funcUse)) 
+				{
+					show_debug_message("Could not run item function")
+				} 
+				else if(!holding.funcUse(invOn,holding.specialAmt))
+				{
+					global.player.inventory[holdingPrev] = holding
+				}
+			}
+			else
+			{
+				global.player.inventory[holdingPrev] = global.player.inventory[invOn]
+				global.player.inventory[invOn] = holding
+			}
 		}
 	}
 	holding = -1

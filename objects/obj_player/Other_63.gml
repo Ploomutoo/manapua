@@ -63,7 +63,9 @@ switch(cheatInput)
 	{
 		if(global.itemSpawnList[# 0, _type] = _result) break;
 	}
-		
+	
+	if(_type = ds_grid_height(global.itemSpawnList)) break;
+	
 	_out.name = "Divine " + global.itemSpawnList[# 0, _type]
 	_out.sprite = asset_get_index(global.itemSpawnList[# 3, _type])
 	_out.slot	= global.itemSpawnList[# 2, _type]
@@ -95,8 +97,8 @@ switch(cheatInput)
 			
 		case "Consumable":
 			_out.slot = "Consumable"
-			_out.healing = global.itemSpawnList[# 4, _type]
-			_out.weightgain = global.itemSpawnList[# 5, _type]
+			_out.healing = real(global.itemSpawnList[# 4, _type])
+			_out.weightgain = real(global.itemSpawnList[# 5, _type])
 			_out.funcUse = eatFood
 			_out.condition = "Fresh"
 			_out = parseSpecials(_out,global.itemSpawnList[# 6, _type],global.itemSpawnList[# 7, _type])
@@ -104,6 +106,15 @@ switch(cheatInput)
 			
 		case "Spellbook":
 			_out.spells = string_split(global.itemSpawnList[# 4, _type],"|",true)
+			break;
+			
+		case "Spice":
+			_out.description = global.itemSpawnList[# 4, _type]
+			_out.specialAmt = global.itemSpawnList[# 7, _type]
+			var _funcName = global.itemSpawnList[# 6, _type]
+			var _funcInd = asset_get_index(_funcName)
+			if(is_callable(_funcInd)) _out.funcUse = _funcInd
+			else show_debug_message("Could not find function {0}",_funcName)
 			break;
 	}
 	_out.tooltip = generateTooltip(_out)

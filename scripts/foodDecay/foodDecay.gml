@@ -16,17 +16,33 @@ function foodDecay(_index)
 {
 	switch(inventory[_index].condition)
 	{
-		case "Frozen":
 		case "Salted":
 		break;
 		
+		case "Deep Frozen":
+		inventory[_index].condition = "Frozen"
+		break;
+		
+		case "Frozen":
+		inventory[_index].condition = "Thawed"
+		break;		
+		
 		case "Fresh":
 		inventory[_index].condition = "Stale"
-		inventory[_index].healing = min(inventory[_index].healing-10,0)
+		inventory[_index].healing = min(inventory[_index].healing,0)
 		break;
 		
 		case "Stale":
+		case "Thawed":
+		case "Sweetened":
+		case "Pepper":
 		inventory[_index].condition = "Rotten"
+		inventory[_index].healing = min(inventory[_index].healing,-10)
+		inventory[_index].specialAmt = 0
+		break;
+		
+		case "Rotten":
+		inventory[_index] = -1
 		break;
 	}
 	inventory[_index].tooltip = generateTooltip(inventory[_index])

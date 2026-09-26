@@ -3,40 +3,63 @@ function potionAll()
 	soundRand(sndQuaff)
 	with(global.bigSprite) skeleton_animation_set("drink",false) 
 	global.player.weight += weightgain
+	
+	return(true)
 }
 
 function potionCure()
 {
-	potionAll()
-	heal(15,global.player)
+	var _can = potionAll()
+	if(_can) heal(15,global.player)
+	return(_can)
 }
 
 function potionHeal()
 {
-	potionAll()
-	heal(45,global.player)
+	var _can = potionAll()
+	if(_can) 
+	{
+		heal(45,global.player)
+	}
+	return(_can)
 }
 
 function potionStrength()
 {
-	potionAll()
-	giveBuff(global.player,"Might")
+	var _can = potionAll()
+	if(_can) 
+	{
+		giveBuff(global.player,"Might")
+	}
+	return(_can)	
 }
 
 function potionManaFrenzy()
 {
-	potionAll()
-	giveBuff(global.player,"Mana Frenzy")
+	var _can = potionAll()
+	if(_can) 
+	{
+		giveBuff(global.player,"Mana Frenzy")
+	}
+	return(_can)
 }
 
 function potionHaste()
 {
-	potionAll()
-	giveBuff(global.player,"Haste")
+	var _can = potionAll()
+	if(_can) 
+	{
+		giveBuff(global.player,"Haste")
+	}
+	return(_can)
 }
 
 function potionDivinity()
 {
-	potionAll()	
-	giveBuff(global.player,"Divinity")
+	var _can = potionAll()
+	if(_can) 
+	{
+		giveBuff(global.player,"Divinity")
+	}
+	return(_can)
 }

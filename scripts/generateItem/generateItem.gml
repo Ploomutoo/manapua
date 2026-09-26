@@ -51,8 +51,8 @@ function generateFloorItem(_floor = "Garden",_rarityBonus = 0){
 			
 		case "Consumable":
 			_out.slot = "Consumable"
-			_out.healing = global.itemSpawnList[# 4, _type]
-			_out.weightgain = global.itemSpawnList[# 5, _type]
+			_out.healing = real(global.itemSpawnList[# 4, _type])
+			_out.weightgain = real(global.itemSpawnList[# 5, _type])
 			_out.funcUse = eatFood
 			_out.condition = "Fresh"
 			_out = parseSpecials(_out,global.itemSpawnList[# 6, _type],global.itemSpawnList[# 7, _type])
@@ -60,6 +60,12 @@ function generateFloorItem(_floor = "Garden",_rarityBonus = 0){
 			
 		case "Spellbook":
 			_out.spells = string_split(global.itemSpawnList[# 4, _type],"|",true)
+			break;
+			
+		case "Spice":
+			_out.description = global.itemSpawnList[# 4, _type]
+			_out.funcUse = global.itemSpawnList[# 6, _type]
+			_out.specialAmt = global.itemSpawnList[# 7, _type]
 			break;
 	}
 	_out.tooltip = generateTooltip(_out)

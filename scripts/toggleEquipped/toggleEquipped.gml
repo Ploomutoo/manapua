@@ -44,6 +44,6 @@ function toggleEquipped(_wearer)
 		soundRand(sndDoff)
 	}
 	
-	
 	equipped = !equipped
+	return(false)
 }

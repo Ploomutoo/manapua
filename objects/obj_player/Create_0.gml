@@ -103,6 +103,11 @@ global.cheat = parameter_count()==3&&string_count("GMS2TEMP",parameter_string(2)
 global.enemyGenList = load_csv("enemies-test.csv")
 global.itemSpawnList = load_csv("itempools-test.csv")
 
+settings = 
+{
+	sizeBorders : true	
+}
+
 enum gamespeed 
 {
 	slow,

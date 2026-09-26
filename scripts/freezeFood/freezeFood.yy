@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"freezeFood",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"freezeFood",
+  "parent":{
+    "name":"special_item_funcs",
+    "path":"folders/Scripts/items/special_item_funcs.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

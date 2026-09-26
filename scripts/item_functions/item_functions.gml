@@ -122,12 +122,23 @@ function generateTooltip(_item)
 			_tooltip += "\n[spr_text_basestats,6] "+_item.spells[_i]
 		}
 	}
+	else if(_item.slot = "Spice")
+	{
+		_tooltip += "\n"+_item.description	
+	}
 	
 	return(_tooltip)
 }
 
 function eatFood()
 {
+	switch(condition)
+	{
+		case "Frozen":
+		case "Deep Frozen":
+		return(false)
+	}
+	
 	var _i = 0
 	switch(special[_i])
 	{
@@ -181,6 +192,8 @@ function eatFood()
 	with(global.bigSprite) skeleton_animation_set("eat",0)
 	global.player.weight += weightgain
 	global.player.weight = max(0,global.player.weight)
+	
+	return(true)
 }
 
 function drawItemText(_item,_x,_y)

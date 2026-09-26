@@ -27,30 +27,47 @@ with(obj_player)
 			else
 			{
 				var _bg = [-1,0]
+				var _border = [-1,0]
+				
+				_bg = [spr_item_backgrounds,0]
+				switch(inventory[_invOn].slot)
+				{
+					case "Weapon":
+					case "Armor":
+						if(settings.sizeBorders)_border = [spr_size_borders,inventory[_invOn].weightclass]
+						_border = [spr_text_weight,inventory[_invOn].weightclass]
+						break;
+							
+					case "Consumable":	
+						_bg[1] = 3; 
+						_border[0] = spr_condition_borders
+						switch(inventory[_invOn].condition)
+						{
+							case "Fresh":	_border[1] = 0; break;
+							case "Stale":	_border[1] = 1;	break;
+							case "Rotten":	_border[1] = 2; break;
+							case "Frozen":	_border[1] = 3; break;
+							case "Deep Frozen": _border[1] = 4; break;
+							case "Skewered":	_border[1] = 5; break;
+							case "Grilled":	_border[1] = 6; break;
+							case "Pepper":	_border[1] = 7; break;
+							case "Salted":	
+							case "Sweetened":	_border[1] = 8; break;
+							case "Burnt":	_border[1] = 9; break;
+						}
+						break;
+					case "Potion":		_bg[1] = 4; break;
+					case "Spellbook":	_bg[1] = 5; break;
+				}
+				
 				if(inventory[_invOn].equipped)
 				{
 					_bg = [spr_ui_box,0]
 				}
-				else 
-				{
-					_bg = [spr_item_backgrounds,0]
-					switch(inventory[_invOn].slot)
-					{
-						//case "Weapon":		_bg[1] = 1; break;
-						//case "Armor":		_bg[1] = 2; break;
-						case "Consumable":	_bg[1] = 3; break;
-						case "Potion":		_bg[1] = 4; break;
-						case "Spellbook":	_bg[1] = 5; break;
-					}
-				}
+				
 				draw_sprite(_bg[0],_bg[1],_topcorner[0]+_ix*64,_topcorner[1]+_iy*64)
 				draw_sprite(inventory[_invOn].sprite,0,_topcorner[0]+_ix*64,_topcorner[1]+_iy*64)
-				
-				if(inventory[_invOn].slot = "Weapon" ||  inventory[_invOn].slot = "Armor") 
-				{
-					//draw_sprite(spr_size_borders,inventory[_invOn].weightclass,_topcorner[0]+_ix*64,_topcorner[1]+_iy*64)
-					draw_sprite(spr_text_weight,inventory[_invOn].weightclass,_topcorner[0]+_ix*64,_topcorner[1]+_iy*64)
-				}
+				if(_border[0] != -1) draw_sprite(_border[0],_border[1],_topcorner[0]+_ix*64,_topcorner[1]+_iy*64)
 			}
 			_invOn++;
 		}
