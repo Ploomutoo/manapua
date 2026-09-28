@@ -8,6 +8,8 @@ function dealDamage(_damage,_target,_multi = 1)
 	var _crit = 0
 	var _critMult = 100
 	
+	var _dmgType = "Melee"
+	if(effectiveStats.dmgType != "") _dmgType = effectiveStats.dmgType
 
 	if(object_index = obj_player)
 	{
@@ -32,7 +34,7 @@ function dealDamage(_damage,_target,_multi = 1)
 	while(_multi>0)
 	{
 		_multi--;
-		multiTimeSource[_multi] = time_source_create(time_source_game,1 + 5*_multi,time_source_units_frames,dealDamageInstance,[_damage,_target,self,_mult,_evade,_crit,_critMult,"Melee"])
+		multiTimeSource[_multi] = time_source_create(time_source_game,1 + 5*_multi,time_source_units_frames,dealDamageInstance,[_damage,_target,self,_mult,_evade,_crit,_critMult,_dmgType])
 		time_source_start(multiTimeSource[_multi])
 	}
 }
@@ -89,7 +91,11 @@ function dealDamageInstance(_damage,_target,_executor,_mult,_evade,_crit,_critMu
 	if(_dam>=0) soundRand(choose(fart1,fart2,fart3,fart4))
 	else soundRand(sndSwing)
 	
-	textPopup(_target.x,_target.y,string(_dam))
+	var _popupString = string(_dam)
+	if(_resistance > 0) _popupString = "[c_silver]"+_popupString
+	else if(_resistance < 0) _popupString = "[c_yellow]"+_popupString
+	
+	textPopup(_target.x,_target.y,_popupString)
 	
 	_target.hp += _dam
 	

@@ -88,5 +88,7 @@ function inFog(_x,_y)
 {
 	//if(_x<0 || _x >= global.mapSize[0] || _y<0 || _y >= global.mapSize[1]) return(true)
 	
-	return(tilemap_get(global.fog,floor(_x/64),floor(_y/64)))
+	var _get = tilemap_get(global.fog,floor(_x/64),floor(_y/64))
+	if(_get > 0) return(false)
+	else return(true)
 }

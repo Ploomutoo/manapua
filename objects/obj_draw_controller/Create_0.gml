@@ -13,3 +13,12 @@ x = 180
 y = 240
 
 mouseOn = noone
+
+function makeFogSurface()
+{
+	return(surface_create(global.camObj.camWidth,global.camObj.camHeight))
+}
+
+fogSurface = -1
+uniTime = shader_get_uniform(shader_boil,"time")
+

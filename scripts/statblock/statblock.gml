@@ -116,4 +116,5 @@ function Statblock(_name = "Random") constructor
 			}
 		}
 	}
+	//show_debug_message("Monster element is {0}",dmgType)
 }

@@ -48,6 +48,7 @@ baseStats = //all stats
 	rElec : 0,
 	
 	//item modifiable
+	dmgType : "", //element defaults to melee
 	reach : 1,
 	multistrike : 1,
 	riposte : 0,
@@ -100,7 +101,7 @@ spellCasting = new Spell(baseStats.library[libraryOn])
 
 global.player = self
 global.fog = layer_tilemap_get_id("ts_fog")
-layer_set_visible(layer_get_id("ts_fog"),1)
+//layer_set_visible(layer_get_id("ts_fog"),1)
 global.walls = layer_tilemap_get_id("ts_walls")
 global.levelSeed = random_get_seed()
 global.level = 0

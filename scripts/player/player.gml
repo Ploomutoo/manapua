@@ -99,7 +99,7 @@ function checkFog(_tx,_ty)
 {
 	if(_tx<0 || _tx >= global.mapSize[0] || _ty<0 || _ty >= global.mapSize[1]) return(false)
 	
-	tilemap_set(global.fog,0,_tx,_ty)
+	tilemap_set(global.fog,1,_tx,_ty)
 	return(!tilemap_get(global.walls,_tx,_ty))
 }
 

@@ -8,9 +8,9 @@
   "instanceCreationOrder":[
     {"name":"inst_736F929C","path":"rooms/rm_test_game/rm_test_game.yy",},
     {"name":"inst_1D3A6987_1","path":"rooms/rm_test_game/rm_test_game.yy",},
-    {"name":"inst_75F9755B_1","path":"rooms/rm_test_game/rm_test_game.yy",},
     {"name":"inst_C42E4EB","path":"rooms/rm_test_game/rm_test_game.yy",},
     {"name":"inst_3A2DDDD5","path":"rooms/rm_test_game/rm_test_game.yy",},
+    {"name":"inst_75F9755B_1","path":"rooms/rm_test_game/rm_test_game.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -22,7 +22,7 @@
         {"name":"g_RipplesWidth","type":0,"value":"32",},
         {"name":"g_RipplesAmplitude","type":0,"value":"0.25",},
         {"name":"g_RipplesRadius","type":0,"value":"0",},
-      ],"resourceType":"GMRTileLayer","resourceVersion":"2.0","tiles":{"SerialiseHeight":50,"SerialiseWidth":50,"TileCompressedData":[-2500,1,],"TileDataFormat":1,},"tilesetId":{"name":"tileset_fog","path":"tilesets/tileset_fog/tileset_fog.yy",},"userdefinedDepth":false,"visible":false,"x":0,"y":0,},
+      ],"resourceType":"GMRTileLayer","resourceVersion":"2.0","tiles":{"SerialiseHeight":50,"SerialiseWidth":50,"TileCompressedData":[-2500,0,],"TileDataFormat":1,},"tilesetId":{"name":"tileset_fog","path":"tilesets/tileset_fog/tileset_fog.yy",},"userdefinedDepth":false,"visible":false,"x":0,"y":0,},
     {"$GMRInstanceLayer":"","%Name":"Instances","depth":200,"effectEnabled":false,"effectType":"none","gridX":64,"gridY":64,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
         {"$GMRInstance":"v4","%Name":"inst_736F929C","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_736F929C","objectId":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":1600.0,"y":896.0,},
         {"$GMRInstance":"v4","%Name":"inst_C42E4EB","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_C42E4EB","objectId":{"name":"obj_level_generator","path":"objects/obj_level_generator/obj_level_generator.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":192.0,"y":64.0,},

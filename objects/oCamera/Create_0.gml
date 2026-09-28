@@ -11,17 +11,20 @@ camHeight = 720;
 mouseLastX = mouse_x;
 mouseLastY = mouse_y;
 
-camera = camera_create();
-view_camera[0] = camera;
+global.camera = camera_create();
+global.camObj = self
+view_camera[0] = global.camera;
 
 var vm = matrix_build_lookat(x,y,-10,x,y,0,0,1,0);
 var pm = matrix_build_projection_ortho(camWidth,camHeight,1,3200);
 
-camera_set_view_mat(camera,vm);
-camera_set_proj_mat(camera,pm);
+camera_set_view_mat(global.camera,vm);
+camera_set_proj_mat(global.camera,pm);
 
 camFocus = true;
 screenShake = 0;
 
 bgSprite = spr_border;
 bgTiles = 1+camHeight/sprite_get_height(bgSprite);
+
+topLeft = [0,0]

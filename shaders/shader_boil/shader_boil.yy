@@ -1,0 +1,12 @@
+{
+  "$GMShader":"",
+  "%Name":"shader_boil",
+  "name":"shader_boil",
+  "parent":{
+    "name":"manapua",
+    "path":"manapua.yyp",
+  },
+  "resourceType":"GMShader",
+  "resourceVersion":"2.0",
+  "type":1,
+}

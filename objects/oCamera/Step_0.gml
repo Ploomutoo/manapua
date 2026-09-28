@@ -26,7 +26,6 @@ if(instance_exists(lookAt)) {
 x = clamp(lookX,camRad,room_width-camRad)
 y = clamp(lookY,camHeight/2,room_height-camHeight/2)
 
-
 var finX = round(x)
 var finY = round(y)
 
@@ -39,7 +38,9 @@ if(screenShake != 0) {
 }
 
 var vm = matrix_build_lookat(finX,finY,-10,finX,finY,0,0,1,0);
-camera_set_view_mat(camera,vm)
+camera_set_view_mat(global.camera,vm)
 
 var pm = matrix_build_projection_ortho(camWidth,camHeight,1,3200);
-camera_set_proj_mat(camera,pm);
+camera_set_proj_mat(global.camera,pm);
+
+topLeft = [finX-camWidth/2,finY-camHeight/2]

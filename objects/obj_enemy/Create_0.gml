@@ -16,7 +16,7 @@ drawY = y
 targetPath = path_add()
 asleep = true
 
-baseStats = new Statblock("Pit Fiend")
+baseStats = new Statblock()
 effectiveStats = variable_clone(baseStats)
 
 buffList = new buffStruct()
