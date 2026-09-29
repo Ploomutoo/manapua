@@ -52,15 +52,21 @@ for(var _layer = 0; _layer<array_length(working_layers); _layer++)
 
 layer_set_visible("ts_fog_out",0)
 
-//Enemy pathing map
+//Enemy pathing map and props
 grid_in = layer_tilemap_get_id("ts_walls")
+var _get
 for(var _i = 0; _i<grid_width; _i++)
 {
 	for(var _i2 = 0; _i2<grid_height; _i2++)
 	{
-		if(tilemap_get(grid_in,_i,_i2))
+		_get = tilemap_get(grid_in,_i,_i2)
+		if(_get > 0)
 		{
 			mp_grid_add_cell(global.collisionMap,_i,_i2)
+			if(tilemap_get(grid_in,_i,_i2+1)=0 && squirrel3(_i,_i2)%3 = 0)
+			{
+				instance_create_layer(_i*global.cellSize,_i2*global.cellSize,"Instances",obj_prop)
+			}
 		}
 	}
 }
