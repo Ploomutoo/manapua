@@ -21,4 +21,3 @@ function makeFogSurface()
 
 fogSurface = -1
 uniTime = shader_get_uniform(shader_boil,"time")
-

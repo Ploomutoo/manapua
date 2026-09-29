@@ -6,7 +6,7 @@ function digTile()
 	mp_grid_clear_cell(global.collisionMap,_tx,_ty)
 	
 	tilemap_set(global.walls,0,_tx,_ty)
-	recalcDualtileArea("ts_walls_out",_tx,_ty)
+	recalcDualtileArea("ts_walls",_tx,_ty)
 	
 	defog(_tx,_ty,1)
 }
@@ -14,8 +14,8 @@ function digTile()
 function recalcDualtileArea(_layer,_x1,_y1,_x2 = _x1+2,_y2 = _y1+2)
 {
 	var _out
-	var _layerId = layer_tilemap_get_id(layer_get_id(_layer))
-	var _collisionLayer = global.walls
+	var _layerId = layer_tilemap_get_id(layer_get_id(_layer+"_out"))
+	var _collisionLayer = layer_tilemap_get_id(layer_get_id(_layer))
 	
 	for(var _ix = _x1; _ix < _x2; _ix++)
 	{

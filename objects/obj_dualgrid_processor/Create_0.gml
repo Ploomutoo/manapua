@@ -13,7 +13,7 @@ for(var _layer = 0; _layer<array_length(working_layers); _layer++)
 {
 	grid_in = layer_tilemap_get_id(working_layers[_layer])
 	if(!layer_tilemap_exists(working_layers[_layer],grid_in)) continue;
-	if(layer_get_name(working_layers[_layer]) = "ts_fog") continue;
+	//if(layer_get_name(working_layers[_layer]) = "ts_fog") continue;
 
 	grid_width = tilemap_get_width(grid_in)+1
 	grid_height = tilemap_get_height(grid_in)+1
@@ -50,14 +50,17 @@ for(var _layer = 0; _layer<array_length(working_layers); _layer++)
 	layer_set_visible(working_layers[_layer],0)
 }
 
+layer_set_visible("ts_fog_out",0)
+
+//Enemy pathing map
 grid_in = layer_tilemap_get_id("ts_walls")
 for(var _i = 0; _i<grid_width; _i++)
+{
+	for(var _i2 = 0; _i2<grid_height; _i2++)
 	{
-		for(var _i2 = 0; _i2<grid_height; _i2++)
+		if(tilemap_get(grid_in,_i,_i2))
 		{
-			if(tilemap_get(grid_in,_i,_i2))
-			{
-				mp_grid_add_cell(global.collisionMap,_i,_i2)
-			}
+			mp_grid_add_cell(global.collisionMap,_i,_i2)
 		}
 	}
+}

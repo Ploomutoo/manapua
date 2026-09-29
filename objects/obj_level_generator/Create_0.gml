@@ -1,4 +1,5 @@
 var _layer = layer_tilemap_get_id("ts_walls")
+var _dirtLayer = layer_tilemap_get_id("ts_dirt")
 var _instlayer = layer_get_id("Instances")
 global.cellSize = 64
 
@@ -50,6 +51,7 @@ for(var _i = 0; _i <= nodesAmt; _i++)
 				repeat(irandom_range(1,min(5,_diffx)))
 				{
 					tilemap_set(_layer,0,_ix,_iy)
+					tilemap_set(_dirtLayer,1,_ix,_iy)
 					_ix+=sign(_diffx)
 					if(tilemap_get(_layer,_ix,_iy)=0 && irandom(1))
 					{
@@ -70,6 +72,7 @@ for(var _i = 0; _i <= nodesAmt; _i++)
 				repeat(irandom_range(1,min(5,_diffy)))
 				{
 					tilemap_set(_layer,0,_ix,_iy)
+					tilemap_set(_dirtLayer,1,_ix,_iy)
 					_iy+=sign(_diffy)
 					if(tilemap_get(_layer,_ix,_iy)=0 && irandom(1))
 					{
@@ -96,5 +99,6 @@ for(var _i = 0; _i <= nodesAmt; _i++)
 	else
 	{
 		tilemap_set(_layer,0,_ix,_iy)
+		tilemap_set(_dirtLayer,1,_ix,_iy)
 	}
 }
