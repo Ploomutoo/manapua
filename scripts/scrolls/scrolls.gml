@@ -1,7 +1,7 @@
 function scrollAll()
 {
 	soundRand(sndScroll)
-	with(global.bigSprite) skeleton_animation_set("drink",false) 
+	with(global.bigSprite) skeleton_animation_set("read-scroll",false) 
 }
 
 function scrollTeleport()

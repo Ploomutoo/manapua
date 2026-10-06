@@ -1,7 +1,7 @@
 function potionAll()
 {
 	soundRand(sndQuaff)
-	with(global.bigSprite) skeleton_animation_set("drink",false) 
+	with(global.bigSprite) skeleton_animation_set("drink-potion",false) 
 	global.player.weight += weightgain
 	
 	return(true)

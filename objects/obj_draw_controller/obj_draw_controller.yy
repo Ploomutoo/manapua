@@ -36,8 +36,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_manapua_big",
-    "path":"sprites/spr_manapua_big/spr_manapua_big.yy",
+    "name":"spr_manapua_big_2",
+    "path":"sprites/spr_manapua_big_2/spr_manapua_big_2.yy",
   },
   "spriteMaskId":null,
   "visible":true,

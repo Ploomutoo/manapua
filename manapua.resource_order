@@ -4,5 +4,6 @@
   ],
   "ResourceOrderSettings":[
     {"name":"obj_prop","order":1,"path":"objects/obj_prop/obj_prop.yy",},
+    {"name":"spr_manapua_big_2","order":2,"path":"sprites/spr_manapua_big_2/spr_manapua_big_2.yy",},
   ],
 }

@@ -40,7 +40,7 @@ switch(cheatInput)
 	weightclass = real(_result)
 	weight = 0
 	weightToNext = getWeightToNext(weightclass)
-	with(global.bigSprite) skeleton_animation_set("weightUp",0)
+	with(global.bigSprite) skeleton_animation_set("weight-gain",0)
 	break;
 	
 	case "Give Item":

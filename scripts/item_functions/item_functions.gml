@@ -190,7 +190,7 @@ function eatFood()
 	if(healing>0) heal(healing,global.player)
 	else if(healing<0) hurt(healing,global.player)
 	
-	with(global.bigSprite) skeleton_animation_set("eat",0)
+	with(global.bigSprite) skeleton_animation_set("eat-food",0)
 	global.player.weight += weightgain
 	global.player.weight = max(0,global.player.weight)
 	

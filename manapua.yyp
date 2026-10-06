@@ -419,6 +419,7 @@
     {"id":{"name":"spr_item","path":"sprites/spr_item/spr_item.yy",},},
     {"id":{"name":"spr_killwall","path":"sprites/spr_killwall/spr_killwall.yy",},},
     {"id":{"name":"spr_king","path":"sprites/spr_king/spr_king.yy",},},
+    {"id":{"name":"spr_manapua_big_2","path":"sprites/spr_manapua_big_2/spr_manapua_big_2.yy",},},
     {"id":{"name":"spr_manapua_big","path":"sprites/spr_manapua_big/spr_manapua_big.yy",},},
     {"id":{"name":"spr_manapua","path":"sprites/spr_manapua/spr_manapua.yy",},},
     {"id":{"name":"spr_minion_highlight","path":"sprites/spr_minion_highlight/spr_minion_highlight.yy",},},

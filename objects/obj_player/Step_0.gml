@@ -153,6 +153,7 @@ if(spellCasting.selected != -1)
 		
 		if(_validCast)
 		{
+			with(global.bigSprite) skeleton_animation_set("cast-spell",0)
 			if(spellCasting.targetStyle = spellTargeting.directional) 
 			{
 				var _vector = [spellCasting.targets[0].x-x,spellCasting.targets[0].y-y]
@@ -209,6 +210,7 @@ else
 	
 		if(instance_exists(obstacle)) //Hitting stuff
 		{
+			with(global.bigSprite) skeleton_animation_set(choose("attack","attack-2"),0)
 			dealDamage(damage,obstacle,effectiveStats.multistrike)
 			drawX += (obstacle.x-drawX)/2
 			drawY += (obstacle.y-drawY)/2

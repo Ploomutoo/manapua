@@ -10,7 +10,7 @@ queuesize = 0
 
 global.bigSprite = self
 x = 180
-y = 240
+y = 260
 
 mouseOn = noone
 
@@ -21,3 +21,8 @@ function makeFogSurface()
 
 fogSurface = -1
 uniTime = shader_get_uniform(shader_boil,"time")
+
+image_xscale = 0.5
+image_yscale = 0.5
+
+skeleton_animation_set("idle",1)
