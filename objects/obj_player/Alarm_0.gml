@@ -47,6 +47,6 @@ if(waitTime>0 && alarm[0] = 0)
 	{
 		visibleEnemies = getVisible(x/global.cellSize,y/global.cellSize,effectiveStats.viewRadius)
 		alarm[0] = 1
-		alarmRecursions = 30
+		alarmRecursions = global.tickRecursions
 	}
 }

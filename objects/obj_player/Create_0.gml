@@ -127,6 +127,7 @@ enum gamespeed
 }
 global.gameSpeed = gamespeed.medium
 global.gameDelay = 10
+global.tickRecursions = 30
 
 switch(global.gameSpeed)
 {

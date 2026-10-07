@@ -450,7 +450,6 @@
     {"id":{"name":"spr_shopBox","path":"sprites/spr_shopBox/spr_shopBox.yy",},},
     {"id":{"name":"spr_sidebar","path":"sprites/spr_sidebar/spr_sidebar.yy",},},
     {"id":{"name":"spr_size_borders","path":"sprites/spr_size_borders/spr_size_borders.yy",},},
-    {"id":{"name":"spr_sky","path":"sprites/spr_sky/spr_sky.yy",},},
     {"id":{"name":"spr_sleeping","path":"sprites/spr_sleeping/spr_sleeping.yy",},},
     {"id":{"name":"spr_spell_cursor","path":"sprites/spr_spell_cursor/spr_spell_cursor.yy",},},
     {"id":{"name":"spr_spice_fire","path":"sprites/spr_spice_fire/spr_spice_fire.yy",},},
