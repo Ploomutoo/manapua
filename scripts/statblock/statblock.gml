@@ -32,6 +32,8 @@ function Statblock(_name = "Random") constructor
 	//show_debug_message("I am {0}",_name)
 	
 	sprite	= asset_get_index(global.enemyGenList[# 2, _type])
+	icon = spr_timeline_generic
+	
 	max_hp	= real(global.enemyGenList[# 3, _type])
 	defense	= real(global.enemyGenList[# 4, _type])
 	dodge	= real(global.enemyGenList[# 5, _type])

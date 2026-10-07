@@ -6,7 +6,7 @@ var _invOn = 0
 
 with(obj_player)
 {
-	var _subimages = sprite_get_number(spr_clock)*waitTime/4
+	/*var _subimages = sprite_get_number(spr_clock)*waitTime/4
 	draw_sprite(spr_clock,_subimages,360+16,16)
 	scribble(string(waitTime)).draw(360+48,16)
 	
@@ -14,7 +14,57 @@ with(obj_player)
 	+string(damage)+"[spr_text_damage] / "+ string(finalDelay) + "[spr_text_interval]\n"
 	+"Size "+parseWeightclass(weightclass)+": "+string(weight)+"/"+string(weightToNext)
 	//+"\n"+string(mouse_x)+", "+string(mouse_y)
-	).draw(360+16,48)
+	).draw(360+16,48)*/
+	
+	var timeLine = 
+	{
+		top : 32,
+		height : 16,
+		center : playarea_half,
+		radius : 230	
+	}
+	draw_set_color(c_grey)
+	draw_rectangle(timeLine.center-timeLine.radius,timeLine.top,timeLine.center+timeLine.radius,timeLine.top+timeLine.height,0)
+	draw_set_color(c_white)
+	draw_rectangle(timeLine.center-timeLine.radius,timeLine.top,timeLine.center+timeLine.radius,timeLine.top+timeLine.height,1)
+	
+	var timePos = 0 //position along the timer bar
+	var onTimeline = visibleEnemies
+	array_push(onTimeline,self)
+	
+	for(var _i = 0; _i < 10; _i++)
+	{
+		timePos = timeLine.radius*2*_i/10
+		
+		draw_sprite(spr_timeline_segment,0,timeLine.center-timeLine.radius+timePos,timeLine.top)
+	}
+	
+	timePos = timeLine.radius*effectiveStats.wepDelay
+	draw_sprite(spr_timeline_segment,2,timeLine.center-timeLine.radius+timePos,timeLine.top)
+	timePos = timeLine.radius*effectiveStats.moveDelay
+	draw_sprite(spr_timeline_segment,1,timeLine.center-timeLine.radius+timePos,timeLine.top)
+	
+	for(var _i = 0; _i < array_length(onTimeline); _i++)
+	{
+		if(!instance_exists(onTimeline[_i])) 
+		{
+			array_delete(visibleEnemies,_i,1)
+			show_debug_message("I guess that one died")
+			continue;	
+		}
+		
+		if(onTimeline[_i].object_index = obj_player) onTimeline[_i].timeLinePos += (onTimeline[_i].waitTime-onTimeline[_i].timeLinePos)/6
+		else 
+		{
+			//if(onTimeline[_i].asleep) continue;
+			onTimeline[_i].timeLinePos += (onTimeline[_i].actionTimer-onTimeline[_i].timeLinePos)/6
+		}
+		
+		timePos = timeLine.radius*2*min(onTimeline[_i].timeLinePos/2,1)
+		draw_sprite(onTimeline[_i].effectiveStats.icon,0,timeLine.center-timeLine.radius+timePos,timeLine.top+timeLine.height)
+	}
+	
+	
 	
 	for(var _iy = 0; _iy < other.invSize[1]; _iy++)
 	{

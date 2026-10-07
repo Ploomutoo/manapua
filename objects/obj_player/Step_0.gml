@@ -231,6 +231,7 @@ else
 				drawY += (y-drawY)/2
 						
 				defog(_tilex,_tiley,effectiveStats.viewRadius)
+				visibleEnemies = getVisible(_tilex,_tiley,effectiveStats.viewRadius)
 			}
 			clock(effectiveStats.moveDelay * effectiveStats.speedAll)
 		}

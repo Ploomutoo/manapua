@@ -7,7 +7,7 @@ holdingPrev = -1
 
 displaysize = 0
 queuesize = 0
-
+	
 global.bigSprite = self
 x = 180
 y = 260

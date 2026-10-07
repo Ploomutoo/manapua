@@ -8,6 +8,7 @@ event_inherited()
 
 lastActionDuration = 1
 meterAmt = 0
+timeLinePos = 1
 
 target = instance_nearest(x,y,obj_player)
 drawX = x

@@ -1,3 +1,12 @@
+#macro scrnspace_width 1280
+
+#macro playarea_start 360
+#macro playarea_width 920
+#macro playarea_half 820
+#macro playarea_quarter 590
+
+#macro inventory_width 360
+
 if(instance_exists(obj_player)) {
 	lookAt = obj_player;
 	x = lookAt.x

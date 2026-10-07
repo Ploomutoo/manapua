@@ -45,6 +45,7 @@ if(waitTime>0 && alarm[0] = 0)
 	if(alarmRecursions>1) event_perform(ev_alarm,0)
 	else 
 	{
+		visibleEnemies = getVisible(x/global.cellSize,y/global.cellSize,effectiveStats.viewRadius)
 		alarm[0] = 1
 		alarmRecursions = 30
 	}

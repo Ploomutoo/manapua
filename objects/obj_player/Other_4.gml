@@ -12,4 +12,7 @@ drawY = y
 calcEffectiveStats()
 
 //layer_set_visible(layer_get_id("ts_fog"),1)
-defog(x/global.cellSize,y/global.cellSize,effectiveStats.viewRadius)
+var _tx = x/global.cellSize, _ty = y/global.cellSize
+
+defog(_tx,_ty,effectiveStats.viewRadius)
+visibleEnemies = getVisible(_tx,_ty,effectiveStats.viewRadius)

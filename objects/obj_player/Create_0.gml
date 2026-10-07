@@ -7,11 +7,13 @@ event_inherited()
 //resources
 
 //counters and tracking
-iFrames = 0;
+iFrames = 0; //deprecated?
 drawX = x
 drawY = y
 inputBuffer = 0
 cheatInput = ""
+visibleEnemies = []
+timeLinePos = 0
 
 inventory = []
 invSize = 15
@@ -73,7 +75,8 @@ baseStats = //all stats
 	onDeath : [],
 	
 	library : ["Flurried-Strike"],
-	castFatigue : 0 //when greater than or equal to 1, cannot cast spells
+	castFatigue : 0, //when greater than or equal to 1, cannot cast spells
+	icon : spr_timeline_manapua
 }
 
 effectiveStats = baseStats 
