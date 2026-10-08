@@ -5,11 +5,26 @@ function toggleEquipped(_wearer)
 		switch(slot)
 		{
 			case "Weapon":
+			if(global.player.weightclass < minWeight)
+			{
+				textPopup(global.player.x,global.player.y,"Too heavy!")
+				return(false)	
+			}
 			soundRand(sndDrawWeapon)
 			clock(1)
 			break;
 			
 			case "Armor":
+			if(global.player.weightclass < minWeight)
+			{
+				textPopup(global.player.x,global.player.y,"Too loose!")
+				return(false)	
+			}
+			else if(global.player.weightclass > maxWeight)
+			{
+				textPopup(global.player.x,global.player.y,"Too tight!")
+				return(false)	
+			}
 			soundRand(sndDon)
 			clock(3)
 			break;

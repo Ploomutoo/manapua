@@ -9,6 +9,7 @@ displaysize = 0
 queuesize = 0
 	
 global.bigSprite = self
+global.tick24 = 0
 x = 180
 y = 260
 

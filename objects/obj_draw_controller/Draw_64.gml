@@ -60,8 +60,6 @@ with(obj_player)
 		timeLine.center-timeLine.radius+timePos,timeLine.top+timeLine.height)
 	}
 	
-	
-	
 	for(var _iy = 0; _iy < other.invSize[1]; _iy++)
 	{
 		for(var _ix = 0; _ix < other.invSize[0]; _ix++)
@@ -79,9 +77,12 @@ with(obj_player)
 				switch(inventory[_invOn].slot)
 				{
 					case "Weapon":
+						if(settings.sizeBorders)_border = [spr_size_borders,inventory[_invOn].minWeight]
+						else _border = [spr_text_weight,inventory[_invOn].minWeight]
+						break;
 					case "Armor":
-						if(settings.sizeBorders)_border = [spr_size_borders,inventory[_invOn].weightclass]
-						_border = [spr_text_weight,inventory[_invOn].weightclass]
+						if(settings.sizeBorders)_border = [spr_size_borders,inventory[_invOn].minWeight]
+						else _border = [spr_text_weight,inventory[_invOn].minWeight]
 						break;
 							
 					case "Consumable":	
@@ -109,6 +110,11 @@ with(obj_player)
 				if(inventory[_invOn].equipped)
 				{
 					_bg = [spr_ui_box,0]
+					
+					if(inventory[_invOn].equipped = true && inventory[_invOn].slot = "Armor" && weightclass > inventory[_invOn].maxWeight)
+					{
+						_border = [spr_overweight_border,(global.tick24 > 11)]
+					}
 				}
 				
 				draw_sprite(_bg[0],_bg[1],_topcorner[0]+_ix*64,_topcorner[1]+_iy*64)

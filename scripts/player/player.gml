@@ -49,6 +49,21 @@ function defog(_tx,_ty,_iterations)
 	}
 }
 
+function getAwake()
+{
+	var _out = []
+	var _inst
+	for(var _i = 0; _i < instance_number(obj_enemy); _i++)
+	{
+		_inst = instance_find(obj_enemy,_i)
+		if(!_inst.asleep)
+		{
+			array_push(_out,_inst)	
+		}
+	}
+	return(_out)
+}
+
 function getVisible(_tx,_ty,_iterations)
 {
 	_iterations++ //One for the road :)

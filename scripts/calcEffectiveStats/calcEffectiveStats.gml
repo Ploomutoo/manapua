@@ -9,9 +9,6 @@ function calcEffectiveStats()
 	damage = effectiveStats.wepDamage
 	finalDelay = effectiveStats.wepDelay
 	
-	armorDisparity = 0
-	weaponDisparity = 0
-	
 	if(weight >= weightToNext)
 	{	
 		weight -= weightToNext
@@ -27,18 +24,8 @@ function calcEffectiveStats()
 	{
 		if(_equipped[_i].slot = "Weapon")
 		{
-			effectiveStats.wepDamage = _equipped[_i].damage + _equipped[_i].kineticdamage*weightclass
+			effectiveStats.wepDamage = _equipped[_i].damage
 			effectiveStats.wepDelay = real(_equipped[_i].interval)
-		
-			weaponDisparity = _equipped[_i].weightclass - weightclass 
-			if(weaponDisparity>0) 
-			{
-				preciseDisparity = 0
-				if(weaponDisparity>1) preciseDisparity += weaponDisparity-1
-			
-				preciseDisparity += 1-weight/weightToNext
-				effectiveStats.wepDelay += real(_equipped[_i].weightinterval)*preciseDisparity
-			}
 			
 			for(var _i2 = 0; _i2<array_length(_equipped[_i].special);_i2++)
 			{
@@ -53,29 +40,6 @@ function calcEffectiveStats()
 	{
 		if(_equipped[_i].slot = "Armor")
 		{
-			if(_equipped[_i].weightclass != weightclass)
-			{
-				armorDisparity = weightclass - _equipped[_i].weightclass
-				if(armorDisparity>1)
-				{
-					textPopup(x+32,y,"Too tight!")
-					soundRand(sndRip)
-					_equipped[_i].equipped = false
-					continue;
-				}
-				else if(armorDisparity<-1)
-				{
-					textPopup(x+32,y,"Too loose!")
-					_equipped[_i].equipped = false
-					continue;
-				}
-				else //Tight/Loose armor penalty
-				{
-					effectiveStats.moveDelay += 0.2
-					effectiveStats.wepDelay *= 1.2
-				}
-			}
-		
 			armorskin = _equipped[_i].skinName
 		}
 		else if(_equipped[_i].slot = "Spellbook")

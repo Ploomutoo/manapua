@@ -427,6 +427,7 @@
     {"id":{"name":"spr_minionOn","path":"sprites/spr_minionOn/spr_minionOn.yy",},},
     {"id":{"name":"spr_minionSpine","path":"sprites/spr_minionSpine/spr_minionSpine.yy",},},
     {"id":{"name":"spr_narrow","path":"sprites/spr_narrow/spr_narrow.yy",},},
+    {"id":{"name":"spr_overweight_border","path":"sprites/spr_overweight_border/spr_overweight_border.yy",},},
     {"id":{"name":"spr_player","path":"sprites/spr_player/spr_player.yy",},},
     {"id":{"name":"spr_poof","path":"sprites/spr_poof/spr_poof.yy",},},
     {"id":{"name":"spr_potion_curing","path":"sprites/spr_potion_curing/spr_potion_curing.yy",},},

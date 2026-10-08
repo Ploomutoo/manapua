@@ -1,4 +1,6 @@
 var _topCorner = [invCorner[0]-360,invCorner[1]]
+global.tick24++;
+if(global.tick24=24) global.tick24 = 0
 
 if(point_in_rectangle(mouse_x,mouse_y,_topCorner[0],_topCorner[1],
 _topCorner[0]+invSize[0]*64,_topCorner[1]+invSize[1]*64))

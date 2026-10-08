@@ -15,4 +15,4 @@ calcEffectiveStats()
 var _tx = x/global.cellSize, _ty = y/global.cellSize
 
 defog(_tx,_ty,effectiveStats.viewRadius)
-visibleEnemies = getVisible(_tx,_ty,effectiveStats.viewRadius)
+visibleEnemies = getAwake()

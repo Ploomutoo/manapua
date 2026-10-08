@@ -1,18 +1,31 @@
-function generateFloorItem(_floor = "Garden",_rarityBonus = 0){
+function generateFloorItem(_guarantee = ""){
 	
 	var _out = new Item()
+	var _type
 	
-	var _weights = []
-	var _weightsOn = 0
-	for(var _parser = 0; _parser < ds_grid_height(global.itemSpawnList); _parser++)
+	if(_guarantee != "")
 	{
-		if(global.itemSpawnList[# 0, _parser] != "Name")
+		for(_type = 0; _type < ds_grid_height(global.itemSpawnList); _type++)
 		{
-			_weights[_weightsOn] = [_parser,real(global.itemSpawnList[# 1, _parser])]
-			_weightsOn++
+			if(global.itemSpawnList[# 0, _type] = _guarantee) break;
 		}
+	
+		if(_type = ds_grid_height(global.itemSpawnList)) return(_out);	
 	}
-	var _type = weightedRoll(_weights,_rarityBonus)	
+	else
+	{
+		var _weights = []
+		var _weightsOn = 0
+		for(var _parser = 0; _parser < ds_grid_height(global.itemSpawnList); _parser++)
+		{
+			if(global.itemSpawnList[# 0, _parser] != "Name")
+			{
+				_weights[_weightsOn] = [_parser,real(global.itemSpawnList[# 1, _parser])]
+				_weightsOn++
+			}
+		}
+		_type = weightedRoll(_weights)			
+	}
 	
 	_out.name = global.itemSpawnList[# 0, _type]
 	if(_out.name = "Roll Potion" || _out.name = "Roll Scroll")
@@ -28,17 +41,33 @@ function generateFloorItem(_floor = "Garden",_rarityBonus = 0){
 		case "Weapon":
 		
 			_out.damage			= real(global.itemSpawnList[# 4, _type])
-			_out.kineticdamage	= real(global.itemSpawnList[# 5, _type])
 			_out.interval		= real(global.itemSpawnList[# 6, _type])
-			_out.weightclass	= parseWeightclass(global.itemSpawnList[# 7, _type])
-			_out.weightinterval	= real(global.itemSpawnList[# 8, _type])
+			_out.weightclass	= global.itemSpawnList[# 7, _type] //display variable
+			var _weightclassLimits = string_split(_out.weightclass,"-",true) 
+			_out.minWeight = parseWeightclass(_weightclassLimits[0]) //should only need a minimum weight
 			
 			_out = parseSpecials(_out,global.itemSpawnList[# 9, _type],global.itemSpawnList[# 10, _type])
 			break;
 			
 		case "Armor":
 			_out.defense		= real(global.itemSpawnList[# 4, _type])
-			_out.weightclass	= parseWeightclass(global.itemSpawnList[# 5, _type])
+			_out.weightclass	= global.itemSpawnList[# 5, _type] //display variable
+			var _weightclassLimits = string_split(_out.weightclass,"-",true)
+			switch(array_length(_weightclassLimits))
+			{
+				case 1:
+				_out.minWeight = parseWeightclass(_weightclassLimits[0])
+				_out.maxWeight = parseWeightclass(_weightclassLimits[0])
+				break;
+				case 2:
+				_out.minWeight = parseWeightclass(_weightclassLimits[0])
+				_out.maxWeight = parseWeightclass(_weightclassLimits[1])
+				break
+				default:
+				show_debug_message("Error! Submitted more than 2 weight limiters")
+				break;
+			}
+			
 			_out.skinName		= global.itemSpawnList[# 8, _type]
 			
 			_out = parseSpecials(_out,global.itemSpawnList[# 6, _type],global.itemSpawnList[# 7, _type])
@@ -112,21 +141,16 @@ function parseWeightclass(_class)
 		switch(_class)
 		{
 			case "S":
-			return(0)
-			break;
+				return(0)
 			case "M":
-			return(1)
-			break;
+				return(1)
 			case "L":
-			return(2)
-			break;
+				return(2)
 			case "XL":
-			return(3)
-			break;
+				return(3)
 			default: //2XL+ parser, 2XL should return 4, 3XL: 5, 4XL: 6, etc.
 			var xlAmt = real(string_digits(_class))
-			return(2+xlAmt)
-			break;
+				return(2+xlAmt)
 		}
 	}
 	else

@@ -81,21 +81,14 @@ function specialTooltip(_special,_amt)
 function generateTooltip(_item)
 {
 	var _tooltip = _item.name
-	if(_item.damage != 0)
-	{
-		_tooltip += "\n[spr_text_damage] "+ string(_item.damage)
-	}
+
 	if(_item.slot = "Weapon")
 	{
-		if(_item.kineticdamage!=0)	_tooltip += "\n[spr_text_kinetic] "+ string(_item.kineticdamage)
+		_tooltip += "\n Size "+_item.weightclass
+		_tooltip += "\n[spr_text_damage] "+ string(_item.damage)
 		_tooltip += "\n[spr_text_interval] "+ string(_item.interval)
-		if(ceil(_item.weightinterval)!=0)	
-		{
-			_tooltip = "[spr_text_weight,"+string(_item.weightclass)+"] " + _tooltip
-			_tooltip += "\n[spr_text_weight_interval] "+ string(_item.weightinterval)
-		}
-		
 		if(_item.special[0]!="") _tooltip += specialTooltip(_item.special,_item.specialAmt)
+		
 	}
 	else if(_item.slot = "Consumable")
 	{
@@ -106,9 +99,8 @@ function generateTooltip(_item)
 	}
 	else if(_item.slot = "Armor")
 	{
-		_tooltip += "\n[spr_text_defense] "+ string(_item.defense)
-		_tooltip = "[spr_text_weight,"+string(_item.weightclass)+"] " + _tooltip
-		
+		_tooltip += "\n Size "+_item.weightclass
+		_tooltip += "\n[spr_text_defense] "+ string(_item.defense)		
 		if(_item.special[0]!="") _tooltip += specialTooltip(_item.special,_item.specialAmt)
 	}
 	else if(_item.slot = "Ring" || _item.slot = "Amulet")
@@ -204,9 +196,9 @@ function drawItemText(_item,_x,_y)
 	var _text = _item.tooltip
 	var _outlineColor = c_white
 	
-	if(_item.slot = "Weapon" && _item.weightclass > global.player.weightclass) 
+	if(_item.slot = "Weapon" && _item.minWeight > global.player.weightclass) 
 	{
-		var _disparity = _item.weightclass - global.player.weightclass
+		var _disparity = _item.minWeight - global.player.weightclass
 			
 		if(_disparity>2) _text = "Very Heavy " + _text
 		else _text = "Heavy " + _text
@@ -215,29 +207,15 @@ function drawItemText(_item,_x,_y)
 	}
 	else if(_item.slot = "Armor")
 	{
-		var _disparity = _item.weightclass - global.player.weightclass
-			
-		switch(clamp(round(_disparity),-2,2))
+		if(global.player.weightclass < _item.minWeight)
 		{
-			case -2:
-			_text = "Puny " + _text
-			_outlineColor = c_red
-			break;
-			case -1:
-			_text = "Tight " + _text
-			_outlineColor = c_yellow
-			break;
-			case 0:
-
-			break;
-			case 1:
 			_text = "Loose " + _text
 			_outlineColor = c_yellow
-			break;
-			case 2:
-			_text = "Oversized " + _text
-			_outlineColor = c_red
-			break;
+		}
+		else if(global.player.weightclass > _item.maxWeight)
+		{
+			_text = "Tight " + _text
+			_outlineColor = c_yellow
 		}
 	}
 	

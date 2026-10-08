@@ -1,7 +1,7 @@
 Name,Roll Weight,Slot/Type,Sprite,Healing,Weight Gain,Special Qualities,Special Magnitude,Column 1,Column 2,Column 3
 Cupcake,100,Consumable,spr_food_cupcake,30,15,,,,,
-Cake Slice,40,Consumable,spr_food_cake_slice,100,30,,,,,
-Whole Cake,20,Consumable,spr_food_cake,200,50,,,,,
+Cake Slice,40,Consumable,spr_food_cake_slice,60,30,,,,,
+Whole Cake,20,Consumable,spr_food_cake,100,50,,,,,
 Bread,60,Consumable,spr_food_bread,10,10,Max HP,3,,,
 Drumstick,60,Consumable,spr_food_drumstick,10,10,Damage,2.5,,,
 Cheese,60,Consumable,spr_food_cheese_wheel,10,15,Defense,1,,,
@@ -25,26 +25,26 @@ Black Pepper,30,Spice,spr_spice_pepper,Doubles the special value of a food,,mult
 Salt,30,Spice,spr_spice_salt,"Preserves food, preventing it from spoiling between levels",,saltFood,1,,,
 Ice Crystal,30,Spice,spr_spice_freeze,"Freezes food, preserving it for a level but preventing it from being eaten until then",,freezeFood,1,,,
 Fire Crystal,30,Spice,spr_spice_fire,"Cooks food, enhancing its attributes. However, cooking food twice will burn it, rendering it inedible",,grillFood,1,,,
-Name,Roll Weight,Slot/Type,Sprite,Base Damage,Kinetic Damage,Min Interval,Weight Class,Weight Dependent Interval,Special Qualities,Special Magnitude
-Rusty Dagger,100,Weapon,spr_item_weapon_placeholder,10,0,1,S,0,sneakStab,3
-Wood Club,80,Weapon,spr_item_weapon_placeholder,14,0,1,M,1,sneakStun,2
-Shortspear,80,Weapon,spr_weapon_spear,12,0,1.2,M,0.5,reach,1
-Bigass Club,80,Weapon,spr_weapon_club_4,20,0,1.5,2XL,0.5,,
-Cudgel,60,Weapon,spr_item_weapon_placeholder,16,0,1,M,0.4,sneakStun,3
-Shortsword,60,Weapon,spr_item_weapon_placeholder,14,0,1,S,0,,
-Quick Blade,40,Weapon,spr_item_weapon_placeholder,5,0,0.6,L,0.4,multistrike,1
-Trishula,10,Weapon,spr_weapon_spear,10,0,1.5,L,0.5,reach|multistrike,1|2
-Popper,10,Weapon,spr_item_weapon_placeholder,15,0,1.5,L,0,%critChance|critDamage,0.5|500
-Fairy Wand,10,Weapon,spr_weapon_spear,5,0,1,L,0.5,hitCast|reduceSpellCD,15|1
-Devouring Blade,10,Weapon,spr_item_weapon_placeholder,50,0,1.5,2XL,1.5,@onKill:devouring_blade,1
+Name,Roll Weight,Slot/Type,Sprite,Base Damage,,Attack Interval,Weight Class,,Special Qualities,Special Magnitude
+Rusty Dagger,100,Weapon,spr_item_weapon_placeholder,10,,1,S,,@onStrike:sneakStab,3
+Wood Club,80,Weapon,spr_item_weapon_placeholder,14,,1.2,S,,@onStrike:sneakStun,2
+Shortspear,80,Weapon,spr_weapon_spear,12,,1.5,M,,reach,1
+Bigass Club,80,Weapon,spr_weapon_club_4,20,,1.5,2XL,,,
+Cudgel,60,Weapon,spr_item_weapon_placeholder,16,,1.2,M,,@onStrike:sneakStun,3
+Shortsword,60,Weapon,spr_item_weapon_placeholder,14,,1,S,,,
+Quick Blade,40,Weapon,spr_item_weapon_placeholder,5,,0.6,L,,multistrike,1
+Trishula,10,Weapon,spr_weapon_spear,10,,1.5,L,,reach|multistrike,1|2
+Popper,10,Weapon,spr_item_weapon_placeholder,15,,1.5,L,,%critChance|critDamage,0.5|500
+Fairy Wand,10,Weapon,spr_weapon_spear,5,,1,S,,hitCast|reduceSpellCD,15|1
+Devouring Blade,10,Weapon,spr_item_weapon_placeholder,50,,2,2XL,,@onKill:devouring_blade,1
 Name,Roll Weight,Slot/Type,Sprite,Base Defense,Weight Class,Special Qualities,Special Magnitude,Armor Skin,,
-Rags,100,Armor,spr_item_armor_placeholder,1,S,moveDelay|dodge,-0.2|5,rags,,
-Big Rags,60,Armor,spr_item_armor_placeholder,3,L,dodge,5,scalemail,,
-Itchy Gambeson,100,Armor,spr_item_armor_placeholder,5,M,,,gambeson,,
-Leather Cuirass,100,Armor,spr_item_armor_placeholder,5,M,,,leatherarmor,,
-Brigandine,60,Armor,spr_item_armor_placeholder,8,M,,,brigandine,,
-Dirty Robes,60,Armor,spr_item_armor_alchemistress,3,L,lifesteal,3,alchemistress,,
-Fairy-skin Armor,10,Armor,spr_item_armor_placeholder,8,S,dodge,5,fairyarmor,,
+Rags,100,Armor,spr_item_armor_placeholder,1,S-XL,moveDelay|dodge,-0.2|5,rags,,
+Big Rags,60,Armor,spr_item_armor_placeholder,3,L-3XL,dodge,5,scalemail,,
+Itchy Gambeson,100,Armor,spr_item_armor_placeholder,5,M-XL,,,gambeson,,
+Leather Cuirass,100,Armor,spr_item_armor_placeholder,5,M-L,,,leatherarmor,,
+Brigandine,60,Armor,spr_item_armor_placeholder,8,M-XL,,,brigandine,,
+Dirty Robes,60,Armor,spr_item_armor_alchemistress,3,M-3XL,lifesteal,3,alchemistress,,
+Fairy-skin Armor,10,Armor,spr_item_armor_placeholder,8,S-M,dodge,5,fairyarmor,,
 Rusty Chestplate,40,Armor,spr_item_armor_placeholder,10,L,moveDelay,0.2,darksquire,,
 Name,Roll Weight,Slot/Type,Sprite,Special Qualities,Special Magnitude,,,,,
 Scab Ring,30,Ring,spr_item_ring_placeholder,lifesteal|defense,10|2,,,,,
