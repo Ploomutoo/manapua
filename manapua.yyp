@@ -168,6 +168,7 @@
     {"id":{"name":"draw_text_scribble_ext","path":"scripts/draw_text_scribble_ext/draw_text_scribble_ext.yy",},},
     {"id":{"name":"draw_text_scribble","path":"scripts/draw_text_scribble/draw_text_scribble.yy",},},
     {"id":{"name":"drop_item","path":"scripts/drop_item/drop_item.yy",},},
+    {"id":{"name":"eatFood","path":"scripts/eatFood/eatFood.yy",},},
     {"id":{"name":"explode","path":"scripts/explode/explode.yy",},},
     {"id":{"name":"foodDecay","path":"scripts/foodDecay/foodDecay.yy",},},
     {"id":{"name":"freezeFood","path":"scripts/freezeFood/freezeFood.yy",},},

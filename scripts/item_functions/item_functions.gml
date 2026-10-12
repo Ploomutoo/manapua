@@ -92,9 +92,7 @@ function generateTooltip(_item)
 	}
 	else if(_item.slot = "Consumable")
 	{
-		if(_item.special[0] != "") _tooltip += "\nAdds " + string(_item.specialAmt[0]) + " " + _item.special[0]
-		_tooltip += "\nHeals for " + string(_item.healing)+". Gain " + string(_item.weightgain) + " lbs"
-		
+		_tooltip += "\n" + _item.description		
 		if(_item.condition != "Fresh") _tooltip = _item.condition + " " + _tooltip
 	}
 	else if(_item.slot = "Armor")
@@ -122,71 +120,106 @@ function generateTooltip(_item)
 	return(_tooltip)
 }
 
-function eatFood()
+function makeConsumable(_item,_index)
 {
-	switch(condition)
+	_item.slot = "Consumable"
+
+	_item.funcUse = eatFood
+	_item.condition = "Fresh"
+	_item.tags = string_split(global.itemSpawnList[# 4, _index],"|",true)
+			
+	//on eat
+	_item.eatEffect = string_split(global.itemSpawnList[# 5, _index],"|",true)
+	var _description = "",_split
+	if(array_length(_item.eatEffect)>0)
 	{
-		case "Frozen":
-		case "Deep Frozen":
-		case "Skewered":
-		return(false)
+		_description += "When eaten "
+		for(var _i = 0; _i < array_length(_item.eatEffect); _i++)
+		{
+			_split = string_split(_item.eatEffect[_i],":",true)
+			switch(_split[0])
+			{
+				case "heal":
+					_description += "heals for " + _split[1]
+					break;
+				case "tempHealth":
+					_description += "gives " + _split[1] + " temp HP"
+					break;
+				default:
+					_description += "gives " + _split[1] + " " + _split[0]
+					break;
+			}
+			if(array_length(_item.eatEffect)-_i > 1) _description += " and "
+			else _description += "\n"
+		}
 	}
 	
-	var _i = 0
-	switch(special[_i])
+	//in stomach
+	var _stomachDuration = string_split(global.itemSpawnList[# 7, _index]," ",true)
+	if(array_length(_stomachDuration) > 1) 
 	{
-		case "Max HP":
-		global.player.baseStats.max_hp += specialAmt[_i]
-		break;
-		case "Damage":
-		global.player.baseStats.dmgMod += specialAmt[_i]
-		break;
-		case "Defense":
-		global.player.baseStats.defense += specialAmt[_i]
-		break;
-		case "Dodge":
-		global.player.baseStats.dodge += specialAmt[_i]
-		break;
-		case "Lifesteal":
-		global.player.baseStats.lifesteal += specialAmt[_i]
-		break;
-		case "Intelligence":
-		global.player.baseStats.intelligence += specialAmt[_i]
-		break;
-		case "Thorns":
-		global.player.baseStats.thorns += specialAmt[_i]
-		break;
-		case "Crit Rate":
-		global.player.baseStats.critChance += specialAmt[_i]
-		break;
-		case "Crit Damage":
-		global.player.baseStats.critDamage += specialAmt[_i]
-		break;
-		case "Fire Resist":
-		global.player.baseStats.rFire += specialAmt[_i]
-		break;
-		case "Ice Resist":
-		global.player.baseStats.rIce += specialAmt[_i]
-		break;
-		case "Dark Resist":
-		global.player.baseStats.rDark += specialAmt[_i]
-		break;
-		case "Pois Resist":
-		global.player.baseStats.rPois += specialAmt[_i]
-		break;
-		case "Elec Resist":
-		global.player.baseStats.rElec += specialAmt[_i]
-		break;		
+		_description += "Digests over " + global.itemSpawnList[# 7, _index]
+		
+		var _stomachEffect = string_split(global.itemSpawnList[# 6, _index],"|",true)
+		var _get,_stat = [],_amt = []
+		if(array_length(_stomachEffect) > 0)
+		{
+			_description += " granting "
+			for(var _i = 0; _i < array_length(_stomachEffect); _i++)
+			{
+				_get = string_split(_stomachEffect[_i],":",true)
+				array_push(_stat,_get[0])
+				array_push(_amt,_get[1])
+				
+				_description += _get[1] + " " + _get[0]
+				if(array_length(_stomachEffect)-_i > 1) _description += " and "
+			}
+		}
+	
+		_item.stomachType = _stomachDuration[1]
+		_item.stomachBuff = new eatBuff(_item.name,"Food buff",_item.sprite,real(_stomachDuration[0]),_stat,_amt)
+		_description += "\n"
+		
+		//digested
+		_item.stomachBuff.digestEffect = string_split(global.itemSpawnList[# 8, _index],"|",true)
+		array_push(_item.stomachBuff.digestEffect,"gain:"+global.itemSpawnList[# 9, _index])
+		
+		_get  = ""
+		_stat = []
+		_amt  = []
+		_description += "Then "
+		for(var _i = 0; _i<array_length(_item.stomachBuff.digestEffect); _i++)
+		{
+			_get = string_split(_item.stomachBuff.digestEffect[_i],":",true)
+			array_push(_stat,_get[0])
+			array_push(_amt,_get[1])
+			
+			switch(_stat[_i])
+			{
+				case "heal":
+					_description += "heals for " + _amt[_i]
+					break;
+				case "gain":
+					_description += "gain " + _amt[_i] + " pounds"
+					break;
+				case "xtempHealth":
+					break;
+				default:
+					_description += "gives " + _amt[_i] + " " + _stat[_i]
+					break;
+			}
+			if(array_length(_item.stomachBuff.digestEffect)-_i > 1) _description += " and "
+		}
+	}
+	else 
+	{
+		_description += "Digests instantly\n"
+		_item.stomachType = "none"
 	}
 	
-	if(healing>0) heal(healing,global.player)
-	else if(healing<0) hurt(healing,global.player)
-	
-	with(global.bigSprite) skeleton_animation_set("eat-food",0)
-	global.player.weight += weightgain
-	global.player.weight = max(0,global.player.weight)
-	
-	return(true)
+	//description
+	_item.description = _description
+	return(_item)
 }
 
 function drawItemText(_item,_x,_y)

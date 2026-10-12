@@ -36,6 +36,7 @@ function generateFloorItem(_guarantee = ""){
 	
 	_out.sprite = asset_get_index(global.itemSpawnList[# 3, _type])
 	_out.slot	= global.itemSpawnList[# 2, _type]
+	
 	switch(_out.slot)
 	{
 		case "Weapon":
@@ -79,12 +80,7 @@ function generateFloorItem(_guarantee = ""){
 			break;
 			
 		case "Consumable":
-			_out.slot = "Consumable"
-			_out.healing = real(global.itemSpawnList[# 4, _type])
-			_out.weightgain = real(global.itemSpawnList[# 5, _type])
-			_out.funcUse = eatFood
-			_out.condition = "Fresh"
-			_out = parseSpecials(_out,global.itemSpawnList[# 6, _type],global.itemSpawnList[# 7, _type])
+			_out = makeConsumable(_out,_type)
 			break;
 			
 		case "Spellbook":

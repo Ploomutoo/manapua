@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"eatFood",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"eatFood",
+  "parent":{
+    "name":"items",
+    "path":"folders/Scripts/items.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

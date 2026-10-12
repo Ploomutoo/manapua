@@ -1,12 +1,16 @@
-function buff(_name = "",_tooltip = "",_icon = spr_buff_happy,_duration = 10,_affectedStat = "",_amount = 0,_expireFunc = expireExample) constructor 
+ function buff(_name = "",_tooltip = "",_icon = spr_buff_happy,_duration = 10,_affectedStat = "",_amount = 0,_expireFunc = expireExample) constructor 
 {
 	name = _name
 	tooltip = _tooltip
 	icon = _icon
+	inStomach = false
 	
 	duration = _duration
-	affectedStat = _affectedStat
-	amount = _amount
+	
+	if(is_array(_affectedStat))	affectedStat = _affectedStat
+	else affectedStat = [_affectedStat]
+	if(is_array(_amount)) amount = _amount
+	else amount = [_amount]
 	
 	expireFunc = _expireFunc
 	
@@ -21,6 +25,17 @@ function buff(_name = "",_tooltip = "",_icon = spr_buff_happy,_duration = 10,_af
 	}
 }
 
+function eatBuff(_name,_tooltip,_icon,_duration,_affectedStat,_amount) : buff(_name,_tooltip,_icon,_duration,_affectedStat,_amount,runDigest) constructor
+{
+	inStomach = true
+	stacks = true
+}
+
+function expireExample(_target)
+{
+	//nothing lol
+}
+
 function dotEffect(_name = "",_tooltip = "",_icon = spr_buff_sad,_duration = 10,_amount = 0) constructor 
 {
 	name = _name
@@ -29,11 +44,6 @@ function dotEffect(_name = "",_tooltip = "",_icon = spr_buff_sad,_duration = 10,
 	
 	duration = _duration
 	amount = _amount
-}
-
-function expireExample(_target)
-{
-	//nothing lol
 }
 
 function giveBuff(_target,_debuffName,_duration = -1,_strength = -1)
