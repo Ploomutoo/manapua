@@ -29,7 +29,7 @@ function foodDecay(_index)
 		
 		case "Fresh":
 		inventory[_index].condition = "Stale"
-		inventory[_index].healing = min(inventory[_index].healing,0)
+		//inventory[_index].healing = min(inventory[_index].healing,0)
 		break;
 		
 		case "Stale":
@@ -38,8 +38,8 @@ function foodDecay(_index)
 		case "Pepper":
 		case "Skewered":
 		inventory[_index].condition = "Rotten"
-		inventory[_index].healing = min(inventory[_index].healing,-10)
-		inventory[_index].specialAmt[0] = 0
+		//inventory[_index].healing = min(inventory[_index].healing,-10)
+		//inventory[_index].specialAmt[0] = 0
 		break;
 		
 		case "Rotten":

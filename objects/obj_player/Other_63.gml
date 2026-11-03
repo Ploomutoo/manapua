@@ -37,10 +37,13 @@ switch(cheatInput)
 	break;
 	
 	case "Set Weight":
-	weightclass = parseWeightclass(_result)
+	var _digits = string_digits(_result)
+	weightclass = real(_digits)
 	weight = 0
 	weightToNext = getWeightToNext(weightclass)
-	with(global.bigSprite) skeleton_animation_set("weight-gain",0)
+	
+	calcEffectiveStats()
+	with(global.bigSprite) skeleton_animation_set("weight-gain",0)	
 	break;
 	
 	case "Give Item":
