@@ -1,10 +1,12 @@
 {
   "FolderOrderSettings":[
+    {"name":"area","order":1,"path":"folders/Scripts/area.yy",},
     {"name":"props","order":1,"path":"folders/Sprites/props.yy",},
   ],
   "ResourceOrderSettings":[
     {"name":"obj_prop","order":1,"path":"objects/obj_prop/obj_prop.yy",},
     {"name":"eatFood","order":1,"path":"scripts/eatFood/eatFood.yy",},
+    {"name":"scr_weightedlist","order":1,"path":"scripts/scr_weightedlist/scr_weightedlist.yy",},
     {"name":"spr_manapua_big_2","order":2,"path":"sprites/spr_manapua_big_2/spr_manapua_big_2.yy",},
     {"name":"spr_overweight_border","order":6,"path":"sprites/spr_overweight_border/spr_overweight_border.yy",},
     {"name":"spr_timeline_generic","order":4,"path":"sprites/spr_timeline_generic/spr_timeline_generic.yy",},

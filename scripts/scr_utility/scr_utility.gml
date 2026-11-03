@@ -61,13 +61,13 @@ function arrFindIndex(argArr, argVal)
 function loadText(path)
 {
 	var _file = file_text_open_read(path)
-	if(_file = -1)
+	if (_file = -1)
 	{
 		show_debug_message("loadText: Could not load file: {0}", _file);
 		return undefined;
 	}
 	var _temp_buf = "";
-	while(file_text_eof(_file))
+	while (file_text_eof(_file))
 	{
 		_temp_buf += file_text_read_string(_file);
 		file_text_readln(_file);
@@ -82,10 +82,10 @@ function loadText(path)
 /// @param {Function}	filter			Filter function that processes each item. Syntax: function(key, value) -> new_value
 /// @param {Bool}		no_convert If true, disable string->type conversion when parsing JSON. Default: false
 /// @returns {Array|Struct|undefined}	Loaded JSON data, or undefined if file does not exist.
-function loadJSON(path, filter, no_convert)
+function loadJSON(path, filter = undefined, no_convert = false)
 {
 	var _file = loadText(path)
-	if(is_undefined(_file)) return undefined;
+	if (is_undefined(_file)) return undefined;
 	return json_parse(
 		_file,
 		filter,
