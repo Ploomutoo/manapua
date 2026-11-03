@@ -1,3 +1,5 @@
+show_debug_message(event_data[? "string"])
+
 if(event_data[? "string"]="sndWeightup") 
 {
 	//show_debug_message("obama")

@@ -82,7 +82,9 @@ function calcEffectiveStats()
 	with (global.bigSprite) 
 	{
 		queuesize = weightskin
-		var skinarray = ["0",string(displaysize)]
+		var skinarray = ["base"]
+		if(displaysize > 1) skinarray[1] = "size "+string(displaysize)
+		
 		if(armorskin != "") array_push(skinarray,armorskin)
 	
 		var skin = skeleton_skin_create("playerskin",skinarray)

@@ -73,7 +73,7 @@ function runDigest()
 	var _stat
 	var _amt
 
-	show_debug_message("Running digest {0}",name)
+	//show_debug_message("Running digest {0}",name)
 	for(var _i = 0; _i<array_length(digestEffect); _i++)
 	{
 		_get = string_split(digestEffect[_i],":",true)
