@@ -6,7 +6,7 @@
   "name":"scr_areas",
   "parent":{
     "name":"area",
-    "path":"folders/Scripts/area.yy",
+    "path":"folders/Scripts/game/area.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

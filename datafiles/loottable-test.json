@@ -1,0 +1,5 @@
+{
+    "loot-generic": { "test": 20, "test2": 20, "test3": 30 },
+    "loot-generic2": { "test4": 25, "test5": 10, "test6": 20 },
+    "loot-nested": { "#loot-generic": 15, "#loot-generic2": 15, "test7": 10 }
+}

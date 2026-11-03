@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_weightedList",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_weightedList",
+  "parent":{
+    "name":"utility",
+    "path":"folders/Scripts/utility.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

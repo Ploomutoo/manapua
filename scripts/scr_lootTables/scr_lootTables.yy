@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_weightedlist",
+  "%Name":"scr_lootTables",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_weightedlist",
+  "name":"scr_lootTables",
   "parent":{
-    "name":"utility",
-    "path":"folders/Scripts/utility.yy",
+    "name":"items",
+    "path":"folders/Scripts/items.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

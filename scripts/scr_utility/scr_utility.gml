@@ -56,8 +56,8 @@ function arrFindIndex(argArr, argVal)
 }
 
 /// @desc Load text data from file.
-/// @param {String} path The path to load from.
-/// @returns {String|undefined} Loaded text data, or undefined if file does not exist.
+/// @param {string} path The path to load from.
+/// @returns {string} Loaded text data, or undefined if file does not exist.
 function loadText(path)
 {
 	var _file = file_text_open_read(path)
@@ -78,10 +78,10 @@ function loadText(path)
 }
 
 /// @desc Load json data from file.
-/// @param {String}		path			The path to load from.
-/// @param {Function}	filter			Filter function that processes each item. Syntax: function(key, value) -> new_value
-/// @param {Bool}		no_convert If true, disable string->type conversion when parsing JSON. Default: false
-/// @returns {Array|Struct|undefined}	Loaded JSON data, or undefined if file does not exist.
+/// @param {string}		path			The path to load from.
+/// @param {function}	filter			Filter function that processes each item. Syntax: function(key, value) -> new_value
+/// @param {bool}		no_convert If true, disable string->type conversion when parsing JSON. Default: false
+/// @returns {array|struct}	Loaded JSON data, or undefined if file does not exist.
 function loadJSON(path, filter = undefined, no_convert = false)
 {
 	var _file = loadText(path)

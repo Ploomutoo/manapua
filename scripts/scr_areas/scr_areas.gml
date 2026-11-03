@@ -1,4 +1,18 @@
-// @desc Load areas into struct from json string
+global.areas = {}
+
+Area = function() constructor
+{
+	name = "";
+	display_name = "";
+	loot = new WeightedList();
+	enemies = new WeightedList();
+	music = [];
+	overlays = [];
+	modifiers = [];
+};
+
+
+// @desc Load areas into struct from JSON file
 function loadAreas(file)
 {
 	var _data = loadJSON(file, undefined, false) // load area data from json
