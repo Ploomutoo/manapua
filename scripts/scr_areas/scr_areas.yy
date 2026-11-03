@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_areas",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_areas",
+  "parent":{
+    "name":"area",
+    "path":"folders/Scripts/area.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

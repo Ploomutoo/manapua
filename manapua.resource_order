@@ -7,6 +7,7 @@
     {"name":"test","order":9,"path":"folders/dualgrid/test.yy",},
     {"name":"vingear_crypt","order":11,"path":"folders/dualgrid/vingear_crypt.yy",},
     {"name":"water","order":10,"path":"folders/dualgrid/water.yy",},
+    {"name":"area","order":1,"path":"folders/Scripts/area.yy",},
     {"name":"props","order":1,"path":"folders/Sprites/props.yy",},
   ],
   "ResourceOrderSettings":[
@@ -17,6 +18,7 @@
     {"name":"eatFood","order":1,"path":"scripts/eatFood/eatFood.yy",},
     {"name":"tilesetDoesRandom","order":3,"path":"scripts/tilesetDoesRandom/tilesetDoesRandom.yy",},
     {"name":"spr_floor_dirt","order":1,"path":"sprites/spr_floor_dirt/spr_floor_dirt.yy",},
+    {"name":"scr_weightedlist","order":1,"path":"scripts/scr_weightedlist/scr_weightedlist.yy",},
     {"name":"spr_manapua_big_2","order":2,"path":"sprites/spr_manapua_big_2/spr_manapua_big_2.yy",},
     {"name":"spr_overweight_border","order":6,"path":"sprites/spr_overweight_border/spr_overweight_border.yy",},
     {"name":"spr_tiles_cryptfloor_out","order":1,"path":"sprites/spr_tiles_cryptfloor_out/spr_tiles_cryptfloor_out.yy",},
