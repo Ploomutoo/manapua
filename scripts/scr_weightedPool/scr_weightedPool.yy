@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_weightedListSet",
+  "%Name":"scr_weightedPool",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_weightedListSet",
+  "name":"scr_weightedPool",
   "parent":{
     "name":"utility",
     "path":"folders/Scripts/utility.yy",

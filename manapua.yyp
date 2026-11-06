@@ -199,7 +199,7 @@
     {"id":{"name":"scr_noise","path":"scripts/scr_noise/scr_noise.yy",},},
     {"id":{"name":"scr_utility","path":"scripts/scr_utility/scr_utility.yy",},},
     {"id":{"name":"scr_weightedList","path":"scripts/scr_weightedList/scr_weightedList.yy",},},
-    {"id":{"name":"scr_weightedListSet","path":"scripts/scr_weightedListSet/scr_weightedListSet.yy",},},
+    {"id":{"name":"scr_weightedPool","path":"scripts/scr_weightedPool/scr_weightedPool.yy",},},
     {"id":{"name":"scribble_anim_blink","path":"scripts/scribble_anim_blink/scribble_anim_blink.yy",},},
     {"id":{"name":"scribble_anim_cycle","path":"scripts/scribble_anim_cycle/scribble_anim_cycle.yy",},},
     {"id":{"name":"scribble_anim_jitter","path":"scripts/scribble_anim_jitter/scribble_anim_jitter.yy",},},
