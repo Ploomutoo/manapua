@@ -113,6 +113,35 @@ if(DEVELOPMENT_MODE) global.cheat = 1 // dev mode cheat- set with PlayDebug conf
 global.enemyGenList = load_csv("enemies-test.csv")
 global.itemSpawnList = load_csv("itempools-test.csv")
 
+//=LOOT TABLE TESTING======
+{
+  loadLootTableFile("loottable-test.json")
+
+  var _roll_count = 200
+  show_debug_message("Rolling 'loot-nested' table {0} times...", _roll_count)
+  var _failed_rolls = 0
+  var _roll_results = {}
+  for(var i = 0; i < _roll_count; i++)
+  {
+    var _result = global.lootTable.roll("loot-nested")
+    if (is_undefined(_result))
+    {
+      _failed_rolls++;
+      continue;
+    }
+    if (not struct_exists(_roll_results, _result))
+      _roll_results[$ _result] = 1
+    else
+      _roll_results[$ _result]++
+  }
+  show_debug_message("Done rolling:\n{0}", string(_roll_results))
+  if (_failed_rolls > 0)
+    show_debug_message("Failed {0} rolls.", _failed_rolls)
+  else
+    show_debug_message("No roll failures.")
+}
+//=========================
+
 settings = 
 {
 	sizeBorders : true	

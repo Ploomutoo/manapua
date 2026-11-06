@@ -63,18 +63,18 @@ function loadText(path)
 	var _file = file_text_open_read(path)
 	if (_file = -1)
 	{
-		show_debug_message("loadText: Could not load file: {0}", _file);
-		return undefined;
+		show_debug_message("loadText: Could not load file: {0}", _file)
+		return undefined
 	}
-	var _temp_buf = "";
-	while (file_text_eof(_file))
+	var _temp_buf = ""
+	while (not file_text_eof(_file))
 	{
-		_temp_buf += file_text_read_string(_file);
-		file_text_readln(_file);
+		_temp_buf += file_text_read_string(_file) + "\n"
+		file_text_readln(_file)
 	}
-	file_text_close(_file);
-	delete _file;
-	return _temp_buf;
+	file_text_close(_file)
+	delete _file
+	return _temp_buf
 }
 
 /// @desc Load json data from file.
@@ -85,10 +85,10 @@ function loadText(path)
 function loadJSON(path, filter = undefined, no_convert = false)
 {
 	var _file = loadText(path)
-	if (is_undefined(_file)) return undefined;
+	if (is_undefined(_file)) return undefined
 	return json_parse(
 		_file,
 		filter,
 		is_undefined(no_convert) ? false : no_convert
-	);
+	)
 }
