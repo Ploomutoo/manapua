@@ -1,0 +1,83 @@
+name: Build GameMaker Release
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build ${{ matrix.target }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - target: windows
+            runner: windows-latest
+          - target: mac
+            runner: ubuntu-latest
+          - target: linux
+            runner: ubuntu-latest
+
+    runs-on: ${{ matrix.runner }}
+
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v4
+
+      - name: Verify project
+        shell: bash
+        run: test -f manapua.yyp
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Install GameMaker CLI
+        run: npm install --global @gamemaker/gm-cli@latest
+
+      - name: Show CLI options
+        run: gm-cli package --help
+
+      - name: Build project
+        shell: bash
+        run: |
+          mkdir -p dist
+          gm-cli package \
+            --target=${{ matrix.target }} \
+            --runtime=vm \
+            --output=dist/manapua-${{ matrix.target }}.zip \
+            manapua.yyp
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: manapua-${{ matrix.target }}
+          path: dist/**
+          if-no-files-found: error
+          retention-days: 14
+
+  release:
+    name: Publish release
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: dist
+          merge-multiple: true
+
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          gh release create "$TAG" dist/* \
+            --repo "$GITHUB_REPOSITORY"
