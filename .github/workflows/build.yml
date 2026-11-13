@@ -39,7 +39,7 @@ jobs:
           node-version: 24
 
       - name: Install GameMaker CLI
-        run: npm install --global @gamemaker/gm-cli@latest
+        run: npm install --global @gamemaker/gm-cli@2.4.1
 
       - name: Show CLI options
         run: gm-cli package --help
@@ -49,9 +49,11 @@ jobs:
         run: |
           mkdir -p dist
           gm-cli package \
+            --toolchain=GMS2@2026.0.0.23 \
             --target=${{ matrix.target }} \
             --runtime=vm \
-            --output=dist/manapua-${{ matrix.target }}.zip \
+            --verbose \
+            --output=dist/manapua-${{ matrix.target }} \
             manapua.yyp
 
       - name: Upload build artifact
